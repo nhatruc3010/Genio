@@ -1,12 +1,8 @@
 # Genio
 
-
-
 ## What is Genio?
 
 Genio is a web application where the K-12 and college students can find the tutors.
-
-
 
 ## Usage
 
@@ -14,28 +10,22 @@ Genio is a web application where the K-12 and college students can find the tuto
 
 `npm install`
 
-
-
 #### Usage
 
 `npm start`
 
-
-
 #### Testing
-
-
 
 ## Feature List
 
--[] header: hero banner with logo and navbar
+- [] header: hero banner with logo and navbar
 
--[] footer: contact info and copyright
+- [] footer: contact info and copyright
 
--[] navbar: signup and login
+- [] navbar: signup and login
 
--[] search function with filters
+- [] search function with filters
 
--[] Google Maps API
+- [] Google Maps API
 
--[] Stripe API
+- [] Stripe API
