@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route} from 'react-router-dom';
 
-import NavBar from './Components/NavbarPage';
+// import Contact from './Components/Contact';
 import Footer from './Components/Footer';
-import Home from './Components/Home'
+import NavBar from './Components/NavBar';
+import Home from './Components/Home';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -15,7 +16,8 @@ class App extends Component {
         <NavBar/>
         <BrowserRouter>
           <Route exact path='/' component={Home} />
-          
+          {/* <Route exact path='/contact' component ={Contact}/> */}
+
         </BrowserRouter>
         <Footer/>
       </div>

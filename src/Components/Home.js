@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import {MDBBtn, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 export default class Home extends Component{
-  constructor(props) {
-    super(props);
-   
-  }
+
   handleViewMoreClick = () => {
     window.scrollTo({
         top: window.innerHeight,
@@ -32,6 +29,7 @@ export default class Home extends Component{
                                 style={styles.button}>
                         APPLY TO BECOME A TUTEE !
                         </MDBBtn>
+                        
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
