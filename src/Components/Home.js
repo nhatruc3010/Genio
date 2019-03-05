@@ -15,6 +15,8 @@ export default class Home extends Component{
         <div style = {styles.homeStyle}>
         <div style = {styles.content}>
             <MDBContainer className="px-md-3 px-sm-0">
+
+
                 <MDBRow>
                     <MDBCol md="12" className="mb-4 black-text text-center">
                         <h3 className="display-3 font-weight-bold mb-0 pt-md-5">
@@ -26,17 +28,25 @@ export default class Home extends Component{
                             Being smart is great. <br/>
                         </h4>
                         <MDBBtn outline rounded color='cyan darken-2'
-                                style={styles.button}>
+                                style={styles.button} href="/tuteesignup/">
                         APPLY TO BECOME A TUTEE !
                         </MDBBtn>
-                        
+
+
+
                     </MDBCol>
                 </MDBRow>
+
+                <MDBBtn outline rounded color='cyan darken-2'
+                        style={styles.button} href="/TutorApp/">
+                APPLY TO BECOME A TUTOR !
+                </MDBBtn>
+
             </MDBContainer>
         </div>
 
         <btn
-                onClick={this.handleViewMoreClick} 
+                onClick={this.handleViewMoreClick}
                 className="text-center" >
                 <i className="fas fa-chevron-down black-text"></i>
         </btn>

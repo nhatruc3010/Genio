@@ -30,7 +30,7 @@ import {
           <Navbar style ={styles.background} expand="md">
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="d-md-flex d-block flex-row mx-md-auto mx-0">
+              <Nav className="d-md-flex d-block flex-MDBRow mx-md-auto mx-0">
                 <NavItem>
                   <NavLink style={styles.item} href="/">GENIO</NavLink>
                 </NavItem>
