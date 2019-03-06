@@ -26,6 +26,8 @@ Genio is a Web Application that makes it easy to find a tutor for college studen
 
 - [ ] search function with filters
 
+- [ ] recommendation feature based on rating with machine learning
+
 - [ ] Google Maps API
 
 - [x] PayPal API
