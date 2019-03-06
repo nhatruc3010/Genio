@@ -46,12 +46,28 @@ def register_tutor(request):
     if request.method == 'POST':
         # body is a bytes object, decoded into string, then loaded into dictionary by Python JSON parser
         body = json.loads(request.body.decode('utf-8'))
+
         username = body.get('username', None)
         email = body.get('email', None)
         password = body.get('password', None)
 
-        if username and email and password:
+        cc_number = body.get('creditCardNumber', None)
+        cc_exp_date = body.get('creditCardEXP', None)
+        cc_holder_name = body.get('creditCardName', None)
+        cc_security_code = body.get('creditCardCode', None)
+
+        address = body.get('address', None)
+    
+        if username and email and password and cc_number and cc_exp_date and cc_holder_name and cc_security_code and address:
             user = Tutor.objects.create_user(username, email, password)
+
+            user.cc_number = cc_number
+            user.cc_exp_date = cc_exp_date
+            user.cc_holder_name = cc_holder_name
+            user.cc_security_code = cc_security_code
+
+            user.address = address
+
             user.save()
 
             token = generate_JWT(user)
