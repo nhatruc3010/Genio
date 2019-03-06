@@ -2,7 +2,7 @@
 
 ## What is Genio?
 
-Genio is a web application where the K-12 and college students can find the tutors.
+Genio is a Web Application that makes it easy to find a tutor for college students.
 
 ## Usage
 
@@ -20,7 +20,7 @@ Genio is a web application where the K-12 and college students can find the tuto
 
 - [ ] header: hero banner with logo and navbar
 
-- [ ] footer: contact info and copyright
+- [x] footer: contact info and copyright
 
 - [ ] navbar: signup and login
 
@@ -28,5 +28,5 @@ Genio is a web application where the K-12 and college students can find the tuto
 
 - [ ] Google Maps API
 
-- [ ] Stripe API
+- [x] PayPal API
 
