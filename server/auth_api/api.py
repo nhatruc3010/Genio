@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate
-from models import Tutee, Tutor
+from auth_api.models import Tutee, Tutor
 from django.http import JsonResponse
 import json
 from rest_framework_jwt.settings import api_settings
