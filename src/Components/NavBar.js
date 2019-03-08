@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-
 import {
     Collapse,
     Navbar,
@@ -27,19 +26,30 @@ import {
     render() {
       return (
         <div>
-          <Navbar style ={styles.background} expand="md">
+          <Navbar style ={styles.background} expand="md" className="center">
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="d-md-flex d-block flex-MDBRow mx-md-auto mx-0">
-                <NavItem>
+              <NavbarBrand>
                   <NavLink style={styles.item} href="/">GENIO</NavLink>
+              </NavbarBrand>
+              <Nav className="d-md-flex d-block mx-md-auto mx-0">
+                <NavItem>
+                  <NavLink style={styles.item} href="/about-us/">ABOUT US</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink style={styles.item} href="/components/">SPONSOR</NavLink>
+                  <NavLink style={styles.item} href="/details/">DETAILS</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink style={styles.item} href="/contact/">CONTACT</NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink style={styles.item} href="/help/">HELP</NavLink>
+                </NavItem>
+              </Nav>
+              <Nav className="ml">
+              <NavItem>
+                  <NavLink style={styles.item} href="/login/">LOG IN</NavLink>
+              </NavItem>
               </Nav>
             </Collapse>
           </Navbar>
@@ -58,6 +68,6 @@ import {
         color: 'black',
         font: ' bold 20px Economica',
         marginRight: '50px',
-        
+        marginLeft: '50px'
     }
   }
