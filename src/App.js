@@ -5,6 +5,7 @@ import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
+import SearchPage from './Components/SearchPage';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -18,6 +19,7 @@ class App extends Component {
           <div id='routes' >
           <Route exact path='/' component={Home} />
           <Route exact path='/contact' component ={Contact}/>
+          <Route exact path='/search' component ={SearchPage}/>
           </div>
         </BrowserRouter>
         <Footer/>
