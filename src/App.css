@@ -50,3 +50,19 @@
     text-align: center;
     color: white;
   }
+
+/*image for top of search results */
+  .search-img{
+    background-image: url('http://culture.affinitymagazine.us/wp-content/uploads/2017/05/635873821517718970351055939_Stack-of-books-great-education.jpg');
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+
+  .sortbutton{
+    padding-top: 20px;
+    position: relative;
+    text-align: center;
+}
