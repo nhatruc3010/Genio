@@ -5,10 +5,14 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "mdbreact": "^4.11.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "moment": "^2.24.0",
+    "react": "^16.8.6",
+    "react-dates": "^20.1.0",
+    "react-dom": "^16.8.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
+    "react-star-rating-component": "^1.4.1",
+    "react-time-range": "^1.0.4",
     "reactstrap": "^7.1.0"
   },
   "scripts": {

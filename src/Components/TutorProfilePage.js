@@ -1,9 +1,25 @@
 import React, {Component} from "react";
 import { MDBRow, MDBCol, MDBCard, MDBMedia, MDBIcon, MDBView, MDBBtn } from "mdbreact";
 import { MDBContainer } from "mdbreact";
-
+import StarRatingComponent from 'react-star-rating-component';
+import Booking from './Booking';
+import 'react-dates/lib/css/_datepicker.css';
 
 export default class TutorProfilePage extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      rating: 0
+    };
+  }
+
+  onStarClick(nextValue, prevValue, name) {
+  this.setState({rating: nextValue});
+}
+
+
+
   render(){
     return (
     <MDBContainer>
@@ -40,10 +56,34 @@ export default class TutorProfilePage extends Component {
 
                 </p>
 
+
+                <h6 className="font-weight-bold my-3">
+                    Availability:
+                  </h6>
+                  <p className="font-weight-normal">
+                  Mon: Unavailable
+                  <br/>
+                  Tues: 10:00 AM - 04:00 PM
+                  <br/>
+                  Wed: 5:00 PM - 08:00 PM
+                  <br/>
+                  Thurs: 10:00 AM - 04:00 PM
+                  <br/>
+                  Fri: 07:00 AM - 09:00 PM
+                  <br/>
+                  Sat: Unavailable
+                  <br/>
+                  Sunday: Unavailable
+                  <br/>
+                  </p>
+
+
                 <MDBRow>
-                <MDBBtn color="primary" size="md" style={{marginLeft: "24vh", marginTop: "30px"}}>
-                Book Now
-                </MDBBtn>
+
+
+
+                <Booking/>
+
                 </MDBRow>
 
 
@@ -59,9 +99,20 @@ export default class TutorProfilePage extends Component {
             </h2>
 
 
+
             <div className="form-area">
          <form role="form">
          <br styles="clear:both" />
+
+         <div   style={{fontSize: "20px"}}>
+         <StarRatingComponent
+                  name="rate1"
+                  starCount={5}
+                  value={this.state.rating}
+                   renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
+                  onStarClick={this.onStarClick.bind(this)}
+                />
+          </div>
 
 
            <div className="form-group">
@@ -82,7 +133,18 @@ export default class TutorProfilePage extends Component {
 
                 <MDBMedia body >
                     <MDBMedia heading>
-                        <strong><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i></strong>
+
+                    <div   style={{fontSize: "20px"}}>
+                    <StarRatingComponent
+                             name="rate1"
+                             starCount={5}
+                             value={4}
+                             editing={false}
+                              renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
+                             onStarClick={this.onStarClick.bind(this)}
+                           />
+                     </div>
+
                     </MDBMedia>
                     I love Jessica! She is such a great tutor. I passed my class with flying colors!!!
                     <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p>
@@ -101,7 +163,19 @@ export default class TutorProfilePage extends Component {
 
                 <MDBMedia body >
                     <MDBMedia heading>
-                        <strong><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i></strong>
+
+                    <div   style={{fontSize: "20px"}}>
+                    <StarRatingComponent
+                             name="rate1"
+                             starCount={5}
+                             value={5}
+                             editing={false}
+                              renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
+                             onStarClick={this.onStarClick.bind(this)}
+                           />
+                     </div>
+
+
                     </MDBMedia>
                     Jessica is so great. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blah
                     <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p>
