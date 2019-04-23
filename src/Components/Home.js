@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {MDBContainer, 
-        MDBRow, 
+import {MDBContainer,
+        MDBRow,
         MDBCol } from "mdbreact";
 
 import Advertising from './Advertising';

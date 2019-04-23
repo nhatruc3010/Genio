@@ -100,8 +100,9 @@ this.setState({sortOption: e});
                                                   </div>
                                                   <div className="col-md-5 px-3">
                                                       <div className="card-block px-3">
-                                                          <h3 className="card-title">Subjects: Chemistry, Biology</h3>
-                                                          <p className="card-text"><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i> </p>
+                                                          <p><b>SUBJECT:</b> Chemistry, Biology, Calculus </p>
+
+                                                          <p className="card-text"><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i> 7 Reviews </p>
                                                           <p>About Me: </p>
                                                           <p>Blah Blah Blah Blah BLah BlahBlah Blah Blah Blah BLah BlahBlah Blah Blah Blah BLah BlahBlah Blah Blah Blah BLah BlahBlah Blah Blah Blah BLah Blah</p>
                                                       </div>

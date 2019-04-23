@@ -1,0 +1,129 @@
+import React, {Component} from "react";
+import { MDBRow, MDBCol, MDBCard, MDBMedia, MDBIcon, MDBView, MDBBtn } from "mdbreact";
+import { MDBContainer } from "mdbreact";
+
+
+export default class TutorProfilePage extends Component {
+  render(){
+    return (
+    <MDBContainer>
+        <MDBRow>
+        <MDBCol md="12">
+          <h1 className="h1-responsive font-weight-bold text-center my-5">Tutor Profile</h1>
+          <MDBRow>
+            <MDBCol md="4">
+                    <MDBView >
+                      <h3 className="font-weight-bold mt-2" >Jessica Tran</h3>
+                      <img
+                        src="https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024"
+                        alt=""
+                        style={styles.imageStyles}
+                      />
+                    </MDBView>
+
+
+            </MDBCol>
+            <MDBCol md="6">
+            <h6 className="font-weight-bold my-3">
+                  Subjects:
+                </h6>
+                <p className="font-weight-normal">
+                  Chemistry, Physics, Calculus
+
+                </p>
+
+              <h6 className="font-weight-bold my-3">
+                  About Me
+                </h6>
+                <p className="font-weight-normal">
+                  Hello! My name is Jessica Tran. I like to study chemistry in my free time. I graduated from SJSU in chemical engineering. I've been tutoring people for over 5 years.
+
+                </p>
+
+                <MDBRow>
+                <MDBBtn color="primary" size="md" style={{marginLeft: "24vh", marginTop: "30px"}}>
+                Book Now
+                </MDBBtn>
+                </MDBRow>
+
+
+                </MDBCol>
+          </MDBRow>
+        </MDBCol>
+        </MDBRow>
+
+        <MDBRow>
+        <MDBCol md="12">
+            <h2 className="h1-responsive font-weight-bold text-center my-5">
+            Feedback
+            </h2>
+
+
+            <div className="form-area">
+         <form role="form">
+         <br styles="clear:both" />
+
+
+           <div className="form-group">
+           <textarea className="form-control" type="textarea" id="subject" placeholder="Insert feedback..." maxlength="200" rows="2"></textarea>
+           </div>
+           <MDBBtn color="primary" size="md" id="sumbit">
+           Post
+           </MDBBtn>
+         </form>
+     </div>
+     <br/>
+     <br/>
+
+            <MDBMedia style={{border:" 2px groove", padding: "25px", marginBottom: "20px"}}>
+                <MDBMedia left href="#" className="mr-3">
+                <MDBMedia object src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600108/29213218-stock-vector-female-avatar-silhouette-profile-pictures.jpg?ver=6" alt="Generic placeholder image" style={{width:"90px", height:"90px"}} />
+                </MDBMedia>
+
+                <MDBMedia body >
+                    <MDBMedia heading>
+                        <strong><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i></strong>
+                    </MDBMedia>
+                    I love Jessica! She is such a great tutor. I passed my class with flying colors!!!
+                    <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p>
+
+
+
+                </MDBMedia>
+            </MDBMedia>
+
+
+
+            <MDBMedia style={{border:"2px groove", padding: "25px", marginBottom: "20px"}}>
+                <MDBMedia left href="#" className="mr-3">
+                <MDBMedia object src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600108/29213218-stock-vector-female-avatar-silhouette-profile-pictures.jpg?ver=6" alt="Generic placeholder image" style={{width:"90px", height:"90px"}} />
+                </MDBMedia>
+
+                <MDBMedia body >
+                    <MDBMedia heading>
+                        <strong><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i></strong>
+                    </MDBMedia>
+                    Jessica is so great. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blah
+                    <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p>
+
+
+
+                </MDBMedia>
+            </MDBMedia>
+
+
+        </MDBCol>
+        </MDBRow>
+    </MDBContainer>
+);
+}
+}
+
+const styles ={
+  imageStyles:{
+    borderRadius: '50%',
+    border: "#A9A9A9",
+    marginBottom: '10px',
+    width: '250px',
+    height:'250px'
+  }}

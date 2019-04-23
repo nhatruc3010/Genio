@@ -1,19 +1,19 @@
 import React, {Component} from "react";
-import { MDBContainer, 
-         MDBRow, 
-         MDBCol, 
-         MDBBtn, 
-         MDBInput, 
+import { MDBContainer,
+         MDBRow,
+         MDBCol,
+         MDBBtn,
+         MDBInput,
          MDBModal,
-         MDBModalHeader, 
-         MDBModalBody, 
+         MDBModalHeader,
+         MDBModalBody,
          MDBModalFooter } from 'mdbreact';
 
 export default class SignUp extends Component {
   state = {
     modal: false
   }
-  
+
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -23,8 +23,8 @@ export default class SignUp extends Component {
   render() {
     return (
     <MDBContainer>
-      <MDBBtn onClick={this.toggle} 
-              outline rounded 
+      <MDBBtn onClick={this.toggle}
+              outline rounded
               color='cyan darken-2'
               style={styles.button}
               >
@@ -74,7 +74,7 @@ export default class SignUp extends Component {
                 />
               </div>
               <h5>
-              By creating this account, you agree to our 
+              By creating this account, you agree to our
               <a href = "/termandcondition" > Terms & Condintions</a></h5>
               <div className="text-center">
               </div>
@@ -82,16 +82,16 @@ export default class SignUp extends Component {
           </MDBCol>
         </MDBRow>
         </MDBModalBody>
-        
+
         <MDBModalFooter>
-          <MDBBtn onClick={this.toggle} 
-                    outline rounded 
+          <MDBBtn onClick={this.toggle}
+                    outline rounded
                     color='cyan darken-2'
-                    style={styles.button}> 
+                    style={styles.button}>
               Register
           </MDBBtn>
-          <MDBBtn onClick={this.toggle} 
-                  outline rounded 
+          <MDBBtn onClick={this.toggle}
+                  outline rounded
                   color='cyan darken-2'
                   style={styles.button}>
             Close
