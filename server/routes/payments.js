@@ -18,7 +18,7 @@ router.post('/pay', function(req, res) {
             return res.status(200).json({ success: true, charge, msg: 'Successfully charged the customer' });
         }
     });
-});
+}); 
 
 router.post('/refund', async (req,res) => {
     let { _id } = req.body;
@@ -26,7 +26,7 @@ router.post('/refund', async (req,res) => {
     try { 
         let session = await Session.findOne({ _id });
 
-        if (session.payment !== null) {
+        if (session.charge !== null) {
             const refund = stripe.refunds.create({
                 charge: Session.charge.id
             });

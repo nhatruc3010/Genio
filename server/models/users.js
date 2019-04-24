@@ -7,15 +7,16 @@ const tuteeAttributes = {
     password: String,
     ccNumber: Number,
     ccCVC: Number,
-    ccExpiration: String
-}
+    ccExpiration: String,
+    sessions: Array
+};
 
 const tuteeSchema = new mongoose.Schema(tuteeAttributes);
 
 const tutorSchema = new mongoose.Schema({
     ...tuteeAttributes,
-    schedule: Object
-    
+    schedule: Object,
+    hourly_rate: Number
 });
 
 const Tutee = mongoose.model('Tutee', tuteeSchema);
@@ -25,19 +26,19 @@ module.exports = {
     Tutee, Tutor
 };
 
-module.exports.createUser = function(newUser, callBack){
+module.exports.createUser = function(newUser, cb){
     bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(newUser.password, salt, function(err, hash) {
             if (err) throw err;
             newUser.password = hash;
-            newUser.save(callBack); 
+            newUser.save(cb); 
         });
     });
 }
 
-module.exports.comparePassword = function(candidatePassword, hash, callback) {
+module.exports.comparePassword = function(candidatePassword, hash, cb) {
     bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
         if (err) throw err;
-        callback(null, isMatch);
+        cb(null, isMatch);
     });
 }
