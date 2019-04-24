@@ -13,7 +13,8 @@ const SessionSchema = new mongoose.Schema({
     subtotal: Number,
     total: Number,
     tax: Number,
-    approved: Boolean
+    approved: Boolean,
+    payment: Object
 });
 
 const Session = module.exports = mongoose.model('Session', SessionSchema);

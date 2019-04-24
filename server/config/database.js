@@ -1,4 +1,4 @@
 module.exports = {
-    database : 'mongodb://admin:Getaway1@ds249942.mlab.com:49942/getaway',
+    database : 'mongodb://admin:Admin19@ds213896.mlab.com:13896/genio',
     secret : 'asuhoidashnkhsdalijdalkhl'
 }

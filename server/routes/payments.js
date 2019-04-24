@@ -21,12 +21,12 @@ router.post('/pay', function(req, res) {
 });
 
 router.post('/refund', async (req,res) => {
-    let { reservation_id } = req.body;
+    let { _id } = req.body;
 
     try { 
-        let reservation = await Session.findOne({ _id: reservation_id });
+        let session = await Session.findOne({ _id });
 
-        if (payment !== null) {
+        if (session.payment !== null) {
             const refund = stripe.refunds.create({
                 charge: Session.charge.id
             });
@@ -39,7 +39,7 @@ router.post('/refund', async (req,res) => {
         else    
             return res.status(400).json({
                 success: false,
-                msg: 'Reservation not found!'
+                msg: 'Session not found!'
             })
     }
     catch(err) {
