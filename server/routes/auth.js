@@ -101,3 +101,4 @@ router.post('/login', (req, res) => {
  * Tutee Authentication
  */
 
+module.exports = router;
