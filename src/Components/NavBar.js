@@ -8,11 +8,11 @@ import {
     NavItem,
     NavLink,
  } from 'reactstrap';
-import Login from './Login'
+//import Login from './Login'
   export default class NavBar extends Component {
     constructor(props) {
       super(props);
-  
+
       this.toggle = this.toggle.bind(this);
       this.state = {
         isOpen: false
@@ -48,7 +48,8 @@ import Login from './Login'
               </Nav>
               <Nav className="ml">
               <NavItem>
-                  <Login/>
+
+              
               </NavItem>
               </Nav>
             </Collapse>
