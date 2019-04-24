@@ -4,15 +4,16 @@ const moment = require('moment');
 const { Tutee, Tutor } = require('./users');
 
 const SessionSchema = new mongoose.Schema({
-    tuteeID: String,
-    tutorID: String,
+    tutee_id: String,
+    tutor_id: String,
     time_created: {type: Number, default: Date.now()},
-    start_date: Number,
-    end_date: Number,
+    start_time: Number,
+    end_time: Number,
     charge: Object,
     subtotal: Number,
     total: Number,
-    tax: Number
+    tax: Number,
+    approved: Boolean
 });
 
 const Session = module.exports = mongoose.model('Session', SessionSchema);

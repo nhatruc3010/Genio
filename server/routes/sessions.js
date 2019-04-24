@@ -1,13 +1,46 @@
 const express = require('express');
 const router = express.Router();
+const validator = require('validator');
 
 const Session = require('../models/session');
 const { Tutee, Tutor } = require('../models/users');
 
+router.post('/sessions/book', async (req,res) => {
+    let { tuteeID, tutorID, startTime, endTime } = req.body;
+
+    if (
+            !validator.isEmpty(tuteeID) 
+        &&  !validator.isEmpty(tutorID) 
+        &&  validator.isNumeric(startTime) 
+        &&  validator.isNumeric(endTime) 
+    ) {
+        try {
+
+        } catch(err) {
+            return res.status(400).json({
+                success: false,
+                err
+            });
+        }
+    } else {
+        return res.status(400).json({
+            success: false,
+            msg: 'Must supply tuteeID, tutorID, startTime, and endTime in the request body'
+        });
+    }
+});
+
+router.post('/sessions/confirm', async (req,res) => {
+
+});
+
 router.get('/sessions/:userType/:_id', async (req,res) => {
     let { userType, _id } = req.params;
     
-    if (userType && id && userType.length && id.length) {
+    if (
+            !validator.isEmpty(userType)
+        &&  !validator.isEmpty(_id)
+    ) {
         try {
             switch(userType) {
                 case 'tutee':
@@ -79,4 +112,5 @@ router.get('/sessions/:userType/:_id', async (req,res) => {
         });
     }
 });
+
 module.exports = router;
