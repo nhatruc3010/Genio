@@ -5,6 +5,9 @@ import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
+import SearchPage from './Components/SearchPage';
+import SearchResults from './Components/SearchResults';
+import TutorProfilePage from './Components/TutorProfilePage';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -18,6 +21,9 @@ class App extends Component {
           <div id='routes' >
           <Route exact path='/' component={Home} />
           <Route exact path='/contact' component ={Contact}/>
+          <Route exact path='/search' component ={SearchPage}/>
+          <Route exact path='/searchresults' component ={SearchResults}/>
+          <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
           </div>
         </BrowserRouter>
         <Footer/>
