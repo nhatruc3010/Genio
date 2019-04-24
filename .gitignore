@@ -3,9 +3,6 @@ package-lock.json
 yarn.lock
 node_modules/
 
-# Microservice ignores
-config/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
