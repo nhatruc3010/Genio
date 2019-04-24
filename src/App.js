@@ -8,6 +8,7 @@ import Home from './Components/Home';
 import SearchPage from './Components/SearchPage';
 import SearchResults from './Components/SearchResults';
 import TutorProfilePage from './Components/TutorProfilePage';
+import TuteeProfilePage from './Components/TuteeProfilePage';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -24,6 +25,8 @@ class App extends Component {
           <Route exact path='/search' component ={SearchPage}/>
           <Route exact path='/searchresults' component ={SearchResults}/>
           <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
+          <Route exact path='/tuteeprofile' component ={TuteeProfilePage}/>
+
           </div>
         </BrowserRouter>
         <Footer/>
