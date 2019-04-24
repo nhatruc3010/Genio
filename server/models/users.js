@@ -12,7 +12,7 @@ const tuteeAttributes = {
 
 const tuteeSchema = new mongoose.Schema(tuteeAttributes);
 
-const Tutor = new mongoose.Schema({
+const tutorSchema = new mongoose.Schema({
     ...tuteeAttributes,
     schedule: Object
     
