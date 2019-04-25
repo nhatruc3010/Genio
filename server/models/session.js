@@ -19,7 +19,8 @@ const SessionSchema = new mongoose.Schema({
     approved: {
         type: Boolean,
         default: false
-    }
+    },
+    address: String
 });
 
 const Session = module.exports = mongoose.model('Session', SessionSchema);

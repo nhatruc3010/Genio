@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-// const Payment = require('../models/payment');
 const Session = require('../models/session');
 
-const uuid = require('uuid/')
+// const uuid = require('uuid/');
 var keys = require('../config/stripe');
 var stripe = require('stripe')(keys.secret_key);
 
@@ -18,7 +17,7 @@ router.post('/pay', function(req, res) {
             return res.status(200).json({ success: true, charge, msg: 'Successfully charged the customer' });
         }
     });
-}); 
+});
 
 router.post('/refund', async (req,res) => {
     let { _id } = req.body;

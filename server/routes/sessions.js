@@ -26,7 +26,8 @@ router.post('/sessions/book', async (req,res) => {
                 tutor_id: tutorID,
                 start_time: startTime,
                 end_time: endTime,
-                subtotal, tax
+                subtotal, tax,
+                address: tutor.address
             });
 
             session.save(() => {
