@@ -9,6 +9,7 @@ import SearchPage from './Components/SearchPage';
 import SearchResults from './Components/SearchResults';
 import TutorProfilePage from './Components/TutorProfilePage';
 import TutorsPage from './Components/Tutors/TutorsPage';
+import TutorsSession from './Components/Tutors/TutorsSession';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -26,6 +27,7 @@ class App extends Component {
           <Route exact path='/searchresults' component ={SearchResults}/>
           <Route exact path='/tutoredit' component ={TutorsPage}/>
           <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
+            <Route exact path='/tutorsession' component ={TutorsSession}/>
           </div>
         </BrowserRouter>
         <Footer/>
