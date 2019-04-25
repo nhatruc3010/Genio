@@ -4,7 +4,10 @@ const router = express.Router();
 const passport = require('passport');
 const jwt =  require('jsonwebtoken');
 
-const { Tutee, Tutor } = require('../models/users');
+const { 
+        Tutee, Tutor,
+        createUser, comparePassword 
+    } = require('../models/users');
 
 /**
  * Tutor authentication
