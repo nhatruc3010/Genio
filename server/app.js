@@ -29,4 +29,4 @@ app.use(cors());
 
 app.use(auth);
 
-app.listen(PORT || 3001, () => console.log(`Server started on port ${PORT || 3001}`));
+app.listen(PORT || 3001, () => console.log(`Server started on port ${PORT || 3001} \n`));
