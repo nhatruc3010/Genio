@@ -5,6 +5,7 @@ const validator = require('validator');
 const Session = require('../models/session');
 const { Tutee, Tutor } = require('../models/users');
 
+
 router.post('/sessions/book', async (req,res) => {
     let { tuteeID, tutorID, startTime, endTime } = req.body;
 
@@ -50,15 +51,38 @@ router.post('/sessions/book', async (req,res) => {
 });
 
 router.post('/sessions/confirm', async (req,res) => {
-    let { sessionID, tutorID } = req.body;
+    let { sessionID, tutorID, tuteeID } = req.body;
 
-    try {
-        
-    } catch(err) {
-        return res.status(400).json({
-            success: false,
-            err
-        });
+    if (
+            !validator.isEmpty(sessionID)
+        &&  !validator.isEmpty(tutorID)
+        &&  !validator.isEmpty(tuteeID)
+    ) {
+        try {
+            let session = await Session.findOneAndUpdate(
+                { 
+                    _id: sessionID 
+                }, {
+                    approved: true
+                }).exec();
+            
+            let tutor = await Tutor.findOne({ _id: tutorID }).exec();
+            let tutee = await Tutee.findOne({ _id: tuteeID }).exec();
+
+            addUniqueSession(tutor, session, () => {
+                addUniqueSession(tutee, session, () => {
+                    return res.status(200).json({
+                        success: true,
+                        tutor, tutee, session
+                    });
+                })
+            });
+        } catch(err) {
+            return res.status(400).json({
+                success: false,
+                err
+            });
+        }
     }
 });
 
@@ -140,5 +164,20 @@ router.get('/sessions/:userType/:_id', async (req,res) => {
         });
     }
 });
+
+/**
+ * Utility Functions
+ */
+
+function addUniqueSession(user, session, cb) {
+    let { sessions } = user;
+
+    let result = sessions.filter(s => s._id === session._id);
+
+    if (!result.length) {
+        sessions.push(session);
+        user.save(cb);
+    }
+};
 
 module.exports = router;
