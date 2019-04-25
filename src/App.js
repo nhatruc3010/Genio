@@ -10,7 +10,7 @@ import SearchResults from './Components/SearchResults';
 import TutorProfilePage from './Components/TutorProfilePage';
 import TutorsPage from './Components/Tutors/TutorsPage';
 import TutorsSession from './Components/Tutors/TutorsSession';
-import TuteeProfilePage from './Components/TuteeProfilePage';
+import StudentProfile from './Components/StudentProfile';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -22,14 +22,14 @@ class App extends Component {
         <NavBar/>
         <BrowserRouter>
           <div id='routes' >
-          <Route exact path='/' component={Home} />
-          <Route exact path='/contact' component ={Contact}/>
-          <Route exact path='/search' component ={SearchPage}/>
-          <Route exact path='/searchresults' component ={SearchResults}/>
-          <Route exact path='/tutoredit' component ={TutorsPage}/>
-          <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
-          <Route exact path='/tutorsession' component ={TutorsSession}/>
-          <Route exact path='/tuteeprofile' component ={TuteeProfilePage}/>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/contact' component ={Contact}/>
+            <Route exact path='/search' component ={SearchPage}/>
+            <Route exact path='/searchresults' component ={SearchResults}/>
+            <Route exact path='/tutoredit' component ={TutorsPage}/>
+            <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
+            <Route exact path='/tutorsession' component ={TutorsSession}/>
+            <Route exact path='/studentprofile' component ={StudentProfile}/>
 
           </div>
         </BrowserRouter>

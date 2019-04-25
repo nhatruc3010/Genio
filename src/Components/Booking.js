@@ -30,7 +30,7 @@ export default class Booking extends Component {
 
   render() {
     return (
-    <MDBContainer>
+    <div>
       <MDBBtn onClick={this.toggle}
               outline rounded
               color='cyan darken-2'
@@ -92,7 +92,7 @@ export default class Booking extends Component {
           </MDBBtn>
         </MDBModalFooter>
       </MDBModal>
-    </MDBContainer>
+    </div>
   );
 };
 

@@ -8,7 +8,8 @@ import {
     NavItem,
     NavLink,
  } from 'reactstrap';
-//import Login from './Login'
+import Login from './Login'
+
   export default class NavBar extends Component {
     constructor(props) {
       super(props);
