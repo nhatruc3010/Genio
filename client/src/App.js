@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route} from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import configureStore from './Components/redux/configureStore';
+
 import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 import NavBar from './Components/NavBar';
@@ -18,23 +23,26 @@ import StudentProfile from './Components/StudentProfile';
 class App extends Component {
   render() {
     return (
-      <div >
-        <NavBar/>
-        <BrowserRouter>
-          <div id='routes' >
-            <Route exact path='/' component={Home} />
-            <Route exact path='/contact' component ={Contact}/>
-            <Route exact path='/search' component ={SearchPage}/>
-            <Route exact path='/searchresults' component ={SearchResults}/>
-            <Route exact path='/tutoredit' component ={TutorsPage}/>
-            <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
-            <Route exact path='/tutorsession' component ={TutorsSession}/>
-            <Route exact path='/studentprofile' component ={StudentProfile}/>
-          </div>
-        </BrowserRouter>
-        <Footer/>
-        </div>
-
+      <Provider store={configureStore().store}>
+        <PersistGate loading={null} persistor={configureStore().persistor}>
+          <React.Fragment>
+            <NavBar/>
+            <BrowserRouter>
+              <React.Fragment>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/contact' component ={Contact}/>
+                <Route exact path='/search' component ={SearchPage}/>
+                <Route exact path='/searchresults' component ={SearchResults}/>
+                <Route exact path='/tutoredit' component ={TutorsPage}/>
+                <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
+                <Route exact path='/tutorsession' component ={TutorsSession}/>
+                <Route exact path='/studentprofile' component ={StudentProfile}/>
+              </React.Fragment>
+            </BrowserRouter>
+            <Footer/>
+          </React.Fragment>
+        </PersistGate>
+      </Provider>
     );
   }
 }

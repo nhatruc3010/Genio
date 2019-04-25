@@ -82,13 +82,13 @@ router.post('/login', async (req, res) => {
                     }}, config.secret, {
                         expiresIn: 604800 // 1 week
                     });
+
+                    let { password, ...rest } = user;
     
                     return res.status(200).json({
                         token: 'Bearer ' + token,
                         user: {
-                            _id: user._id,
-                            email: user.email,
-                            name: user.name
+                            rest
                         }
                     });
                 } else {
