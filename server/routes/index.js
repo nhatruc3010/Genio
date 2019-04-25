@@ -1,1 +1,5 @@
-module.exports.auth = require('./auth');
+module.exports = {
+    auth: require('./auth'),
+    payments: require('./payments'),
+    sessions: require('./sessions')
+};

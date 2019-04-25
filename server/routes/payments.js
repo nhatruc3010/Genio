@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Payment = require('../models/payment');
+// const Payment = require('../models/payment');
 const Session = require('../models/session');
 
 const uuid = require('uuid/')
