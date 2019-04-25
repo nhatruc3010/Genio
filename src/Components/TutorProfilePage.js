@@ -35,6 +35,8 @@ export default class TutorProfilePage extends Component {
                         alt=""
                         style={styles.imageStyles}
                       />
+
+                       <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> $54</p>
                     </MDBView>
 
 
@@ -55,7 +57,6 @@ export default class TutorProfilePage extends Component {
                   Hello! My name is Jessica Tran. I like to study chemistry in my free time. I graduated from SJSU in chemical engineering. I've been tutoring people for over 5 years.
 
                 </p>
-
 
                 <h6 className="font-weight-bold my-3">
                     Availability:

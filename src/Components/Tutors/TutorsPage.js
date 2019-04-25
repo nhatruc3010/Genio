@@ -34,6 +34,7 @@ renderProfileInfo() {
           <b>Hourly Rate</b><br/><input className="form-control" onChange={this.handleChange} name="tutorHourlyRate" type="text"/>
           <b>Subjects</b><br/><input className="form-control" onChange={this.handleChange} name="profileSubject" type="text" /><br/>
           <b>About Me</b><br/><textarea className="form-control" rows="10" onChange={this.handleChange} name="aboutMe" type="text" /><br/>
+          <b>Address</b><br/><input className="form-control" onChange={this.handleChange} name="address" type="text" /><br/>
 
 
 
@@ -185,6 +186,14 @@ renderProfileInfo() {
 
         </p>
 
+        <h6 className="font-weight-bold my-3">
+            Address
+          </h6>
+          <p className="font-weight-normal">
+            1 Washington St, San Jose, CA, 95126
+
+          </p>
+
 
         <h6 className="font-weight-bold my-3">
             Availability:
@@ -242,7 +251,6 @@ renderProfileInfo() {
                         {this.state.isEditing? <p></p>: <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> $54</p>}
 
                           {this.state.isEditing ? <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Cancel Edit</Button> : <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Edit</Button>}
-
 
 
                     </MDBView>
