@@ -1,17 +1,17 @@
+import _ from 'lodash';
+
 import { BOOK_SESSION, CONFIRM_SESSION, GET_SESSIONS } from '../actions/types';
 
 const initialState = {
     sessions: []
 };
 
-export default SessionsReducer = (state = INITIAL_STATE, action) => {
+export const SessionsReducer = (state = initialState, action) => {
     switch (action.type) {
         case BOOK_SESSION:
-            let { sessions } = state;
-
             return {
                 ...state,
-                sessions: sessions.push(action.payload)    
+                sessions: state.sessions.push(action.payload)    
             };
         
         case CONFIRM_SESSION:
@@ -20,7 +20,7 @@ export default SessionsReducer = (state = INITIAL_STATE, action) => {
 
             return {
                 ...state,
-                sessions: upsert(sessions, oldSession, action.payload)
+                sessions: upsert(state.sessions, oldSession, action.payload)
             };
         
         case GET_SESSIONS:
