@@ -21,10 +21,15 @@ import StudentProfile from './Components/StudentProfile';
 // import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.cs = configureStore();
+  }
+  
   render() {
     return (
-      <Provider store={configureStore().store}>
-        <PersistGate loading={null} persistor={configureStore().persistor}>
+      <Provider store={this.cs.store}>
+        <PersistGate loading={null} persistor={this.cs.persistor}>
           <React.Fragment>
             <NavBar/>
             <BrowserRouter>

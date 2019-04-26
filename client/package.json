@@ -16,7 +16,10 @@
     "react-scripts": "2.1.5",
     "react-star-rating-component": "^1.4.1",
     "react-time-range": "^1.0.4",
-    "reactstrap": "^7.1.0"
+    "reactstrap": "^7.1.0",
+    "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +36,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:3001"
 }
