@@ -15,7 +15,7 @@ export const SessionsReducer = (state = initialState, action) => {
             };
         
         case CONFIRM_SESSION:
-            let oldSession = sessions.filter(v => v._id === action.payload._id);
+            let oldSession = state.sessions.filter(v => v._id === action.payload._id);
 
             return {
                 ...state,
