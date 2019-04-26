@@ -3,7 +3,10 @@ const bcrypt = require ('bcryptjs');
 
 const tuteeAttributes = {
     name: String,
-    email: String,
+    email: {
+        type: String,
+        unique: true
+    },
     password: String,
     ccNumber: Number,
     ccCVC: Number,
