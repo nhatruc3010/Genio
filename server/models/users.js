@@ -8,7 +8,11 @@ const tuteeAttributes = {
     ccNumber: Number,
     ccCVC: Number,
     ccExpiration: String,
-    sessions: Array
+    sessions: Array,
+    type: {
+        type: String,
+        default: 'tutee'
+    }
 };
 
 const tuteeSchema = new mongoose.Schema(tuteeAttributes);
@@ -17,7 +21,11 @@ const tutorSchema = new mongoose.Schema({
     ...tuteeAttributes,
     schedule: Object,
     hourly_rate: Number,
-    address: String
+    address: String,
+    type: {
+        type: String,
+        default: 'tutor'
+    }
 });
 
 const Tutee = mongoose.model('Tutee', tuteeSchema);
