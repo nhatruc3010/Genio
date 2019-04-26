@@ -19,7 +19,7 @@ export default class StudentProfile extends Component {
         physic: false,
         rating: 0
     };
-    
+
   }
 
   onStarClick(nextValue, prevValue, name) {
@@ -39,13 +39,19 @@ export default class StudentProfile extends Component {
                     alt=""
                     style={styles.imageStyles}
                   />
+                  <br/>
+              <Button href="/studentsession" color="btn btn-deep-orange login" style={{marginLeft: "30%"}}> View Sessions </Button>
+              <br/>
+              <br/>
+              <br/>
+
               </MDBView>
             </MDBCol>
 
             <MDBCol md="6">
               <h6 className="font-weight-bold my-3">Email:</h6>
               <p className="font-weight-normal">bruce.lin@sjsu.edu</p>
-              
+
               <h6 className="font-weight-bold my-3">Phone:</h6>
               <p className="font-weight-normal">408 999 8888</p>
 
@@ -70,14 +76,14 @@ export default class StudentProfile extends Component {
                   <option>11th Grade</option>
                   <option>12th Grade</option>
                 </Input>
-                <MDBBtn type="submit" style={styles.button} 
+                <MDBBtn type="submit" style={styles.button}
                         outline rounded color='cyan darken-2' >Search</MDBBtn>
               </FormGroup>
             </MDBCol>
         </MDBRow>
       </MDBCol>
     </MDBRow>
- 
+
       <div>
       <Button style={this.state.biology?  styles.activeStyle: styles.inactiveStyle}
               onClick={() => this.setState({biology: !this.state.biology})}>Biology</Button>
@@ -133,7 +139,7 @@ export default class StudentProfile extends Component {
                   <br/>
                   </p>
               <div >
-                <MDBBtn href="/tutorprofile" 
+                <MDBBtn href="/tutorprofile"
                         style={styles.button}
                         color='cyan darken-2' > Details</MDBBtn>
                 <Booking/>
@@ -178,7 +184,7 @@ export default class StudentProfile extends Component {
                   <br/>
                   </p>
               <div >
-                <MDBBtn href="/tutorprofile" 
+                <MDBBtn href="/tutorprofile"
                         style={styles.button}
                         color='cyan darken-2' > Details</MDBBtn>
                 <Booking/>
