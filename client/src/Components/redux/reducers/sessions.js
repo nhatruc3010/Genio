@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { BOOK_SESSION, CONFIRM_SESSION, GET_SESSIONS } from '../actions/types';
 
 const initialState = {
