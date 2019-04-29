@@ -12,13 +12,13 @@ router.post('/sessions/book', async (req,res) => {
     if (
             !validator.isEmpty(tuteeID) 
         &&  !validator.isEmpty(tutorID) 
-        &&  validator.isNumeric(startTime) 
-        &&  validator.isNumeric(endTime) 
+        &&  Number(startTime) === startTime     // check if startTime is Number
+        &&  Number(endTime) === endTime         // check if endTime is Number
     ) {
         try {
             let tutor = await Tutor.findOne({ _id: tutorID }).exec();
 
-            let subtotal = Number(tutor.rate * ((startTime - endTime) / 3600000));
+            let subtotal = Number(tutor.hourly_rate * ((endTime - startTime) / 3600000));
             let tax = Number(subtotal * 0.8);
 
             let session = new Session({
@@ -38,6 +38,7 @@ router.post('/sessions/book', async (req,res) => {
                 });
             });
         } catch(err) {
+            console.log(err);
             return res.status(400).json({
                 success: false,
                 err
