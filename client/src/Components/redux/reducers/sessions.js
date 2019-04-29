@@ -6,23 +6,20 @@ const initialState = {
     sessions: []
 };
 
-export default SessionsReducer = (state = INITIAL_STATE, action) => {
+export const SessionsReducer = (state = initialState, action) => {
     switch (action.type) {
         case BOOK_SESSION:
-            let { sessions } = state;
-
             return {
                 ...state,
-                sessions: sessions.push(action.payload)    
+                sessions: state.sessions.push(action.payload)    
             };
         
         case CONFIRM_SESSION:
-            let { sessions } = state;
-            let oldSession = sessions.filter(v => v._id === action.payload._id);
+            let oldSession = state.sessions.filter(v => v._id === action.payload._id);
 
             return {
                 ...state,
-                sessions: upsert(sessions, oldSession, action.payload)
+                sessions: upsert(state.sessions, oldSession, action.payload)
             };
         
         case GET_SESSIONS:

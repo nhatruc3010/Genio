@@ -23,11 +23,20 @@ router.post('/register', (req, res) => {
         &&  !validator.isEmpty(type)
     ) {
         try {
-            const newUser = new [type]({
-                name: name,
-                email: email,
-                password: password
-            });
+            let newUser;
+            if (type === 'tutor') {
+                newUser = new Tutor({
+                    name,
+                    email,
+                    password
+                });
+            } else if (type === 'tutee') {
+                newUser = new Tutee({
+                    name,
+                    email,
+                    password
+                });
+            }
 
             createUser(newUser, function(err, user){
                 if(err) {
@@ -44,6 +53,7 @@ router.post('/register', (req, res) => {
                 }
             });
         } catch (err) {
+            console.log(err);
             return res.status(400).json({
                 success: false,
                 msg : 'Unable to create a user',
