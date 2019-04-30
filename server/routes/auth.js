@@ -13,7 +13,7 @@ const {
 /**
  * Tutor authentication
  */
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
     let { name, email, password, type } = req.body;
 
     if (
@@ -24,6 +24,7 @@ router.post('/register', (req, res) => {
     ) {
         try {
             let newUser;
+        
             if (type === 'tutor') {
                 newUser = new Tutor({
                     name,
