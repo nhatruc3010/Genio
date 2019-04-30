@@ -8,7 +8,7 @@ const validator = require('validator');
 const { 
     Tutee, Tutor,
     createUser, comparePassword
- } = require('../models/users');
+} = require('../models/users');
 
 /**
  * Tutor authentication
@@ -90,17 +90,15 @@ router.post('/login', async (req, res) => {
                 if(isMatch) {
                     const token = jwt.sign({data: {
                         _id: user._id,
-                    }}, config.secret, {
+                    }}, 'genioappsecret', {
                         expiresIn: 604800 // 1 week
                     });
 
-                    let { password, ...rest } = user;
+                    user.password = '--hidden--';
     
                     return res.status(200).json({
                         token: 'Bearer ' + token,
-                        user: {
-                            rest
-                        }
+                        user
                     });
                 } else {
                     return res.status(500).json({
