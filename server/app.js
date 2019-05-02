@@ -5,7 +5,7 @@ const morgan  = require('morgan');
 const cors = require('cors');
 const app = express();
 
-const { auth } = require('./routes');
+const { auth, sessions } = require('./routes');
 
 require('dotenv').config();
 
@@ -27,6 +27,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(cors());
 
+// Auth routes tested -- Nhat
 app.use(auth);
+app.use(sessions);
 
 app.listen(PORT || 3001, () => console.log(`Server started on port ${PORT || 3001} \n`));

@@ -3,7 +3,10 @@ const bcrypt = require ('bcryptjs');
 
 const tuteeAttributes = {
     name: String,
-    email: String,
+    email: {
+        type: String,
+        unique: true
+    },
     password: String,
     ccNumber: Number,
     ccCVC: Number,
@@ -20,7 +23,10 @@ const tuteeSchema = new mongoose.Schema(tuteeAttributes);
 const tutorSchema = new mongoose.Schema({
     ...tuteeAttributes,
     schedule: Object,
-    hourly_rate: Number,
+    hourly_rate: {
+        type: Number,
+        default: 10
+    },
     address: String,
     type: {
         type: String,

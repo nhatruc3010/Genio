@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route} from 'react-router-dom';
+import { Elements, StripeProvider } from 'react-stripe-elements';
 
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -16,7 +17,8 @@ import TutorProfilePage from './Components/TutorProfilePage';
 import TutorsPage from './Components/Tutors/TutorsPage';
 import TutorsSession from './Components/Tutors/TutorsSession';
 import StudentProfile from './Components/StudentProfile';
-
+import StudentSession from './Components/StudentSession';
+import Payment from './Components/Payment';
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -25,27 +27,34 @@ class App extends Component {
     super(props);
     this.cs = configureStore();
   }
-  
+
   render() {
     return (
       <Provider store={this.cs.store}>
         <PersistGate loading={null} persistor={this.cs.persistor}>
-          <React.Fragment>
-            <NavBar/>
-            <BrowserRouter>
+
+          <StripeProvider apiKey="pk_test_BXlLrCAozvQjBtsCuboLjwGn">
+            <Elements>
               <React.Fragment>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/contact' component ={Contact}/>
-                <Route exact path='/search' component ={SearchPage}/>
-                <Route exact path='/searchresults' component ={SearchResults}/>
-                <Route exact path='/tutoredit' component ={TutorsPage}/>
-                <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
-                <Route exact path='/tutorsession' component ={TutorsSession}/>
-                <Route exact path='/studentprofile' component ={StudentProfile}/>
+                <NavBar/>
+                <BrowserRouter>
+                  <React.Fragment>
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/contact' component ={Contact}/>
+                    <Route exact path='/search' component ={SearchPage}/>
+                    <Route exact path='/searchresults' component ={SearchResults}/>
+                    <Route exact path='/tutoredit' component ={TutorsPage}/>
+                    <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
+                    <Route exact path='/tutorsession' component ={TutorsSession}/>
+                    <Route exact path='/studentprofile' component ={StudentProfile}/>
+                    <Route exact path='/studentsession' component ={StudentSession}/>
+                    {/* <Route exact path='/payment' component ={Payment}/> */}
+                  </React.Fragment>
+                </BrowserRouter>
+                <Footer/>
               </React.Fragment>
-            </BrowserRouter>
-            <Footer/>
-          </React.Fragment>
+            </Elements>
+          </StripeProvider>
         </PersistGate>
       </Provider>
     );

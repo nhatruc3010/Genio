@@ -44,7 +44,7 @@ renderProfileInfo() {
           <br/> <TimeRange
               startTime={this.state.startTime}
               endTime={this.state.endTime}
-              startLabel="Mon:"
+              startLabel="Mon:  "
               endLabel="-"
               startMoment={this.state.startTime}
               endMoment={this.state.endTime}
@@ -62,7 +62,7 @@ renderProfileInfo() {
           <TimeRange
               startTime={this.state.startTime}
               endTime={this.state.endTime}
-              startLabel="Tues:"
+              startLabel="Tues: "
               endLabel="-"
               startMoment={this.state.startTime}
               endMoment={this.state.endTime}
@@ -80,7 +80,7 @@ renderProfileInfo() {
           <TimeRange
               startTime={this.state.startTime}
               endTime={this.state.endTime}
-              startLabel="Wed:"
+              startLabel="Wed:  "
               endLabel="-"
               startMoment={this.state.startTime}
               endMoment={this.state.endTime}
@@ -114,7 +114,7 @@ renderProfileInfo() {
           <TimeRange
               startTime={this.state.startTime}
               endTime={this.state.endTime}
-              startLabel="Fri:"
+              startLabel=" Frid:  "
               endLabel="-"
               startMoment={this.state.startTime}
               endMoment={this.state.endTime}
@@ -131,7 +131,7 @@ renderProfileInfo() {
           <TimeRange
               startTime={this.state.startTime}
               endTime={this.state.endTime}
-              startLabel="Sat:"
+              startLabel="Sat:  "
               endLabel="-"
               startMoment={this.state.startTime}
               endMoment={this.state.endTime}
@@ -148,7 +148,7 @@ renderProfileInfo() {
           <TimeRange
               startTime={this.state.startTime}
               endTime={this.state.endTime}
-              startLabel="Sun:"
+              startLabel="Sun:  "
               endLabel="-"
               startMoment={this.state.startTime}
               endMoment={this.state.endTime}
@@ -211,7 +211,7 @@ renderProfileInfo() {
           <br/>
           Sat: Unavailable
           <br/>
-          Sunday: Unavailable
+          Sun: Unavailable
           <br/>
           </p>
 

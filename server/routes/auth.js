@@ -8,12 +8,12 @@ const validator = require('validator');
 const { 
     Tutee, Tutor,
     createUser, comparePassword
- } = require('../models/users');
+} = require('../models/users');
 
 /**
  * Tutor authentication
  */
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
     let { name, email, password, type } = req.body;
 
     if (
@@ -23,11 +23,21 @@ router.post('/register', (req, res) => {
         &&  !validator.isEmpty(type)
     ) {
         try {
-            const newUser = new [type]({
-                name: name,
-                email: email,
-                password: password
-            });
+            let newUser;
+        
+            if (type === 'tutor') {
+                newUser = new Tutor({
+                    name,
+                    email,
+                    password
+                });
+            } else if (type === 'tutee') {
+                newUser = new Tutee({
+                    name,
+                    email,
+                    password
+                });
+            }
 
             createUser(newUser, function(err, user){
                 if(err) {
@@ -44,6 +54,7 @@ router.post('/register', (req, res) => {
                 }
             });
         } catch (err) {
+            console.log(err);
             return res.status(400).json({
                 success: false,
                 msg : 'Unable to create a user',
@@ -79,17 +90,15 @@ router.post('/login', async (req, res) => {
                 if(isMatch) {
                     const token = jwt.sign({data: {
                         _id: user._id,
-                    }}, config.secret, {
+                    }}, 'genioappsecret', {
                         expiresIn: 604800 // 1 week
                     });
 
-                    let { password, ...rest } = user;
+                    user.password = '--hidden--';
     
                     return res.status(200).json({
                         token: 'Bearer ' + token,
-                        user: {
-                            rest
-                        }
+                        user
                     });
                 } else {
                     return res.status(500).json({

@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "lodash": "^4.17.11",
     "mdbreact": "^4.11.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
@@ -15,6 +16,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "react-star-rating-component": "^1.4.1",
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^3.0.0",
     "react-time-range": "^1.0.4",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
