@@ -8,10 +8,22 @@ import { MDBContainer,
          MDBModalHeader,
          MDBModalBody,
          MDBModalFooter } from 'mdbreact';
+import { connect } from 'react-redux';
+import { register } from './redux/actions/auth';
 
-export default class SignUp extends Component {
+
+
+
+
+class SignUp extends Component {
   state = {
-    modal: false
+    modal: false,
+    name:'',
+    registerEmail: '',
+    registerPassword: '',
+    comfirmEmail: '',
+
+
   }
 
   toggle = () => {
@@ -19,6 +31,27 @@ export default class SignUp extends Component {
       modal: !this.state.modal
     });
   }
+
+  handleChange = event => {
+  this.setState({
+    [event.target.name]: event.target.value
+  });
+
+}
+
+  userRegister (e) {
+      e.preventDefault();
+         this.props.register({
+           email: this.state.registerEmail,
+           password: this.state.registerPassword,
+           name: this.state.name,
+           type: "tutee"
+         });
+         this.setState({
+           modal: !this.state.modal
+         });
+    }
+
 
   render() {
     return (
@@ -45,6 +78,8 @@ export default class SignUp extends Component {
                   validate
                   error="wrong"
                   success="right"
+                  name= "name"
+                  onChange={this.handleChange}
                 />
                 <MDBInput
                   label="Your email"
@@ -53,6 +88,8 @@ export default class SignUp extends Component {
                   validate
                   error="wrong"
                   success="right"
+                  name="registerEmail"
+                  onChange={this.handleChange}
                 />
                 <MDBInput
                   label="Confirm your email"
@@ -61,12 +98,16 @@ export default class SignUp extends Component {
                   validate
                   error="wrong"
                   success="right"
+                  name="confirmEmail"
+                  onChange={this.handleChange}
                 />
                 <MDBInput
                   label="Your password"
                   group
                   type="password"
                   validate
+                  name="registerPassword"
+                  onChange={this.handleChange}
                 />
               </div>
               <h5>
@@ -80,7 +121,7 @@ export default class SignUp extends Component {
         </MDBModalBody>
 
         <MDBModalFooter>
-          <MDBBtn onClick={this.toggle}
+          <MDBBtn onClick={this.userRegister.bind(this)}
                     outline rounded
                     color='cyan darken-2'
                     style={styles.button}>
@@ -105,3 +146,6 @@ const styles = {
     color: 'black'
   }
 }
+
+
+export  default connect(null, {register})(SignUp)

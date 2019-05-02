@@ -9,8 +9,10 @@ import {
     NavLink,
  } from 'reactstrap';
 import Login from './Login'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-  export default class NavBar extends Component {
+class NavBar extends Component {
     constructor(props) {
       super(props);
 
@@ -24,7 +26,18 @@ import Login from './Login'
         isOpen: !this.state.isOpen
       });
     }
+
+    static getDerivedStateFromProps(props, state) {
+         if (state.user !== props.user){
+           return {
+             user: props.user
+           };
+         }
+         return null;
+       }
+
     render() {
+      if(!this.state.user){
       return (
         <div>
           <Navbar style ={styles.background} expand="md" className="center">
@@ -44,12 +57,37 @@ import Login from './Login'
               <Nav className="ml">
               <NavItem>
                   <Login/>
-              </NavItem> 
+              </NavItem>
               </Nav>
             </Collapse>
           </Navbar>
         </div>
       );
+    }
+    else{
+      return(
+        <div>
+          <Navbar style ={styles.background} expand="md" className="center">
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <NavbarBrand>
+                  <NavLink style={styles.item} href="/">GENIO</NavLink>
+              </NavbarBrand>
+              <Nav className="d-md-flex d-block mx-md-auto mx-0">
+                <NavItem>
+                  <NavLink style={styles.item} href="/about-us/">ABOUT</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink style={styles.item} href="/contact/">CONTACT</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </div>
+
+
+      );
+    }
     }
   }
 
@@ -66,3 +104,11 @@ import Login from './Login'
         marginLeft: '50px'
     }
   }
+
+  const mapStateToProps = state => {
+    return {
+        user: state.auth.user
+    };
+  }
+
+  export default connect (mapStateToProps)(NavBar);

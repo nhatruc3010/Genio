@@ -8,10 +8,16 @@ import { MDBContainer,
          MDBModalHeader,
          MDBModalBody,
          MDBModalFooter } from 'mdbreact';
+import { connect } from 'react-redux';
+import { login, logout } from './redux/actions/auth';
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
-    modal: false
+    modal: false,
+    email:'',
+    password: '',
+    isLoggedIn: false,
+    user:{}
   }
 
   toggle = () => {
@@ -19,6 +25,41 @@ export default class Login extends Component {
       modal: !this.state.modal
     });
   }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.user !== state.user){
+      return {
+        ...state,
+        user: props.user
+      };
+    }
+    return null;
+  }
+
+
+    handleChange = event => {
+        this.setState({
+          [event.target.name]: event.target.value
+        });
+
+      }
+
+      userLogin (e) {
+        e.preventDefault();
+           this.props.login({
+             email: this.state.email,
+             password: this.state.password
+           }, (err) => {
+            if(err) {
+              this.setState({ error: true})
+            } else {
+              this.setState({
+                modal: !this.state.modal,
+                isLoggedIn: true
+              });
+            }
+           });
+      }
 
   render() {
     return (
@@ -38,7 +79,7 @@ export default class Login extends Component {
           <MDBCol >
             <form>
               <div className="grey-text">
-                
+
                 <MDBInput
                   label="Your email"
                   group
@@ -46,13 +87,17 @@ export default class Login extends Component {
                   validate
                   error="wrong"
                   success="right"
+                  name="email"
+                  onChange={this.handleChange}
                 />
-        
+
                 <MDBInput
                   label="Your password"
                   group
                   type="password"
+                  name="password"
                   validate
+                  onChange={this.handleChange}
                 />
               </div>
               <h5>
@@ -65,7 +110,7 @@ export default class Login extends Component {
         </MDBModalBody>
 
         <MDBModalFooter>
-          <MDBBtn onClick={this.toggle}
+          <MDBBtn onClick={this.userLogin.bind(this)}
                     outline rounded
                     color='cyan darken-2'
                     style={styles.button}>
@@ -90,3 +135,11 @@ const styles = {
     color: 'black'
   }
 }
+
+const mapStateToProps = state => {
+  return {
+      user: state.auth.user
+  };
+}
+
+export  default connect(mapStateToProps, {login, logout})(Login)

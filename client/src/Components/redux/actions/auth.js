@@ -4,15 +4,16 @@ import { USER_LOGIN, USER_LOGOUT } from './types';
 import { SERVER_ENDPOINT, ML_SERVER_ENDPOINT } from '../endpoints';
 
 export const register = data => {
+  console.log(data)
     return dispatch => {
         axios.post(`${SERVER_ENDPOINT}/register`, data)
             .then(res => {
                 let { user, token } = res.data;
-                
+
                 dispatch({
                     type: USER_LOGIN,
                     payload: {
-                        user, 
+                        user,
                         token,
                     }
                 });
@@ -32,7 +33,7 @@ export const login = data => {
                 dispatch({
                     type: USER_LOGIN,
                     payload: {
-                        user, 
+                        user,
                         token
                     }
                 });
