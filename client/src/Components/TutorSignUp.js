@@ -33,7 +33,6 @@ export default class SignUp extends Component {
               <div className="grey-text">
                 <MDBInput
                   label="Your name"
-                  icon="user"
                   group
                   type="text"
                   validate
@@ -42,7 +41,6 @@ export default class SignUp extends Component {
                 />
                 <MDBInput
                   label="Your email"
-                  icon="envelope"
                   group
                   type="email"
                   validate
@@ -51,7 +49,6 @@ export default class SignUp extends Component {
                 />
                 <MDBInput
                   label="Confirm your email"
-                  icon="exclamation-triangle"
                   group
                   type="text"
                   validate
@@ -60,7 +57,6 @@ export default class SignUp extends Component {
                 />
                 <MDBInput
                   label="Your password"
-                  icon="lock"
                   group
                   type="password"
                   validate

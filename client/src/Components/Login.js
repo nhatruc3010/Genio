@@ -41,7 +41,6 @@ export default class Login extends Component {
                 
                 <MDBInput
                   label="Your email"
-                  icon="envelope"
                   group
                   type="email"
                   validate
@@ -51,7 +50,6 @@ export default class Login extends Component {
         
                 <MDBInput
                   label="Your password"
-                  icon="lock"
                   group
                   type="password"
                   validate
