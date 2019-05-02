@@ -40,7 +40,7 @@ export default class StudentProfile extends Component {
                     style={styles.imageStyles}
                   />
                   <br/>
-              <Button href="/studentsession" color="btn btn-deep-orange login" style={{marginLeft: "30%"}}> View Sessions </Button>
+              <Button href="/studentsession" color="btn btn-deep-orange" style={{marginLeft: "30%"}}> View Sessions </Button>
               <br/>
               <br/>
               <br/>
