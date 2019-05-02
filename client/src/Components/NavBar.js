@@ -7,10 +7,13 @@ import {
     Nav,
     NavItem,
     NavLink,
+    Button
  } from 'reactstrap';
 import Login from './Login'
+import Logout from './Logout'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+
+import { logout } from './redux/actions/auth';
 
 class NavBar extends Component {
     constructor(props) {
@@ -26,6 +29,7 @@ class NavBar extends Component {
         isOpen: !this.state.isOpen
       });
     }
+
 
     static getDerivedStateFromProps(props, state) {
          if (state.user !== props.user){
@@ -81,6 +85,11 @@ class NavBar extends Component {
                   <NavLink style={styles.item} href="/contact/">CONTACT</NavLink>
                 </NavItem>
               </Nav>
+              <Nav className="ml">
+              <NavItem>
+                    <Logout/>
+              </NavItem>
+              </Nav>
             </Collapse>
           </Navbar>
         </div>
@@ -111,4 +120,4 @@ class NavBar extends Component {
     };
   }
 
-  export default connect (mapStateToProps)(NavBar);
+export  default connect(mapStateToProps)(NavBar)
