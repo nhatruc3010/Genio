@@ -31,7 +31,8 @@ const tutorSchema = new mongoose.Schema({
     type: {
         type: String,
         default: 'tutor'
-    }
+    },
+    subjects: Array
 });
 
 const Tutee = mongoose.model('Tutee', tuteeSchema);
@@ -46,7 +47,7 @@ module.exports.createUser = function(newUser, cb){
         bcrypt.hash(newUser.password, salt, function(err, hash) {
             if (err) throw err;
             newUser.password = hash;
-            newUser.save(cb); 
+            newUser.save(cb);
         });
     });
 }
