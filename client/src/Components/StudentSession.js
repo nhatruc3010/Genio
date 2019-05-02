@@ -5,25 +5,59 @@ import {
             Modal, ModalHeader, ModalFooter, ModalBody } from 'mdbreact';
 import { Container, Row, Col, } from 'reactstrap';
 import {TabContent, TabPane, div, a, Button} from 'reactstrap';
+ 
+import { connect } from 'react-redux';
+
+import { getSessions } from './redux/actions/sessions';
 
 import moment from 'moment';
 
-
-
-export default class StudentSession extends Component{
+class StudentSession extends Component{
 
     constructor(props) {
         super(props);
 
         this.state = {
-          session:[]
+            sessions:[],
+            modal: false,
+            isCancelling: false,
+            cancelledData: null,
+            isEditing: false,
+            selectedBooking: {},
         };
     }
 
+    toggleModal = () => {
+        this.state.modal ?
+            this.setState({
+                modal: !this.state.modal,
+                isCancelling: false,
+                cancelled: false,
+                isEditing: false
+            }) :
+            this.setState({
+                modal: !this.state.modal
+            });
+    }
 
+    static getDerivedStateFromProps(props,state) {
+        if (props.sessions !== state.sessions || props.user !== state.user) {
+            return {
+                sessions: props.sessions,
+                user: props.user
+            };
+        }
 
-renderAllSessions(){
-  return <Table>
+        return null;
+    }
+
+    componentDidMount() {
+        this.props.getSessions(this.state.user._id, this.state.user.type);
+    }
+
+    renderAllSessions = () => 
+        this.state.sessions ?
+        <Table>
               <thead>
               <tr>
                   <th>ID</th>
@@ -37,19 +71,22 @@ renderAllSessions(){
 
               </tr>
               </thead>
-              <tbody>
-
+              <tbody>{
+                    this.state.sessions.map((session) => 
                       <tr>
-                          <td style={{ paddingTop: 25 }}>1</td>
-                          <td style={{ paddingTop: 25 }}>Jessica Tran</td>
-                          <td style={{ paddingTop: 25 }}>05/23/2019</td>
-                          <td style={{ paddingTop: 25 }}>05:00-12:00</td>
-                          <td style={{ paddingTop: 25 }}>1 washington street, san jose, ca, 95126</td>
-                          <td style={{ paddingTop: 25 }}>$378</td>
-                          <td style={{ paddingTop: 25 }}>Active</td>
+                          <td style={{ paddingTop: 25 }}>{session._id}</td>
+                          <td style={{ paddingTop: 25 }}>{session.tutorID}</td>
+                          <td style={{ paddingTop: 25 }}>{new Date(session.time_created).toUTCString()}</td>
+                          <td style={{ paddingTop: 25 }}>{session.start_time}</td>
+                          <td style={{ paddingTop: 25 }}>{session.address}</td>
+                          <td style={{ paddingTop: 25 }}>{session.total}</td>
+                          <td style={{ paddingTop: 25 }}>{session.cancelled ?  'Cancelled' : 'Active' }</td>
 
                           <td>
                           <Button
+                          onClick={() => {
+                            this.setState({ selectedBooking: session });
+                            this.toggleModal();}}
                           color="btn btn-deep-orange login"
                           className="text-center"
                           style={{ margin: 0 }}>
@@ -58,10 +95,17 @@ renderAllSessions(){
                           </td>
 
                       </tr>
-
+                    )}
               </tbody>
-          </Table>
-}
+          </Table> : 
+
+                <div style={{ margin: '10% 0 10% 0'}}>
+                    <h5>No Booking Tutor Yet!</h5>
+
+                    <p>Go book a tutor!</p>
+
+                </div>;
+
 
 
     render() {
@@ -99,3 +143,10 @@ const styles = {
 
 
 }
+
+const mapStateToProps = state => ({
+    user: state.auth.user,
+    sessions: state.data.sessions
+});
+
+export default connect(mapStateToProps, { getSessions })(StudentSession);
