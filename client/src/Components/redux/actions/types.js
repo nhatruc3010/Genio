@@ -14,5 +14,6 @@ export const GET_SESSIONS = 'get_sessions';
 /**
  * Payment action types
  */
-
 export const PAY = 'pay';
+
+export const GET_ALL_TUTORS = 'get_all_tutors';
