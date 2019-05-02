@@ -32,10 +32,46 @@ renderProfileInfo() {
         <div ><br/>
           <b>Upload New Image</b><br/><FileBase64 onDone={file => this.setState({ file: file.base64 })}/><br/><br/>
           <b>Hourly Rate</b><br/><input className="form-control" onChange={this.handleChange} name="tutorHourlyRate" type="text"/>
-          <b>Subjects</b><br/><input className="form-control" onChange={this.handleChange} name="profileSubject" type="text" /><br/>
           <b>About Me</b><br/><textarea className="form-control" rows="10" onChange={this.handleChange} name="aboutMe" type="text" /><br/>
           <b>Address</b><br/><input className="form-control" onChange={this.handleChange} name="address" type="text" /><br/>
 
+          <b>Subjects</b><br/>
+          <div class="custom-control custom-checkbox custom-control-inline">
+          <input type="checkbox" class="custom-control-input" id="biology"/>
+          <label class="custom-control-label"  for="biology">Biology</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control-inline">
+          <input type="checkbox" class="custom-control-input" id="chemistry"/>
+          <label class="custom-control-label"    for="chemistry">Chemistry</label>
+              </div>
+
+          <div class="custom-control custom-checkbox custom-control-inline">
+          <input type="checkbox" class="custom-control-input" id="english"/>
+          <label class="custom-control-label"    for="english">English</label>
+              </div>
+
+          <div class="custom-control custom-checkbox custom-control-inline">
+          <input type="checkbox" class="custom-control-input" id="history"/>
+          <label class="custom-control-label"    for="history">History</label>
+              </div>
+              <br/>
+          <div class="custom-control custom-checkbox custom-control-inline">
+          <input type="checkbox" class="custom-control-input" id="music"/>
+          <label class="custom-control-label"    for="music">Music</label>
+              </div>
+
+          <div class="custom-control custom-checkbox custom-control-inline">
+          <input type="checkbox" class="custom-control-input" id="math"/>
+          <label class="custom-control-label"    for="math">Math</label>
+              </div>
+
+          <div class="custom-control custom-checkbox custom-control-inline">
+          <input type="checkbox" class="custom-control-input" id="physics"/>
+          <label class="custom-control-label"   for="physics">Physics</label>
+              </div>
+
+          <br/>
 
 
           <b>Availability</b><br/>

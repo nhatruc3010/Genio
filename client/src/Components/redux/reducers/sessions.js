@@ -1,19 +1,26 @@
 import _ from 'lodash';
 
-import { BOOK_SESSION, CONFIRM_SESSION, GET_SESSIONS } from '../actions/types';
+import { BOOK_SESSION, CONFIRM_SESSION, GET_SESSIONS, GET_ALL_TUTORS } from '../actions/types';
 
 const initialState = {
-    sessions: []
+    sessions: [],
+    tutors: []
 };
 
 export const SessionsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case GET_ALL_TUTORS:
+          return {
+              ...state,
+              tutors: action.payload
+          };
+
         case BOOK_SESSION:
             return {
                 ...state,
-                sessions: state.sessions.push(action.payload)    
+                sessions: state.sessions.push(action.payload)
             };
-        
+
         case CONFIRM_SESSION:
             let oldSession = state.sessions.filter(v => v._id === action.payload._id);
 
@@ -21,7 +28,7 @@ export const SessionsReducer = (state = initialState, action) => {
                 ...state,
                 sessions: upsert(state.sessions, oldSession, action.payload)
             };
-        
+
         case GET_SESSIONS:
             return {
                 ...state,
