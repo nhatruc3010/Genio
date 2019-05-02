@@ -84,10 +84,10 @@ class NavBar extends Component {
                 <NavItem>
                   <NavLink style={styles.item} href="/contact/">CONTACT</NavLink>
                 </NavItem>
-                {this.state.user.type="tutee"? <NavItem>
-                  <NavLink style={styles.item} href="/studentprofile/">S PROFILE</NavLink>
+                {this.state.user.type==="tutee"? <NavItem>
+                  <NavLink style={styles.item} href="/studentprofile/">PROFILE</NavLink>
                 </NavItem>: <NavItem>
-                  <NavLink style={styles.item} href="/tutorprofile/">T PROFILE</NavLink>
+                  <NavLink style={styles.item} href="/tutorprofile/">PROFILE</NavLink>
                 </NavItem>  }
               </Nav>
               <Nav className="ml">
