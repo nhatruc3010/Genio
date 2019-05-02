@@ -5,6 +5,27 @@ const validator = require('validator');
 const Session = require('../models/session');
 const { Tutee, Tutor } = require('../models/users');
 
+router.get('/sessions/all', (req, res) => {
+    try {
+        Sessions.find({}, (err, sessions) => {
+            if (err) 
+                return res.status(400).json({
+                    success: false,
+                    err
+                });
+            
+            return res.status(200).json({
+                success: true,
+                sessions
+            });
+        });
+    } catch(err) {
+        return res.status(400).json({
+            success: false,
+            err
+        });
+    }
+});
 
 router.post('/sessions/book', async (req,res) => {
     let { tuteeID, tutorID, startTime, endTime } = req.body;
