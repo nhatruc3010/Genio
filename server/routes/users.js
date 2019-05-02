@@ -4,6 +4,17 @@ const validator = require('validator');
 
 const { Tutor, Tutee } = require('../models/users');
 
+router.get('/get/tutors/all', async (req,res) => {
+    Tutor.find({}, (err,tutors) => {
+        if (err) return res.status(400).json({ success: false, err });
+
+        return res.status(200).json({
+            success: true,
+            tutors
+        });
+    });
+});
+
 router.get('/profile/:_id', async (req,res) => {
     let { _id } = req.params;
 
@@ -11,7 +22,7 @@ router.get('/profile/:_id', async (req,res) => {
         try {
             let tutor = await Tutor.findOne({ _id }).exec();
             let tutee, user;
-            
+
             if (!tutor) {
                 tutee = await Tutee.findOne({ _id }).exec();
             }
@@ -45,7 +56,7 @@ router.post('/profile/edit', async (req,res) => {
         try {
             let tutor = await Tutor.findOneAndUpdate({ _id }, data).exec();
             let tutee, user;
-            
+
             if (!tutor) {
                 tutee = await Tutee.findOne({ _id }, data).exec();
             }
