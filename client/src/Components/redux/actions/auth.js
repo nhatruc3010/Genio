@@ -1,7 +1,22 @@
 import axios from 'axios';
 
-import { USER_LOGIN, USER_LOGOUT } from './types';
+import { USER_LOGIN, USER_LOGOUT, GET_ALL_TUTORS } from './types';
 import { SERVER_ENDPOINT, ML_SERVER_ENDPOINT } from '../endpoints';
+
+export const getAllTutors = () => {
+  return dispatch => {
+    axios.post(`${SERVER_ENDPOINT}/get/tutors/all`)
+      .then(res => {
+        dispatch({
+          type: GET_ALL_TUTORS,
+          payload: res.data.tutors
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+}
 
 export const register = data => {
   console.log(data)
