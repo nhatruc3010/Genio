@@ -35,16 +35,10 @@ import Login from './Login'
               </NavbarBrand>
               <Nav className="d-md-flex d-block mx-md-auto mx-0">
                 <NavItem>
-                  <NavLink style={styles.item} href="/about-us/">ABOUT US</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink style={styles.item} href="/details/">DETAILS</NavLink>
+                  <NavLink style={styles.item} href="/about-us/">ABOUT</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink style={styles.item} href="/contact/">CONTACT</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink style={styles.item} href="/help/">HELP</NavLink>
                 </NavItem>
               </Nav>
               <Nav className="ml">
