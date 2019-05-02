@@ -68,14 +68,12 @@ render() {
                       <MDBCol sm="12">
                           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                               <Input style={{color: 'black'}}value={this.state.subject} onChange={this.handleChange} name="subject" className="search-subject" bsSize="lg" placeholder="Enter Subject" />
+                              <MDBBtn type="submit" className="search-button" style={styles.button}
+                             color="btn btn-deep-orange login">Search</MDBBtn>
                           </FormGroup>
                       </MDBCol>
                   </MDBRow>
 
-
-
-                  <MDBBtn type="submit" className="search-button" style={styles.button}
-                 color='cyan darken-2'>Search</MDBBtn>
               </Form>
           </MDBContainer>
       );
@@ -85,7 +83,7 @@ render() {
   const styles = {
     button:{
       font: ' bold 16px Economica',
-      color: 'black',
+      color: 'white',
 
     }
   }
