@@ -15,7 +15,7 @@ import { register } from './redux/actions/auth';
 
 
 
-class SignUp extends Component {
+class TuteeSignUp extends Component {
   state = {
     modal: false,
     name:'',
@@ -148,4 +148,4 @@ const styles = {
 }
 
 
-export  default connect(null, {register})(SignUp)
+export  default connect(null, {register})(TuteeSignUp)
