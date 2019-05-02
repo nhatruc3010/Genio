@@ -13,10 +13,12 @@ import moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import TimeRange from 'react-time-range';
+import Payment from './Payment';
 
 export default class Booking extends Component {
   state = {
     modal: false,
+    payModal: false,
     date: new moment(),
     startTime: new moment(),
     endTime: new moment()
@@ -24,7 +26,15 @@ export default class Booking extends Component {
 
   toggle = () => {
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
+      
+    });
+  }
+
+  newtoggle = () => {
+    this.setState({
+      modal: this.state.modal,
+      payModal: !this.state.payModal,
     });
   }
 
@@ -45,51 +55,67 @@ export default class Booking extends Component {
         <MDBRow>
           <MDBCol >
             <form>
+              Pick a Date: &nbsp; &nbsp;
 
+              <SingleDatePicker
+              date={this.state.date} // momentPropTypes.momentObj or null
+              onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
+              focused={this.state.focused} // PropTypes.bool
+              onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+              id="date1"
+              required={true}
+              />
 
-        Pick a Date: &nbsp; &nbsp;
+              <br/>
+              <br/>
 
-        <SingleDatePicker
-        date={this.state.date} // momentPropTypes.momentObj or null
-        onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
-        focused={this.state.focused} // PropTypes.bool
-        onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-         id="date1"
-        required={true}
-/>
-
-<br/>
-<br/>
-
-<TimeRange
-    startTime={this.state.startTime}
-    endTime={this.state.endTime}
-    startMoment={this.state.startTime}
-    endMoment={this.state.endTime}
-    onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
-/>
-
-
-
-
+              <TimeRange
+                  startTime={this.state.startTime}
+                  endTime={this.state.endTime}
+                  startMoment={this.state.startTime}
+                  endMoment={this.state.endTime}
+                  onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
+              />
             </form>
           </MDBCol>
         </MDBRow>
         </MDBModalBody>
 
         <MDBModalFooter>
-          <MDBBtn onClick={this.toggle}
+          <MDBBtn onClick={this.newtoggle}
                     outline rounded
                     color='cyan darken-2'
                     style={styles.button}>
               Book
           </MDBBtn>
+
+          <MDBModal isOpen={this.state.payModal} toggle={this.newtoggle}>
+            <MDBModalHeader toggle={this.newtoggle}>Make a Payment </MDBModalHeader>
+              <MDBModalBody>
+                <MDBRow>
+                  <MDBCol >
+                    <Payment/>
+                  </MDBCol>
+                </MDBRow>
+              </MDBModalBody>
+              <MDBModalFooter>
+                <MDBBtn onClick={this.submit}
+                          outline rounded
+                          color='cyan darken-2'
+                          href = './studentsession'
+                          style={styles.button}>
+                    Payment
+                </MDBBtn>
+              </MDBModalFooter>
+          </MDBModal>
+
           <MDBBtn onClick={this.toggle}
                   outline rounded
                   color='cyan darken-2'
                   style={styles.button}>
             Close
           </MDBBtn>
+
         </MDBModalFooter>
       </MDBModal>
     </div>

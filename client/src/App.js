@@ -18,7 +18,6 @@ import TutorsPage from './Components/Tutors/TutorsPage';
 import TutorsSession from './Components/Tutors/TutorsSession';
 import StudentProfile from './Components/StudentProfile';
 import StudentSession from './Components/StudentSession';
-import Payment from './Components/Payment';
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -48,7 +47,6 @@ class App extends Component {
                     <Route exact path='/tutorsession' component ={TutorsSession}/>
                     <Route exact path='/studentprofile' component ={StudentProfile}/>
                     <Route exact path='/studentsession' component ={StudentSession}/>
-                    {/* <Route exact path='/payment' component ={Payment}/> */}
                   </React.Fragment>
                 </BrowserRouter>
                 <Footer/>
