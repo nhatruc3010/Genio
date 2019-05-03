@@ -3,13 +3,16 @@ import axios from 'axios';
 import { USER_LOGIN, USER_LOGOUT, GET_ALL_TUTORS } from './types';
 import { SERVER_ENDPOINT, ML_SERVER_ENDPOINT } from '../endpoints';
 
-export const getAllTutors = () => {
+export const getAllTutors = subject => {
   return dispatch => {
-    axios.post(`${SERVER_ENDPOINT}/get/tutors/all`)
+    axios.get(`${SERVER_ENDPOINT}/get/tutors/all`)
       .then(res => {
         dispatch({
           type: GET_ALL_TUTORS,
-          payload: res.data.tutors
+          payload: {
+              tutors: res.data.tutors,
+              searchSubject: subject
+          }
         });
       })
       .catch(err => {
