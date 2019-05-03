@@ -34,10 +34,12 @@
 
 /*search background*/
  .background-image {
-  background: fixed url('https://45hxia2nkmyw4elu3s3ohd9w-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/Reading-Tutoring.jpg');
-  background-size: cover;
+  background: fixed url('../src/home.jpg');
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
  }
- @media(min-width: 300px){
+ @media(min-width: 100px){
   .background-image{
     height: 80vh;
   }
@@ -63,7 +65,7 @@
   .titlesearch{
     font-size: 4em;
     text-align: center;
-    color: white;
+    color: #2B2626;
   }
 
 /*image for top of search results */
