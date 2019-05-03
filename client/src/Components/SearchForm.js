@@ -39,7 +39,7 @@ class SearchForm extends Component {
       event.preventDefault();
       let { subject } = this.state;
 
-      this.props.getAllTutors();
+      this.props.getAllTutors(subject);
       this.setState({ submitted: true });
  }
 

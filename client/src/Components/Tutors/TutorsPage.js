@@ -78,13 +78,13 @@ renderProfileInfo() {
 <MDBRow>
 
           <br/> <TimeRange
-              startTime={this.state.startTime}
-              endTime={this.state.endTime}
+              startTime={this.state.startTime1}
+              endTime={this.state.endTim1e}
               startLabel="Mon:  "
               endLabel="-"
-              startMoment={this.state.startTime}
-              endMoment={this.state.endTime}
-              onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
+              startMoment={this.state.startTime1}
+              endMoment={this.state.endTime1}
+              onChange={({startTime1, endTime1}) => this.setState({startTime1, endTime1})}
           />
 
 
@@ -96,13 +96,13 @@ renderProfileInfo() {
 <br/>
 <br/>
           <TimeRange
-              startTime={this.state.startTime}
-              endTime={this.state.endTime}
+              startTime={this.state.startTime2}
+              endTime={this.state.endTime2}
               startLabel="Tues: "
               endLabel="-"
-              startMoment={this.state.startTime}
-              endMoment={this.state.endTime}
-              onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
+              startMoment={this.state.startTime2}
+              endMoment={this.state.endTime2}
+              onChange={({startTime2, endTime2}) => this.setState({startTime2, endTime2})}
           />
 
           <div class="custom-control custom-checkbox custom-control-inline">

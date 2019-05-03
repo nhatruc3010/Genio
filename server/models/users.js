@@ -22,17 +22,46 @@ const tuteeSchema = new mongoose.Schema(tuteeAttributes);
 
 const tutorSchema = new mongoose.Schema({
     ...tuteeAttributes,
-    schedule: Object,
+    schedule: {
+        type: Object,
+        default: {
+            mon: {},
+            tue: {},
+            wed: {},
+            thurs: {},
+            fri: {},
+            sat: {},
+            sun: {}
+        }
+    },
     hourly_rate: {
         type: Number,
-        default: 10
+        default: 20
     },
-    address: String,
+    address: {
+        type: String,
+        default: ''
+    },
     type: {
         type: String,
         default: 'tutor'
     },
-    subjects: Array
+    subjects: {
+        type: Object,
+        default: {
+            biology: false,
+            chemistry: false,
+            english: false,
+            math: false,
+            music: false,
+            history: false,
+            physics: false
+        }
+    },
+    about_me: {
+        type: String,
+        default: ''
+    }
 });
 
 const Tutee = mongoose.model('Tutee', tuteeSchema);
