@@ -43,6 +43,21 @@
   }
  }
 
+ /*home background*/
+ .home-background {
+  background: fixed url('../src/home.jpg');
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  height:100%;
+}
+@media(min-width: 490px){
+ .home-background{
+   height: 50%;
+ }
+}
+
+
 
  /* For the slogan */
   .titlesearch{

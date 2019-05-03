@@ -44,13 +44,13 @@ class NavBar extends Component {
       if(!this.state.user){
       return (
         <div>
-          <Navbar style ={styles.background} expand="md" className="center">
+          <Navbar style ={styles.navBackground} expand="md" className="center">
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <NavbarBrand>
-                  <NavLink style={styles.item} href="/">GENIO</NavLink>
+                  <NavLink style={styles.logo} href="/">Genio</NavLink>
               </NavbarBrand>
-              <Nav className="d-md-flex d-block mx-md-auto mx-0">
+              <Nav className="d-md-flex d-block ml-auto mx-0">
                 <NavItem>
                   <NavLink style={styles.item} href="/about-us/">ABOUT</NavLink>
                 </NavItem>
@@ -71,13 +71,13 @@ class NavBar extends Component {
     else{
       return(
         <div>
-          <Navbar style ={styles.background} expand="md" className="center">
+          <Navbar style ={styles.navBackground} expand="md" className="center">
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <NavbarBrand>
-                  <NavLink style={styles.item} href="/">GENIO</NavLink>
+                  <NavLink style={styles.logo} href="/">Genio</NavLink>
               </NavbarBrand>
-              <Nav className="d-md-flex d-block mx-md-auto mx-0">
+              <Nav className="d-md-flex d-block ml-auto mx-0">
                 <NavItem>
                   <NavLink style={styles.item} href="/about-us/">ABOUT</NavLink>
                 </NavItem>
@@ -106,14 +106,21 @@ class NavBar extends Component {
   }
 
   const styles = {
-    background:{
-      backgroundColor: '#b4dfe5ff',
+    navBackground:{
+      backgroundColor: '#white',
       height: '80px',
       textAlign: 'center',
+      boxShadow:'none',
+    },
+    logo:{
+      color: 'black ',
+      font: ' bold 50px Great Vibes',
+      marginRight: '50px',
+      marginLeft: '50px'
     },
     item:{
-        color: 'black',
-        font: ' bold 20px Economica',
+        color: '#00acc1 ',
+        font: ' bold 25px Economica',
         marginRight: '50px',
         marginLeft: '50px'
     }
