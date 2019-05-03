@@ -34,8 +34,10 @@ export default class Home extends Component{
                     Genio is where we create a smart community.<br/>
                     You can choose to be a tutor, a tutee, or both!<br/>
                   </h4>
+
                   <TuteeSignup/>
                   <TutorSignup/>
+                  
                 </MDBCol>
               </MDBRow>
             </MDBContainer>
