@@ -40,7 +40,8 @@ static getDerivedStateFromProps(props, state){
            if(props.tutors !== state.tutors){
                return{
                    ...state,
-                   tutors: props.tutors
+                   tutors: props.tutors,
+                   subject: props.subject
                }
            }
            return null;
@@ -55,79 +56,95 @@ static getDerivedStateFromProps(props, state){
     handleSubmit = () => {
         let {subject} = this.state;
 
-            this.props.search(subject);
+        // this.props.search(subject);
+    }
+
+    renderSubjects(tutor) {
+        console.log(tutor)
+        let subjects = [];
+
+        tutor.subjects.forEach((v,i) => {
+            if (tutor.subjects[v] === true)
+                subjects.push(v);
+        });
+        
+        return subjects.join(',');
+    }
+
+    renderTutors() {
+        return this.state.tutors.map((v,i) => 
+            <div className='card'>
+                <div className="row ">
+                    <div className="col-md-4">
+                    <h3 className="card-title">{ v.name }</h3>
+                        <div><img src="https://i.pinimg.com/236x/f3/61/e3/f361e30b86fee7661463bf331de5b1b1.jpg"/></div>
+                    </div>
+                    <div className="col-md-5 px-3">
+                        <div className="card-block px-3">
+                            <p><b>Subjects:</b> { this.renderSubjects(v) }</p>
+
+                            {/* <p className="card-text"><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i> 7 Reviews </p> */}
+                            <p>About Me: </p>
+                            <p>{ v.about_me }</p>
+                        </div>
+                    </div>
+                    <div className="col-md-3 price">
+                    <h3 className="hourly-rate">Hourly Rate: { v.hourly_rate }</h3>
+                        <MDBBtn>Check Profile</MDBBtn>
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     render(){
+        if(this.state.tutors) alert('got the tutors');
         return(
-            <div>
-            <div className = 'search-img' style={ styles.homeStyle}></div>
-            <div>
-            <MDBContainer>
-            <Form className="form-wrapper">
-                <MDBRow>
-                    <MDBCol size="5" md="7">
-                        <FormGroup>
-                            <Label className="edit-label" for="exampleDate"> </Label>
-                            <Input onChange={this.handleChange} name="subject" value={this.state.subject} className="location" placeholder=" Enter Subject"/>
+            <div style={{ padding: '0px 50px 0px 50px' }}>
+                <div className = 'search-img' style={styles.homeStyle}></div>
+                    <div>
+                        <MDBContainer>
+                            <Form className="form-wrapper">
+                                <MDBRow>
+                                    <MDBCol size="5" md="7">
+                                        <FormGroup>
+                                            <Label className="edit-label" for="exampleDate"> </Label>
+                                            <Input onChange={this.handleChange} name="subject" value={this.state.subject} className="location" placeholder=" Enter Subject"/>
 
-                        </FormGroup>
-                    </MDBCol>
-                    <MDBCol style={styles.updateButton} size="1" md="1">
-                        <MDBBtn onClick={this.handleSubmit}> <i class="fa fa-search" aria-hidden="true"></i> </MDBBtn>
-                    </MDBCol>
-                </MDBRow>
-            </Form>
-            </MDBContainer>
-        </div>
+                                        </FormGroup>
+                                    </MDBCol>
+                                    <MDBCol style={styles.updateButton} size="1" md="1">
+                                        <MDBBtn onClick={this.handleSubmit}> <i class="fa fa-search" aria-hidden="true"></i> </MDBBtn>
+                                    </MDBCol>
+                                </MDBRow>
+                            </Form>
+                        </MDBContainer>
+                    </div>
 
-{/*Sorting Button Here*/}
-        <div style={{display: 'flex'}}>
-                              <MDBDropdown className = 'sortbutton' isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
-                              <MDBDropdownToggle caret color='default'>
-                                  Sort By:
-                              </MDBDropdownToggle>
+            {/*Sorting Button Here*/}
+            <div style={{display: 'flex'}}>
+                <MDBDropdown className = 'sortbutton' isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
+                <MDBDropdownToggle caret color='default'>
+                    Sort By:
+                </MDBDropdownToggle>
 
-                              <MDBDropdownMenu>
-                                  <MDBDropdownItem onClick={()=>{this.setSort("low");}}>
-                                  Price: Low to Hi
-                                  </MDBDropdownItem>
+                <MDBDropdownMenu>
+                    <MDBDropdownItem onClick={()=>{this.setSort("low");}}>
+                    Price: Low to Hi
+                    </MDBDropdownItem>
 
-                                  <MDBDropdownItem divider />
+                    <MDBDropdownItem divider />
 
-                                  <MDBDropdownItem onClick={()=>{this.setSort("high");}}>
-                                  Price: High to Low
-                                  </MDBDropdownItem>
-                              </MDBDropdownMenu>
-                              </MDBDropdown>
-                          </div>
+                    <MDBDropdownItem onClick={()=>{this.setSort("high");}}>
+                    Price: High to Low
+                    </MDBDropdownItem>
+                </MDBDropdownMenu>
+                </MDBDropdown>
+            </div>
 
-
-                          <div style={{paddingLeft: '300px', paddingRight: '300px', paddingTop:'20px', paddingBottom: '20px'}}>
-                              <div className='card'>
-                                            <div className="row ">
-                                                  <div className="col-md-4">
-                                                    <h3 className="card-title">Jessica Tran</h3>
-                                                       <div><img src="https://i.pinimg.com/236x/f3/61/e3/f361e30b86fee7661463bf331de5b1b1.jpg"/></div>
-                                                  </div>
-                                                  <div className="col-md-5 px-3">
-                                                      <div className="card-block px-3">
-                                                          <p><b>SUBJECT:</b> Chemistry, Biology, Calculus </p>
-
-                                                          <p className="card-text"><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i> 7 Reviews </p>
-                                                          <p>About Me: </p>
-                                                          <p>Blah Blah Blah Blah BLah BlahBlah Blah Blah Blah BLah BlahBlah Blah Blah Blah BLah BlahBlah Blah Blah Blah BLah BlahBlah Blah Blah Blah BLah Blah</p>
-                                                      </div>
-                                                  </div>
-                                                  <div className="col-md-3 price">
-                                                    <h3 className="hourly-rate">Hourly Rate: $54</h3>
-                                                      <MDBBtn>Check Profile</MDBBtn>
-                                                  </div>
-                                            </div>
-                              </div>
-                              </div>
-
-
+            <div style={{paddingLeft: '300px', paddingRight: '300px', paddingTop:'20px', paddingBottom: '20px'}}>
+                { this.renderTutors() }
+            </div>
           </div>
         );
       }
@@ -152,7 +169,8 @@ const styles = {
 
 const mapStateToProps = state => {
     return {
-        tutors: state.data.tutors
+        tutors: state.data.tutors,
+        subject: state.data.searchSubject
     };
 };
 

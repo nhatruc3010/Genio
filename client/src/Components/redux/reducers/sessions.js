@@ -4,7 +4,8 @@ import { BOOK_SESSION, CONFIRM_SESSION, GET_SESSIONS, GET_ALL_TUTORS } from '../
 
 const initialState = {
     sessions: [],
-    tutors: []
+    tutors: [],
+    searchSubject: ''
 };
 
 export const SessionsReducer = (state = initialState, action) => {
@@ -12,7 +13,8 @@ export const SessionsReducer = (state = initialState, action) => {
         case GET_ALL_TUTORS:
           return {
               ...state,
-              tutors: action.payload
+              tutors: action.payload.tutors,
+              searchSubject: action.payload.searchSubject
           };
 
         case BOOK_SESSION:
