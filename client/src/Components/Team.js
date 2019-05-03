@@ -5,7 +5,7 @@ export default class Team extends Component {
     render() {
     return (
       <MDBContainer>
-        <h2 className="h1-responsive font-weight-bold my-5">
+        <h2 className="h1-responsive text-center font-weight-bold my-5">
           Our amazing team
         </h2>
         <p className="grey-text w-responsive mx-auto mb-5">

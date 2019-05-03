@@ -19,7 +19,7 @@ export const getSessions = (_id, type) => {
 }
 
 export const bookSession = (tuteeID, tutorID, startTime, endTime) => {
-    let args = arguments;
+    let args = this.arguments;
 
     return dispatch => {
         axios.post(`${SERVER_ENDPOINT}/sessions/book`, { ...args })
@@ -36,7 +36,7 @@ export const bookSession = (tuteeID, tutorID, startTime, endTime) => {
 };
 
 export const confirmSession = (sessionID, tutorID, tuteeID) => {
-    let args = arguments;
+    let args = this.arguments;
 
     return dispatch => {
         axios.post(`${SERVER_ENDPOINT}/sessions/confirm`, { ...args })

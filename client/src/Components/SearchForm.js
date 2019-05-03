@@ -11,10 +11,12 @@ import { MDBContainer,
          MDBModalHeader,
          MDBModalBody,
          MDBModalFooter } from 'mdbreact';
+import { connect } from 'react-redux';
+import { getAllTutors } from './redux/actions/auth';
 
 
 
-  export default class SearchForm extends Component {
+class SearchForm extends Component {
 
     constructor(props) {
       super(props);
@@ -35,11 +37,22 @@ import { MDBContainer,
 
  onSubmit = event => {
       event.preventDefault();
-      let {subject } = this.state;
+      let { subject } = this.state;
 
-      this.props.search(subject);
+      this.props.getAllTutors();
       this.setState({ submitted: true });
  }
+
+
+     static getDerivedStateFromProps(props, state){
+         if(props.tutors !== state.tutors){
+             return{
+                 ...state,
+                 tutors: props.tutors
+             }
+         }
+         return null;
+     }
 
   componentDidMount() {
       var i = 0;
@@ -56,7 +69,7 @@ import { MDBContainer,
 
 render() {
   if (this.state.submitted)
-      return( <Redirect to='/reservation' /> );
+      return( <Redirect to='/searchresults' /> );
   else
       return(
           <MDBContainer className="text-block">
@@ -87,3 +100,11 @@ render() {
 
     }
   }
+
+  const mapStateToProps = state => {
+      return {
+          tutors: state.data.tutors
+      };
+  };
+
+  export default connect(mapStateToProps, { getAllTutors })(SearchForm);

@@ -10,10 +10,11 @@ import { MDBContainer,
          MDBModalHeader,
          MDBModalBody,
          MDBModalFooter, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
+import { connect } from 'react-redux';
+import { getAllTutors } from './redux/actions/auth';
 
 
-
-export default class SearchResults extends Component{
+class SearchResults extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -33,6 +34,17 @@ export default class SearchResults extends Component{
   setSort(e) {
 this.setState({sortOption: e});
   }
+
+
+static getDerivedStateFromProps(props, state){
+           if(props.tutors !== state.tutors){
+               return{
+                   ...state,
+                   tutors: props.tutors
+               }
+           }
+           return null;
+}
 
 
     handleChange = event => {
@@ -108,7 +120,7 @@ this.setState({sortOption: e});
                                                       </div>
                                                   </div>
                                                   <div className="col-md-3 price">
-                                                    <h3 className="reservation-price">Hourly Rate: $54</h3>
+                                                    <h3 className="hourly-rate">Hourly Rate: $54</h3>
                                                       <MDBBtn>Check Profile</MDBBtn>
                                                   </div>
                                             </div>
@@ -137,3 +149,11 @@ const styles = {
       display: 'block'
     }
 };
+
+const mapStateToProps = state => {
+    return {
+        tutors: state.data.tutors
+    };
+};
+
+export default connect(mapStateToProps, { getAllTutors })(SearchResults);
