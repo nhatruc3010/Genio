@@ -11,7 +11,7 @@ import { MDBContainer,
 import { connect } from 'react-redux';
 import { login, logout } from './redux/actions/auth';
 
-class Login extends Component {
+class Logout extends Component {
   state = {
     modal: false,
     email:'',
@@ -92,4 +92,4 @@ const mapStateToProps = state => {
   };
 }
 
-export  default connect(mapStateToProps, {logout})(Login)
+export  default connect(mapStateToProps, {logout})(Logout)

@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import {MDBContainer,
         MDBRow,
         MDBCol } from "mdbreact";
-
+import { Redirect } from 'react-router-dom';
 import Advertising from './Advertising';
 import Team from './Team';
 import TuteeSignup from './TuteeSignUp';
 import TutorSignup from './TutorSignUp';
-
+import { connect } from 'react-redux';
 import '../App.css';
 import { style } from 'react-toastify';
 
-export default class Home extends Component{
+class Home extends Component{
+  state={};
   handleViewMoreClick = () => {
     window.scrollTo({
         top: window.innerHeight,
@@ -19,7 +20,17 @@ export default class Home extends Component{
         });
     }
 
+    static getDerivedStateFromProps(props, state) {
+         if (state.user !== props.user){
+           return {
+             user: props.user
+           };
+         }
+         return null;
+       }
+
   render(){
+    if(!this.state.user){
     return(
       <div>
         <div className = "home-background">
@@ -54,13 +65,20 @@ export default class Home extends Component{
         <div>
           <Advertising/>
         </div>
-        
+
         <div>
           <Team/>
         </div>
-        
+
       </div>
     );
+  }
+  else if (this.state.user.type==="tutee"){
+      return( <Redirect to='/search' /> );
+  }
+  else{
+    return(<Redirect to='/tutoredit' /> );
+  }
   }
 }
 
@@ -88,3 +106,12 @@ const styles = {
     color: 'black',
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+      user: state.auth.user
+  };
+}
+
+export  default connect(mapStateToProps)(Home)
