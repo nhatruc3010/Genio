@@ -31,7 +31,6 @@ class App extends Component {
     return (
       <Provider store={this.cs.store}>
         <PersistGate loading={null} persistor={this.cs.persistor}>
-
           <StripeProvider apiKey="pk_test_BXlLrCAozvQjBtsCuboLjwGn">
             <Elements>
               <React.Fragment>
