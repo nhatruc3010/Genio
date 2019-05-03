@@ -6,23 +6,95 @@ import FileBase64 from 'react-file-base64';
 import TimeRange from 'react-time-range';
 import moment from 'moment';
 import 'react-dates/lib/css/_datepicker.css';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { render} from 'react-dom';
+import TimeRangeSlider from 'react-time-range-slider';
 
-export default class TutorsPage extends Component {
-  constructor() {
-    super();
+class TutorsPage extends Component {
+  constructor(props) {
+    super(props);
+    this.featureRef = React.createRef();
 
     this.state = {
       rating: 0,
       isEditing: false,
-      startTime: new moment(),
-      endTime: new moment()
+      hourlyRate: null,
+      aboutMe: '',
+      address: '',
+      mon: {
+               start: "00:00",
+               end: "23:00"
+           },
+     tue: {
+               start: "00:00",
+               end: "23:00"
+           },
+      wed: {
+               start: "00:00",
+                end: "23:00"
+           },
+      thur: {
+                start: "00:00",
+                end: "23:00"
+            },
+      fri: {
+                start: "00:00",
+                end: "23:00"
+           },
+      sat: {
+                start: "00:00",
+                end: "23:00"
+           },
+       sun: {
+                start: "00:00",
+                end: "23:00"
+            }
+
     };
   }
+
+  static getDerivedStateFromProps(props, state) {
+      if (props.user !== state.user){
+        if (props.user !== undefined && props.user) {
+          let {hourlyRate, aboutMe, address } = props.user;
+          return {
+            ...state,
+            user: props.user,
+            aboutMe: '',
+            hourlyRate: '',
+            address: ''
+          };
+        } else {
+          return {
+            ...state,
+            user: null
+          }
+        }
+      }
+      return null;
+    }
+
 
   onStarClick(nextValue, prevValue, name) {
   this.setState({rating: nextValue});
 }
 
+
+handleChange = event => {
+  this.setState({
+    [event.target.name]: event.target.value,
+  });
+
+}
+
+handleTutorEditSubmit = () => {
+  axios.post(
+    )
+    .catch(err => {
+      alert(err);
+    });
+}
 
 
 renderProfileInfo() {
@@ -31,9 +103,9 @@ renderProfileInfo() {
     <MDBCol md="6">
         <div ><br/>
           <b>Upload New Image</b><br/><FileBase64 onDone={file => this.setState({ file: file.base64 })}/><br/><br/>
-          <b>Hourly Rate</b><br/><input className="form-control" onChange={this.handleChange} name="tutorHourlyRate" type="text"/>
-          <b>About Me</b><br/><textarea className="form-control" rows="10" onChange={this.handleChange} name="aboutMe" type="text" /><br/>
-          <b>Address</b><br/><input className="form-control" onChange={this.handleChange} name="address" type="text" /><br/>
+          <b>Hourly Rate</b><br/><input className="form-control" onChange={this.handleChange} name="hourlyRate" type="text" value={this.state.hourlyRate}/>
+          <b>About Me</b><br/><textarea className="form-control" rows="10" onChange={this.handleChange} name="aboutMe" type="text" value={this.state.aboutMe}/><br/>
+          <b>Address</b><br/><input className="form-control" onChange={this.handleChange} name="address" type="text" value={this.state.address}/><br/>
 
           <b>Subjects</b><br/>
           <div class="custom-control custom-checkbox custom-control-inline">
@@ -76,16 +148,16 @@ renderProfileInfo() {
 
           <b>Availability</b><br/>
 <MDBRow>
-
-          <br/> <TimeRange
-              startTime={this.state.startTime}
-              endTime={this.state.endTime}
-              startLabel="Mon:  "
-              endLabel="-"
-              startMoment={this.state.startTime}
-              endMoment={this.state.endTime}
-              onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
-          />
+  Mon: {this.state.mon.start} - {this.state.mon.end}
+          <br/>  <TimeRangeSlider
+                disabled={false}
+                format={24}
+                maxValue={"23:00"}
+                minValue={"00:00"}
+                name={"mon"}
+                onChange={(mon) => this.setState({ mon })}
+                step={60}
+                value={this.state.mon}/>
 
 
           <div class="custom-control custom-checkbox custom-control-inline">
@@ -95,15 +167,17 @@ renderProfileInfo() {
 
 <br/>
 <br/>
-          <TimeRange
-              startTime={this.state.startTime}
-              endTime={this.state.endTime}
-              startLabel="Tues: "
-              endLabel="-"
-              startMoment={this.state.startTime}
-              endMoment={this.state.endTime}
-              onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
-          />
+Tues: {this.state.tue.start} - {this.state.tue.end}
+        <br/>  <TimeRangeSlider
+              disabled={false}
+              format={24}
+              maxValue={"23:00"}
+              minValue={"00:00"}
+              name={"tue"}
+              onChange={(tue) => this.setState({ tue })}
+              step={60}
+              value={this.state.tue}/>
+
 
           <div class="custom-control custom-checkbox custom-control-inline">
       <input type="checkbox" class="custom-control-input" id="tuesday"/>
@@ -113,15 +187,16 @@ renderProfileInfo() {
 <br/>
 <br/>
 
-          <TimeRange
-              startTime={this.state.startTime}
-              endTime={this.state.endTime}
-              startLabel="Wed:  "
-              endLabel="-"
-              startMoment={this.state.startTime}
-              endMoment={this.state.endTime}
-              onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
-          />
+Wed: {this.state.wed.start} - {this.state.wed.end}
+        <br/>  <TimeRangeSlider
+              disabled={false}
+              format={24}
+              maxValue={"23:00"}
+              minValue={"00:00"}
+              name={"wed"}
+              onChange={(wed) => this.setState({ wed })}
+              step={60}
+              value={this.state.wed}/>
 
           <div class="custom-control custom-checkbox custom-control-inline">
       <input type="checkbox" class="custom-control-input" id="wed"/>
@@ -130,15 +205,16 @@ renderProfileInfo() {
 <br/>
 <br/>
 
-          <TimeRange
-              startTime={this.state.startTime}
-              endTime={this.state.endTime}
-              startLabel="Thurs:"
-              endLabel="-"
-              startMoment={this.state.startTime}
-              endMoment={this.state.endTime}
-              onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
-          />
+Thur: {this.state.thur.start} - {this.state.thur.end}
+        <br/>  <TimeRangeSlider
+              disabled={false}
+              format={24}
+              maxValue={"23:00"}
+              minValue={"00:00"}
+              name={"thur"}
+              onChange={(thur) => this.setState({ thur })}
+              step={60}
+              value={this.state.thur}/>
 
           <div class="custom-control custom-checkbox custom-control-inline">
       <input type="checkbox" class="custom-control-input" id="thurs"/>
@@ -147,16 +223,16 @@ renderProfileInfo() {
 
 <br/>
 <br/>
-          <TimeRange
-              startTime={this.state.startTime}
-              endTime={this.state.endTime}
-              startLabel=" Frid:  "
-              endLabel="-"
-              startMoment={this.state.startTime}
-              endMoment={this.state.endTime}
-              onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
-          />
-
+Fri: {this.state.fri.start} - {this.state.fri.end}
+        <br/>  <TimeRangeSlider
+              disabled={false}
+              format={24}
+              maxValue={"23:00"}
+              minValue={"00:00"}
+              name={"fri"}
+              onChange={(fri) => this.setState({ fri })}
+              step={60}
+              value={this.state.fri}/>
           <div class="custom-control custom-checkbox custom-control-inline">
       <input type="checkbox" class="custom-control-input" id="friday"/>
       <label class="custom-control-label" for="friday">Unavailable</label>
@@ -164,15 +240,16 @@ renderProfileInfo() {
 
 <br/>
 <br/>
-          <TimeRange
-              startTime={this.state.startTime}
-              endTime={this.state.endTime}
-              startLabel="Sat:  "
-              endLabel="-"
-              startMoment={this.state.startTime}
-              endMoment={this.state.endTime}
-              onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
-          />
+Sat: {this.state.sat.start} - {this.state.sat.end}
+        <br/>  <TimeRangeSlider
+              disabled={false}
+              format={24}
+              maxValue={"23:00"}
+              minValue={"00:00"}
+              name={"sat"}
+              onChange={(sat) => this.setState({ sat})}
+              step={60}
+              value={this.state.sat}/>
 
           <div class="custom-control custom-checkbox custom-control-inline">
       <input type="checkbox" class="custom-control-input" id="saturday"/>
@@ -181,15 +258,20 @@ renderProfileInfo() {
 
 <br/>
 <br/>
-          <TimeRange
-              startTime={this.state.startTime}
-              endTime={this.state.endTime}
-              startLabel="Sun:  "
-              endLabel="-"
-              startMoment={this.state.startTime}
-              endMoment={this.state.endTime}
-              onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
-          />
+
+Sun: {this.state.sun.start} - {this.state.sun.end}
+        <br/>  <TimeRangeSlider
+              disabled={false}
+              format={24}
+              maxValue={"23:00"}
+              minValue={"00:00"}
+              name={"sun"}
+              onChange={(sun) => this.setState({ sun})}
+              step={60}
+              value={this.state.sun}/>
+
+
+
 
           <div class="custom-control custom-checkbox custom-control-inline">
       <input type="checkbox" class="custom-control-input" id="sunday"/>
@@ -199,7 +281,7 @@ renderProfileInfo() {
 <br/>
 
   </MDBRow>
-          <button className="btn btn-deep-orange login">Submit Changes</button>
+          <button className="btn btn-deep-orange" onClick={this.handleTutorEditSubmit}>Submit Changes</button>
 
         </div>
 
@@ -388,3 +470,12 @@ const styles ={
     width: '250px',
     height:'250px'
   }}
+
+
+  const mapStateToProps = state => {
+    return {
+        user: state.auth.user
+    };
+  }
+
+  export  default connect(mapStateToProps)(TutorsPage)
