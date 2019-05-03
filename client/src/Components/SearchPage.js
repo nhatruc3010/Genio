@@ -3,6 +3,9 @@ import { Button, Form, FormGroup, Label, Input, Container, Row, Col } from 'reac
 import { Redirect } from 'react-router-dom';
 import SearchForm from './SearchForm';
 import '../App.css';
+import {MDBContainer,
+        MDBRow,
+        MDBCol } from "mdbreact";
 
 
 
@@ -16,7 +19,17 @@ import '../App.css';
         return(
           <div>
             <div className="background-image" style={ styles.homeStyle }>
-              <SearchForm/>
+
+            <MDBContainer className="px-md-3 px-sm-0">
+                <MDBRow>
+                  <MDBCol md="12" className="mb-4 black-text text-center">
+                        <SearchForm/>
+                  </MDBCol>
+                </MDBRow>
+              </MDBContainer>
+
+
+
             </div>
 
           </div>
@@ -32,5 +45,14 @@ import '../App.css';
         marginTop: '0px',
         paddingTop: '30vh',
         overflowY: 'hidden'
-      }
+      },
+      hr:{
+          backgroundColor: '#d3a13b',
+          border: '3px solid #d3a13b',
+          borderRadius: '2px',
+          width: '50%',
+          textAlign: 'center',
+
+
+      },
     }
