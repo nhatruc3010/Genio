@@ -43,7 +43,7 @@ import {MDBContainer,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: '0px',
-        paddingTop: '20vh',
+        paddingTop: '30vh',
         overflowY: 'hidden'
       },
       hr:{
