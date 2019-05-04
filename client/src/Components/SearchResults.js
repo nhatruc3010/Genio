@@ -60,10 +60,12 @@ static getDerivedStateFromProps(props, state){
         this.setState({ [name]: value });
     }
 
-    handleSubmit = () => {
-        let {subject} = this.state;
+    onSubmit = event => {
+         event.preventDefault();
+         let { subject } = this.state;
 
-        // this.props.search(subject);
+         this.props.getAllTutors(subject);
+         this.setState({ submitted: true });
     }
 
     renderSubjects(tutor) {
@@ -111,7 +113,7 @@ static getDerivedStateFromProps(props, state){
                 <div className = 'search-img' style={styles.homeStyle}></div>
                     <div>
 
-                            <Form className="form-wrapper">
+                            <Form className="form-wrapper" onSubmit={this.onSubmit}>
                                 <MDBRow>
                                     <MDBCol size="3" md="4" style={{marginLeft:"30%"}}>
                                         <FormGroup>

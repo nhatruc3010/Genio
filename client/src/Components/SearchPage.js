@@ -6,14 +6,22 @@ import '../App.css';
 import {MDBContainer,
         MDBRow,
         MDBCol } from "mdbreact";
-
-
+import Advertising from './Advertising';
+import { style } from 'react-toastify';
+import Team from './Team';
 
   export default class SearchPage extends Component {
     constructor(props) {
       super(props);
       this.state={};
     }
+
+    handleViewMoreClick = () => {
+      window.scrollTo({
+          top: window.innerHeight,
+          behavior: 'smooth'
+          });
+      }
 
       render(){
         return(
@@ -31,6 +39,26 @@ import {MDBContainer,
 
 
             </div>
+
+
+
+            <div className="text-center">
+                <btn style={styles.button}
+                  onClick={this.handleViewMoreClick}
+                  className="text-center" >
+                  <i className="fas fa-chevron-down black-text"></i>
+                </btn>
+            </div>
+
+            <div>
+              <Advertising/>
+            </div>
+
+            <div>
+              <Team/>
+            </div>
+
+
 
           </div>
         );

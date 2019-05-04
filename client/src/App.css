@@ -39,7 +39,7 @@
  }
  @media(min-width: 300px){
   .background-image{
-    height: 80vh;
+    height: 85vh;
   }
  }
 
@@ -68,9 +68,9 @@
 
 /*image for top of search results */
   .search-img{
-    background-image: url('https://www.twincities.com/wp-content/uploads/2017/09/books-reading-library.jpg');
+    background-image: url('../src/books-reading-library.jpg');
     height: 60%;
-    background-position: center;
+    background-position: 0% 45%;
     background-repeat: no-repeat;
     background-size: cover;
 
