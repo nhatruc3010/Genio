@@ -110,13 +110,6 @@ export default class StudentProfile extends Component {
           <div class="col-md-8 px-3">
             <div class="card-block px-3">
               <h4 class="card-title">Jessica Tran</h4>
-              <StarRatingComponent
-                  name="rate1"
-                  starCount={5}
-                  value={this.state.rating}
-                   renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
-                  onStarClick={this.onStarClick.bind(this)}
-                />
               </div>
               <p class="card-text">Have more than 3y years to teach student in Math</p>
               <h6 className="font-weight-bold my-3">

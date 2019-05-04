@@ -73,8 +73,9 @@ static getDerivedStateFromProps(props, state){
 
     renderTutors() {
         return this.state.tutors.map((v,i) =>
-            <div className='card'>
-                <div className="row ">
+
+            <div className='card' style={ styles.card}>
+                <div className="row " style={ styles.rowcard}>
                     <div className="col-md-4">
                     <h3 className="card-title">{ v.name }</h3>
                         <div><img src="https://i.pinimg.com/236x/f3/61/e3/f361e30b86fee7661463bf331de5b1b1.jpg"/></div>
@@ -82,23 +83,23 @@ static getDerivedStateFromProps(props, state){
                     <div className="col-md-5 px-3">
                         <div className="card-block px-3">
                             <p><b>Subjects:</b> { this.renderSubjects(v) }</p>
-
-                            {/* <p className="card-text"><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i><i class="fas fa-star" style={{color: '#FFDC00'}}></i> 7 Reviews </p> */}
-                            <p>About Me: </p>
-                            <p>{ v.about_me }</p>
+                            <p><b>About Me:</b>  { v.about_me }</p>
                         </div>
                     </div>
                     <div className="col-md-3 price">
-                    <h3 className="hourly-rate">Hourly Rate: { v.hourly_rate }</h3>
+                    <h3 className="hourly-rate">Hourly Rate: ${ v.hourly_rate }</h3>
                         <MDBBtn>Check Profile</MDBBtn>
                     </div>
                 </div>
             </div>
+
+
         );
     }
 
     render(){
         return(
+
             <div style={{ padding: '0px 50px 0px 50px' }}>
                 <div className = 'search-img' style={styles.homeStyle}></div>
                     <div>
@@ -162,10 +163,11 @@ static getDerivedStateFromProps(props, state){
                 </MDBDropdownMenu>
                 </MDBDropdown>
             </div>
-
-            <div style={{paddingLeft: '300px', paddingRight: '300px', paddingTop:'20px', paddingBottom: '20px'}}>
+            <MDBContainer>
+            <div style={{ paddingTop:'20px', paddingBottom: '20px'}}>
                 { this.renderTutors() }
             </div>
+            </MDBContainer>
           </div>
         );
       }
@@ -199,6 +201,16 @@ const styles = {
       borderColor: 'white',
       margin: '10px',
       font: ' bold 20px Economica'
+    },
+    card: {
+      marginTop: '20px',
+      marginBottom: '20px'
+    },
+    rowcard: {
+      marginTop: '20px',
+      marginBottom: '20px',
+      marginLeft: '20px',
+      marginRight: '20px'
     }
 };
 
