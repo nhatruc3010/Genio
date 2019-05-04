@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form, FormGroup, Label, Input } from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 import { MDBContainer,
          MDBRow,
@@ -67,12 +67,12 @@ static getDerivedStateFromProps(props, state){
             if (tutor.subjects[v] === true)
                 subjects.push(v);
         });
-        
+
         return subjects.join(',');
     }
 
     renderTutors() {
-        return this.state.tutors.map((v,i) => 
+        return this.state.tutors.map((v,i) =>
             <div className='card'>
                 <div className="row ">
                     <div className="col-md-4">
@@ -98,18 +98,17 @@ static getDerivedStateFromProps(props, state){
     }
 
     render(){
-        if(this.state.tutors) alert('got the tutors');
         return(
             <div style={{ padding: '0px 50px 0px 50px' }}>
                 <div className = 'search-img' style={styles.homeStyle}></div>
                     <div>
-                        <MDBContainer>
+
                             <Form className="form-wrapper">
                                 <MDBRow>
-                                    <MDBCol size="5" md="7">
+                                    <MDBCol size="3" md="4" style={{marginLeft:"30%"}}>
                                         <FormGroup>
-                                            <Label className="edit-label" for="exampleDate"> </Label>
-                                            <Input onChange={this.handleChange} name="subject" value={this.state.subject} className="location" placeholder=" Enter Subject"/>
+                                            <br/>
+                                            <Input onChange={this.handleChange} name="subject" value={this.state.subject} placeholder=" Enter Subject"/>
 
                                         </FormGroup>
                                     </MDBCol>
@@ -118,11 +117,33 @@ static getDerivedStateFromProps(props, state){
                                     </MDBCol>
                                 </MDBRow>
                             </Form>
-                        </MDBContainer>
+
                     </div>
 
+
+                    <div style={{justifyContent: "center", display: "flex"}}>
+                    <Button style={this.state.biology?  styles.activeStyle: styles.inactiveStyle}
+                            onClick={() => this.setState({biology: !this.state.biology})}>Biology</Button>
+                    <Button style={this.state.chemistry?  styles.activeStyle: styles.inactiveStyle}
+                            onClick={() => this.setState({chemistry: !this.state.chemistry})}>Chemistry</Button>
+                    <Button style={this.state.english?  styles.activeStyle: styles.inactiveStyle}
+                            onClick={() => this.setState({english: !this.state.english})}>English</Button>
+                    <Button style={this.state.history?  styles.activeStyle: styles.inactiveStyle}
+                            onClick={() => this.setState({history: !this.state.history})}>History</Button>
+                    <Button style={this.state.music?  styles.activeStyle: styles.inactiveStyle}
+                            onClick={() => this.setState({music: !this.state.music})}>Music</Button>
+                    <Button style={this.state.math?  styles.activeStyle: styles.inactiveStyle}
+                            onClick={() => this.setState({math: !this.state.math})}>Math</Button>
+                    <Button style={this.state.physic?  styles.activeStyle: styles.inactiveStyle}
+                            onClick={() => this.setState({physic: !this.state.physic})}>Physic</Button>
+                    </div>
+
+
+
+
+
             {/*Sorting Button Here*/}
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', marginLeft: "13%"}}>
                 <MDBDropdown className = 'sortbutton' isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
                 <MDBDropdownToggle caret color='default'>
                     Sort By:
@@ -164,6 +185,20 @@ const styles = {
       height: '40px',
       alignItems: 'center',
       display: 'block'
+    },
+    activeStyle:{
+      color: 'white',
+      background: ' linear-gradient(to right, #d3a13b 30%, #F7BB97 100%)',
+      borderColor: 'white',
+      margin: '10px',
+      font: ' bold 20px Economica'
+    },
+    inactiveStyle:{
+      color: 'white',
+      background: ' linear-gradient(to right, #b4dfe5ff 0%, #33cccc 100%)',
+      borderColor: 'white',
+      margin: '10px',
+      font: ' bold 20px Economica'
     }
 };
 
