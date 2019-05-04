@@ -337,16 +337,6 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
         </MDBCol>
 
 }
-
-
-
-
-
-
-
-
-
-
   render(){
     return (
     <MDBContainer>
@@ -401,7 +391,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                 </MDBMedia>
 
                 <MDBMedia body >
-                    <MDBMedia heading>
+                    {/* <MDBMedia heading>
 
                     <div   style={{fontSize: "20px"}}>
                     <StarRatingComponent
@@ -412,20 +402,18 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                               renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
                              onStarClick={this.onStarClick.bind(this)}
                            />
-                     </div>
+                     </div> */}
 
-                    </MDBMedia>
+                    {/* </MDBMedia>
                     I love Jessica! She is such a great tutor. I passed my class with flying colors!!!
-                    <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p>
-
-
+                    <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p> */}
 
                 </MDBMedia>
             </MDBMedia>
 
 
 
-            <MDBMedia style={{border:"2px groove", padding: "25px", marginBottom: "20px"}}>
+            {/* <MDBMedia style={{border:"2px groove", padding: "25px", marginBottom: "20px"}}>
                 <MDBMedia left href="#" className="mr-3">
                 <MDBMedia object src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600108/29213218-stock-vector-female-avatar-silhouette-profile-pictures.jpg?ver=6" alt="Generic placeholder image" style={{width:"90px", height:"90px"}} />
                 </MDBMedia>
@@ -433,7 +421,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                 <MDBMedia body >
                     <MDBMedia heading>
 
-                    <div   style={{fontSize: "20px"}}>
+                    <div style={{fontSize: "20px"}}>
                     <StarRatingComponent
                              name="rate1"
                              starCount={5}
@@ -445,17 +433,11 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                      </div>
 
 
-                    </MDBMedia>
-                    Jessica is so great. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blah
-                    <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p>
-
-
-
                 </MDBMedia>
-            </MDBMedia>
+            </MDBMedia> */}
 
 
-        </MDBCol>
+          </MDBCol>
         </MDBRow>
     </MDBContainer>
 );
