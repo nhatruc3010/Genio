@@ -63,7 +63,7 @@ static getDerivedStateFromProps(props, state){
         console.log(tutor)
         let subjects = [];
 
-        tutor.subjects.forEach((v,i) => {
+        Object.keys(tutor.subjects).forEach((v,i) => {
             if (tutor.subjects[v] === true)
                 subjects.push(v);
         });
