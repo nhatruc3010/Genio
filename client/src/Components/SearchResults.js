@@ -20,7 +20,14 @@ class SearchResults extends Component{
         this.state = {
             subject: '',
             dropdownOpen: false,
-            sortOption:''
+            sortOption:'',
+            biology: false,
+            chemistry: false,
+            english: false,
+            math: false,
+            history: false,
+            music: false,
+            physic: false
         };
           this.toggleDropdown = this.toggleDropdown.bind(this);
     }
@@ -121,8 +128,8 @@ static getDerivedStateFromProps(props, state){
 
                     </div>
 
-
-                    <div style={{justifyContent: "center", display: "flex"}}>
+      <MDBContainer>
+                    <div style={{marginLeft: "5.5%"}}>
                     <Button style={this.state.biology?  styles.activeStyle: styles.inactiveStyle}
                             onClick={() => this.setState({biology: !this.state.biology})}>Biology</Button>
                     <Button style={this.state.chemistry?  styles.activeStyle: styles.inactiveStyle}
@@ -136,7 +143,7 @@ static getDerivedStateFromProps(props, state){
                     <Button style={this.state.math?  styles.activeStyle: styles.inactiveStyle}
                             onClick={() => this.setState({math: !this.state.math})}>Math</Button>
                     <Button style={this.state.physic?  styles.activeStyle: styles.inactiveStyle}
-                            onClick={() => this.setState({physic: !this.state.physic})}>Physic</Button>
+                            onClick={() => this.setState({physic: !this.state.physic})}>Physics</Button>
                     </div>
 
 
@@ -144,7 +151,7 @@ static getDerivedStateFromProps(props, state){
 
 
             {/*Sorting Button Here*/}
-            <div style={{display: 'flex', marginLeft: "13%"}}>
+            <div style={{display: 'flex'}}>
                 <MDBDropdown className = 'sortbutton' isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
                 <MDBDropdownToggle caret color='default'>
                     Sort By:
@@ -163,7 +170,7 @@ static getDerivedStateFromProps(props, state){
                 </MDBDropdownMenu>
                 </MDBDropdown>
             </div>
-            <MDBContainer>
+
             <div style={{ paddingTop:'20px', paddingBottom: '20px'}}>
                 { this.renderTutors() }
             </div>
