@@ -19,9 +19,10 @@ class TutorsPage extends Component {
     this.state = {
       rating: 0,
       isEditing: false,
-      hourlyRate: null,
-      aboutMe: '',
+      hourly_rate: null,
+      about_me: '',
       address: '',
+      profile_pic: '',
       mon: {
                start: "00:00",
                end: "23:00"
@@ -57,13 +58,14 @@ class TutorsPage extends Component {
   static getDerivedStateFromProps(props, state) {
       if (props.user !== state.user){
         if (props.user !== undefined && props.user) {
-          let {hourlyRate, aboutMe, address } = props.user;
+          let {hourly_rate, about_me, address, profile_pic } = props.user;
           return {
             ...state,
             user: props.user,
-            aboutMe: '',
-            hourlyRate: '',
-            address: ''
+            about_me: '',
+            hourly_rate: '',
+            address: '',
+            profile_pic
           };
         } else {
           return {
@@ -346,9 +348,9 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
           <MDBRow>
             <MDBCol md="4">
                     <MDBView >
-                      <h3 className="font-weight-bold mt-2" >Jessica Tran</h3>
+                      <h3 className="font-weight-bold mt-2" >{this.state.user.name}</h3>
                       <img
-                        src="https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024"
+                        src={this.state.user.profile_pic}
                         alt=""
                         style={styles.imageStyles}
                       />
