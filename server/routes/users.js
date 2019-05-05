@@ -6,7 +6,6 @@ const { Tutor, Tutee } = require('../models/users');
 
 router.get('/get/tutors/all', async (req,res) => {
     Tutor.find({}, (err,tutors) => {
-        console.log(tutors);
         if (err) return res.status(400).json({ success: false, err });
 
         return res.status(200).json({
