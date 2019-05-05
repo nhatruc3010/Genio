@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
+import {Form, FormGroup, Label, Input } from 'reactstrap';
+import { Link } from 'react-router-dom'
+=======
 import {Form, FormGroup, Label, Input, Button } from 'reactstrap';
+>>>>>>> 8fc31298632a99bdbd454b7a04dc988135043ca0
 
 import { MDBContainer,
          MDBRow,
@@ -96,8 +101,8 @@ static getDerivedStateFromProps(props, state){
                         </div>
                     </div>
                     <div className="col-md-3 price">
-                    <h3 className="hourly-rate">Hourly Rate: ${ v.hourly_rate }</h3>
-                        <MDBBtn>Check Profile</MDBBtn>
+                    <h3 className="hourly-rate">Hourly Rate: { v.hourly_rate }</h3>
+                        <Link to={`/tutorprofile/${v._id}`}><MDBBtn>Check Profile</MDBBtn></Link>
                     </div>
                 </div>
             </div>
