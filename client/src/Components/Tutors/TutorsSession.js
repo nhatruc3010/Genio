@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
-import { Table, Input } from 'reactstrap';
-import {
-            View, CardImage, CardText, CardBody, Card, Fa, CardTitle,
-            Modal, ModalHeader, ModalFooter, ModalBody } from 'mdbreact';
+import { Table } from 'reactstrap';
 import { Container, Row, Col, } from 'reactstrap';
-import {TabContent, TabPane, div, a, Button} from 'reactstrap';
-
-import moment from 'moment';
-
-
 
 export default class TutorsSession extends Component{
 
@@ -19,8 +11,6 @@ export default class TutorsSession extends Component{
           session:[]
         };
     }
-
-
 
 renderAllSessions(){
   return <Table>
@@ -33,12 +23,9 @@ renderAllSessions(){
                   <th>Place of Session</th>
                   <th>Earnings</th>
                   <th>Status</th>
-
-
               </tr>
               </thead>
               <tbody>
-
                       <tr>
                           <td style={{ paddingTop: 25 }}>1</td>
                           <td style={{ paddingTop: 25 }}>Truc Vo</td>
@@ -47,10 +34,7 @@ renderAllSessions(){
                           <td style={{ paddingTop: 25 }}>1 washington street, san jose, ca, 95126</td>
                           <td style={{ paddingTop: 25 }}>$378</td>
                           <td style={{ paddingTop: 25 }}>Active</td>
-
-
                       </tr>
-
               </tbody>
           </Table>
 }

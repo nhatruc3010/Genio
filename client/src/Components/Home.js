@@ -9,7 +9,6 @@ import TuteeSignup from './TuteeSignUp';
 import TutorSignup from './TutorSignUp';
 import { connect } from 'react-redux';
 import '../App.css';
-import { style } from 'react-toastify';
 
 class Home extends Component{
   state={};

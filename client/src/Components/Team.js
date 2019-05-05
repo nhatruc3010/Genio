@@ -4,7 +4,7 @@ import {  MDBRow, MDBCol, MDBIcon, MDBContainer } from "mdbreact";
 export default class Team extends Component {
     render() {
     return (
-      <MDBContainer>
+      <MDBContainer style={styles.text}>
         <h2 className="h1-responsive text-center font-weight-bold my-5">
           Our Amazing Team
         </h2>
@@ -107,5 +107,13 @@ export default class Team extends Component {
       </MDBContainer>
   );
 }
+
+}
+
+const styles = {
+  text: {
+    fontFamily:'Economica',
+    font: '24px Economica',
+  },
 
 }

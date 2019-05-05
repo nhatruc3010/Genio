@@ -7,13 +7,10 @@ import {
     Nav,
     NavItem,
     NavLink,
-    Button
  } from 'reactstrap';
 import Login from './Login'
 import Logout from './Logout'
 import { connect } from 'react-redux';
-
-import { logout } from './redux/actions/auth';
 
 class NavBar extends Component {
     constructor(props) {

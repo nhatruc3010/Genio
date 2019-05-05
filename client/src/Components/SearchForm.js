@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, Container, Row, Col } from 'reactstrap';
+import {Form, FormGroup, Input} from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import '../App.css';
 import { MDBContainer,
          MDBRow,
          MDBCol,
-         MDBBtn,
-         MDBInput,
-         MDBModal,
-         MDBModalHeader,
-         MDBModalBody,
-         MDBModalFooter } from 'mdbreact';
+         MDBBtn } from 'mdbreact';
 import { connect } from 'react-redux';
 import { getAllTutors } from './redux/actions/auth';
 

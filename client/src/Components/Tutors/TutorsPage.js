@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-import { MDBRow, MDBCol, MDBCard, MDBMedia, MDBIcon, MDBView, MDBBtn } from "mdbreact";
+import { MDBRow, MDBCol, MDBMedia, MDBView } from "mdbreact";
 import { MDBContainer, Button } from "mdbreact";
-import StarRatingComponent from 'react-star-rating-component';
 import FileBase64 from 'react-file-base64';
 import TimeRange from 'react-time-range';
 import moment from 'moment';

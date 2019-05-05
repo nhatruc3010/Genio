@@ -1,14 +1,12 @@
 import React, {Component} from "react";
-import { MDBContainer,
-         MDBRow,
+import { MDBRow,
          MDBCol,
          MDBBtn,
-         MDBInput,
          MDBModal,
          MDBModalHeader,
          MDBModalBody,
          MDBModalFooter } from 'mdbreact';
-import {SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import {SingleDatePicker } from 'react-dates';
 import moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';

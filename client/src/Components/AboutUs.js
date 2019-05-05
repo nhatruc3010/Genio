@@ -1,10 +1,11 @@
 import React, {Component} from "react";
-import {  MDBRow, MDBCol, MDBCardBody, MDBIcon, MDBBtn, MDBView, MDBMask } from "mdbreact";
+import {  MDBRow, MDBCol, MDBIcon, MDBContainer } from "mdbreact";
+import gate from './img/gate.jpg'
 
 export default class AboutUs extends Component {
     render() {  
         return (
-    <section className="my-5">
+        <MDBContainer style={styles.text}>
         <h2 className="h1-responsive font-weight-bold text-center my-5">
           Our Story
         </h2>
@@ -14,15 +15,17 @@ export default class AboutUs extends Component {
           We value the balance between taking and giving. Therefore, we devlope the platform, Genio, where the people are
           able to register as a tutor, a student, or both.
         </p>
-
-        <MDBRow>
-          <MDBCol lg="5" className="mb-lg-0 mb-5">
+                
+        <MDBRow className="text-center text-lg-left">
+          <MDBCol lg="5" className="text-center text-lg-left">
+            <div>
             <img
-              src={require("./img/gate.jpg")}
+              src={gate}
               alt=""
-              className="img-fluid rounded z-depth-1"
+              className="img-fluid"
             />
-          </MDBCol>
+            </div>
+          </MDBCol> 
           <MDBCol lg="7">
             <MDBRow className="mb-3">
               <MDBCol md="1" size="2">
@@ -62,7 +65,16 @@ export default class AboutUs extends Component {
         </MDBRow>
         <hr className="my-5" />
         
-      </section>
+        
+      </MDBContainer>
   );
 }
+}
+
+const styles = {
+  text: {
+    fontFamily:'Economica',
+    font: '24px Economica',
+  },
+
 }
