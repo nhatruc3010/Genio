@@ -33,7 +33,7 @@ renderAllSessions(){
                   <th>Place of Session</th>
                   <th>Earnings</th>
                   <th>Status</th>
-                  <th>View Details</th>
+
 
               </tr>
               </thead>
@@ -48,14 +48,6 @@ renderAllSessions(){
                           <td style={{ paddingTop: 25 }}>$378</td>
                           <td style={{ paddingTop: 25 }}>Active</td>
 
-                          <td>
-                          <Button
-                          color="btn btn-deep-orange login"
-                          className="text-center"
-                          style={{ margin: 0 }}>
-                          <Fa icon="eye"></Fa>
-                          </Button>
-                          </td>
 
                       </tr>
 

@@ -39,7 +39,7 @@
  }
  @media(min-width: 300px){
   .background-image{
-    height: 80vh;
+    height: 85vh;
   }
  }
 
@@ -68,9 +68,9 @@
 
 /*image for top of search results */
   .search-img{
-    background-image: url('http://culture.affinitymagazine.us/wp-content/uploads/2017/05/635873821517718970351055939_Stack-of-books-great-education.jpg');
-    height: 50%;
-    background-position: center;
+    background-image: url('../src/books-reading-library.jpg');
+    height: 60%;
+    background-position: 0% 45%;
     background-repeat: no-repeat;
     background-size: cover;
 

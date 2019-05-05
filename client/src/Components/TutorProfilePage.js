@@ -233,6 +233,6 @@ const styles ={
     borderRadius: '50%',
     border: "#A9A9A9",
     marginBottom: '10px',
-    width: '250px',
-    height:'250px'
+    width: '300px',
+    height:'300px'
   }}
