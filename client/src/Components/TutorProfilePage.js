@@ -27,16 +27,16 @@ export default class TutorProfilePage extends Component {
         <MDBCol md="12">
           <h1 className="h1-responsive font-weight-bold text-center my-5">Tutor Profile</h1>
           <MDBRow>
-            <MDBCol md="4">
+            <MDBCol md="5">
                     <MDBView >
-                      <h3 className="font-weight-bold mt-2" >Jessica Tran</h3>
+                      <h3 className="font-weight-bold mt-2" style={{marginLeft: "9%", fontSize: "40px"}}>Jessica Tran</h3>
                       <img
                         src="https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024"
                         alt=""
                         style={styles.imageStyles}
                       />
 
-                       <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> $54</p>
+                       <p style={{fontSize: "23px", marginLeft: "18%"}}><a className="font-weight-bold">Hourly Rate:</a> $54</p>
                     </MDBView>
 
 
@@ -199,6 +199,6 @@ const styles ={
     borderRadius: '50%',
     border: "#A9A9A9",
     marginBottom: '10px',
-    width: '250px',
-    height:'250px'
+    width: '300px',
+    height:'300px'
   }}
