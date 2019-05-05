@@ -23,6 +23,14 @@ class TutorsPage extends Component {
       about_me: '',
       address: '',
       profile_pic: '',
+      file:'',
+      biology: false,
+      chemistry: false,
+      math: false,
+      english: false,
+      music: false,
+      physics: false,
+      history: false,
       mon: {
                start: "00:00",
                end: "23:00"
@@ -84,15 +92,26 @@ class TutorsPage extends Component {
 
 
 handleChange = event => {
+  console.log(event)
   this.setState({
     [event.target.name]: event.target.value,
   });
 
 }
 
+
 handleTutorEditSubmit = () => {
   axios.post(
-    )
+    '/profile/edit', {
+        file: this.state.file
+    })
+    .then(res=>{
+      if(res.data.success){
+
+
+
+      }
+    })
     .catch(err => {
       alert(err);
     });
@@ -105,43 +124,43 @@ renderProfileInfo() {
     <MDBCol md="6">
         <div ><br/>
           <b>Upload New Image</b><br/><FileBase64 onDone={file => this.setState({ file: file.base64 })}/><br/><br/>
-          <b>Hourly Rate</b><br/><input className="form-control" onChange={this.handleChange} name="hourlyRate" type="text" value={this.state.hourlyRate}/>
-          <b>About Me</b><br/><textarea className="form-control" rows="10" onChange={this.handleChange} name="aboutMe" type="text" value={this.state.aboutMe}/><br/>
+          <b>Hourly Rate</b><br/><input className="form-control" onChange={this.handleChange} name="hourlyRate" type="text" value={this.state.user.hourly_rate}/>
+          <b>About Me</b><br/><textarea className="form-control" rows="10" onChange={this.handleChange} name="aboutMe" type="text" value={this.state.user.about_me}/><br/>
           <b>Address</b><br/><input className="form-control" onChange={this.handleChange} name="address" type="text" value={this.state.address}/><br/>
 
           <b>Subjects</b><br/>
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="biology"/>
+          <input type="checkbox" class="custom-control-input" id="biology"  checked={this.state.biology} onClick={() =>  this.setState({ biology: !this.state.biology })}/>
           <label class="custom-control-label"  for="biology">Biology</label>
           </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="chemistry"/>
+          <input type="checkbox" class="custom-control-input" id="chemistry" checked={this.state.chemistry} onClick={() =>  this.setState({ biology: !this.state.chemistry })}/>
           <label class="custom-control-label"    for="chemistry">Chemistry</label>
               </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="english"/>
+          <input type="checkbox" class="custom-control-input" id="english"  checked={this.state.english} onClick={() =>  this.setState({ biology: !this.state.english})}/>
           <label class="custom-control-label"    for="english">English</label>
               </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="history"/>
+          <input type="checkbox" class="custom-control-input" id="history"  checked={this.state.history} onClick={() =>  this.setState({ biology: !this.state.history})}/>
           <label class="custom-control-label"    for="history">History</label>
               </div>
               <br/>
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="music"/>
+          <input type="checkbox" class="custom-control-input" id="music"  checked={this.state.music} onClick={() =>  this.setState({ biology: !this.state.music})}/>
           <label class="custom-control-label"    for="music">Music</label>
               </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="math"/>
+          <input type="checkbox" class="custom-control-input" id="math" checked={this.state.math} onClick={() =>  this.setState({ biology: !this.state.math})}/>
           <label class="custom-control-label"    for="math">Math</label>
               </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="physics"/>
+          <input type="checkbox" class="custom-control-input" id="physics"  checked={this.state.physics} onClick={() =>  this.setState({ biology: !this.state.physics})}/>
           <label class="custom-control-label"   for="physics">Physics</label>
               </div>
 
@@ -150,6 +169,7 @@ renderProfileInfo() {
 
           <b>Availability</b><br/>
 <MDBRow>
+<br/>
   Mon: {this.state.mon.start} - {this.state.mon.end}
           <br/>  <TimeRangeSlider
                 disabled={false}
@@ -302,7 +322,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
           About Me
         </h6>
         <p className="font-weight-normal">
-          Hello! My name is Jessica Tran. I like to study chemistry in my free time. I graduated from SJSU in chemical engineering. I've been tutoring people for over 5 years.
+        {this.state.user.about_me}
 
         </p>
 
@@ -310,7 +330,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
             Address
           </h6>
           <p className="font-weight-normal">
-            1 Washington St, San Jose, CA, 95126
+            {this.state.user.address}
 
           </p>
 
@@ -340,6 +360,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
 
 }
   render(){
+    console.log(this.state.user);
     return (
     <MDBContainer>
         <MDBRow>
@@ -358,7 +379,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                       <br/>
                       <br/>
 
-                        {this.state.isEditing? <p></p>: <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> $54</p>}
+                        {this.state.isEditing? <p></p>: <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> ${this.state.user.hourly_rate}</p>}
 
                           {this.state.isEditing ? <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Cancel Edit</Button> : <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Edit</Button>}
 
