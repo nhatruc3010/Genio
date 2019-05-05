@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, Container, Row, Col } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
 import SearchForm from './SearchForm';
 import '../App.css';
 import {MDBContainer,
         MDBRow,
         MDBCol } from "mdbreact";
 import Advertising from './Advertising';
-import { style } from 'react-toastify';
 import Team from './Team';
 
   export default class SearchPage extends Component {

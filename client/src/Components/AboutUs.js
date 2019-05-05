@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {  MDBRow, MDBCol, MDBCardBody, MDBIcon, MDBBtn, MDBView, MDBMask } from "mdbreact";
+import {  MDBRow, MDBCol, MDBIcon } from "mdbreact";
 
 export default class AboutUs extends Component {
     render() {  
