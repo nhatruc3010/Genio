@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, Label, Input } from 'reactstrap';
+import { Link } from 'react-router-dom'
 
 import { MDBContainer,
          MDBRow,
@@ -90,7 +91,7 @@ static getDerivedStateFromProps(props, state){
                     </div>
                     <div className="col-md-3 price">
                     <h3 className="hourly-rate">Hourly Rate: { v.hourly_rate }</h3>
-                        <MDBBtn>Check Profile</MDBBtn>
+                        <Link to={`/tutorprofile/${v._id}`}><MDBBtn>Check Profile</MDBBtn></Link>
                     </div>
                 </div>
             </div>
@@ -98,7 +99,6 @@ static getDerivedStateFromProps(props, state){
     }
 
     render(){
-        if(this.state.tutors) alert('got the tutors');
         return(
             <div style={{ padding: '0px 50px 0px 50px' }}>
                 <div className = 'search-img' style={styles.homeStyle}></div>

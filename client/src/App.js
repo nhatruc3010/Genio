@@ -42,7 +42,7 @@ class App extends Component {
                     <Route exact path='/search' component ={SearchPage}/>
                     <Route exact path='/searchresults' component ={SearchResults}/>
                     <Route exact path='/tutoredit' component ={TutorsPage}/>
-                    <Route exact path='/tutorprofile' component ={TutorProfilePage}/>
+                    <Route path='/tutorprofile' component ={TutorProfilePage}/>
                     <Route exact path='/tutorsession' component ={TutorsSession}/>
                     <Route exact path='/studentprofile' component ={StudentProfile}/>
                     <Route exact path='/studentsession' component ={StudentSession}/>
