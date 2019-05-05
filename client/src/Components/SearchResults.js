@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import {Form, FormGroup, Input, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import {Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 import { MDBContainer,
          MDBRow,
