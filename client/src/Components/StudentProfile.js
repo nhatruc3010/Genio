@@ -3,7 +3,7 @@ import { MDBRow, MDBCol, MDBView, MDBBtn, MDBContainer} from "mdbreact";
 import {Button, FormGroup, Label, Input } from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import Booking from './Booking';
-
+import Recommendation from './Recommender'
 
 export default class StudentProfile extends Component {
   constructor(props){
@@ -27,6 +27,7 @@ export default class StudentProfile extends Component {
   }
   render(){
     return (
+
     <MDBContainer>
         <MDBRow>
           <MDBCol md="12">
@@ -82,6 +83,10 @@ export default class StudentProfile extends Component {
             </MDBCol>
         </MDBRow>
       </MDBCol>
+      
+      <div>
+        <Recommendation/>
+      </div>
     </MDBRow>
 
       <div>
