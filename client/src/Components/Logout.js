@@ -1,13 +1,6 @@
 import React, {Component} from "react";
 import { MDBContainer,
-         MDBRow,
-         MDBCol,
-         MDBBtn,
-         MDBInput,
-         MDBModal,
-         MDBModalHeader,
-         MDBModalBody,
-         MDBModalFooter } from 'mdbreact';
+         MDBBtn} from 'mdbreact';
 import { connect } from 'react-redux';
 import { login, logout } from './redux/actions/auth';
 

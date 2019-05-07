@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import {Form, FormGroup, Label, Input, Button } from 'reactstrap';
+
 import { MDBContainer,
          MDBRow,
          MDBCol,
          MDBBtn,
-         MDBInput,
-         MDBModal,
-         MDBModalHeader,
-         MDBModalBody,
-         MDBModalFooter, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
+         MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
 import { connect } from 'react-redux';
 import { getAllTutors } from './redux/actions/auth';
 
@@ -87,7 +84,7 @@ static getDerivedStateFromProps(props, state){
                 <div className="row " style={ styles.rowcard}>
                     <div className="col-md-4">
                     <h3 className="card-title">{ v.name }</h3>
-                        <div><img src="https://i.pinimg.com/236x/f3/61/e3/f361e30b86fee7661463bf331de5b1b1.jpg"/></div>
+                        <div><img src="https://i.pinimg.com/236x/f3/61/e3/f361e30b86fee7661463bf331de5b1b1.jpg" alt=""/></div>
                     </div>
                     <div className="col-md-5 px-3">
                         <div className="card-block px-3">

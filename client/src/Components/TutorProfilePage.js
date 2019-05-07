@@ -1,10 +1,8 @@
 import React, {Component} from "react";
-import { MDBRow, MDBCol, MDBCard, MDBMedia, MDBIcon, MDBView, MDBBtn } from "mdbreact";
+import { MDBRow, MDBCol, MDBMedia, MDBView, MDBBtn } from "mdbreact";
 import { MDBContainer } from "mdbreact";
 import StarRatingComponent from 'react-star-rating-component';
-import queryString from 'query-string';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
 import Booking from './Booking';
 import 'react-dates/lib/css/_datepicker.css';

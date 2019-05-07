@@ -11,10 +11,6 @@ import { MDBContainer,
 import { connect } from 'react-redux';
 import { register } from './redux/actions/auth';
 
-
-
-
-
 class TuteeSignUp extends Component {
   state = {
     modal: false,
@@ -22,8 +18,6 @@ class TuteeSignUp extends Component {
     registerEmail: '',
     registerPassword: '',
     comfirmEmail: '',
-
-
   }
 
   toggle = () => {

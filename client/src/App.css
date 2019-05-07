@@ -45,7 +45,7 @@
 
  /*home background*/
  .home-background {
-  background: fixed url('../src/home.jpg');
+  background: fixed url('../src/Components/img/home.jpg');
   background-position: right;
   background-repeat: no-repeat;
   background-size: 60%;

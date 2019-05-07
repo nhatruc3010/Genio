@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import { MDBRow, MDBCol, MDBCard, MDBMedia, MDBIcon, MDBView, MDBBtn, MDBContainer, Row, Col, Container } from "mdbreact";
+import { MDBRow, MDBCol, MDBView, MDBBtn, MDBContainer} from "mdbreact";
 import {Button, FormGroup, Label, Input } from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import Booking from './Booking';
-
+import Recommendation from './Recommender'
 
 export default class StudentProfile extends Component {
   constructor(props){
@@ -27,6 +27,7 @@ export default class StudentProfile extends Component {
   }
   render(){
     return (
+
     <MDBContainer>
         <MDBRow>
           <MDBCol md="12">
@@ -82,6 +83,10 @@ export default class StudentProfile extends Component {
             </MDBCol>
         </MDBRow>
       </MDBCol>
+      
+      <div>
+        <Recommendation/>
+      </div>
     </MDBRow>
 
       <div>
@@ -105,7 +110,7 @@ export default class StudentProfile extends Component {
       <div class="card" style={ styles.card}>
         <div class="row " style={ styles.rowcard}>
           <div class="col-md-4">
-            <img  src="https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024" class="w-100"/>
+            <img  src="https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024" class="w-100" alt=""/>
           </div>
           <div class="col-md-8 px-3">
             <div class="card-block px-3">
@@ -143,7 +148,7 @@ export default class StudentProfile extends Component {
         <div class="card" style={ styles.card}>
         <div class="row " style={ styles.rowcard}>
           <div class="col-md-4">
-            <img  src="https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024" class="w-100"/>
+            <img  src="https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024" class="w-100" alt=""/>
           </div>
           <div class="col-md-8 px-3">
             <div class="card-block px-3">

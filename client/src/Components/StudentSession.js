@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import { Table, Input } from 'reactstrap';
-import {
-            View, CardImage, CardText, CardBody, Card, Fa, CardTitle,
-            Modal, ModalHeader, ModalFooter, ModalBody } from 'mdbreact';
-import { Container, Row, Col, } from 'reactstrap';
-import {TabContent, TabPane, div, a, Button} from 'reactstrap';
+import {Fa} from 'mdbreact';
+import { Table, Button, Container, Row, Col, } from 'reactstrap';
  
 import { connect } from 'react-redux';
 
 import { getSessions } from './redux/actions/sessions';
-
-import moment from 'moment';
 
 class StudentSession extends Component{
 
@@ -105,8 +99,6 @@ class StudentSession extends Component{
                     <p>Go book a tutor!</p>
 
                 </div>;
-
-
 
     render() {
         return(

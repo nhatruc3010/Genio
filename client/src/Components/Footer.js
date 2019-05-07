@@ -9,7 +9,7 @@ export default class FooterPagePro extends Component{
         <MDBRow className="pt-5 mb-3 text-center d-flex justify-content-center">
           <MDBCol md="2" className="b-3">
             <h6 className="title font-weight-bold">
-              <a href="/aboutus" style={{color:'black'}}>About</a>
+              <a href="/about-us" style={{color:'black'}}>About</a>
             </h6>
           </MDBCol>
           <MDBCol md="2" className="b-3">
