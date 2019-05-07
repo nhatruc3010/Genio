@@ -57,8 +57,8 @@ class TutorsPage extends Component {
        sun: {
                 start: "00:00",
                 end: "23:00"
-            }
-
+            },
+        monNA: false, tueNA: false, wedNA: false, thuNA: false, friNA: false, satNA: false, sunNA: false,
     };
   }
 
@@ -72,7 +72,7 @@ class TutorsPage extends Component {
             about_me: '',
             hourly_rate: '',
             address: '',
-            profile_pic
+            profile_pic: ''
           };
         } else {
           return {
@@ -84,9 +84,8 @@ class TutorsPage extends Component {
       return null;
     }
 
-
   onStarClick(nextValue, prevValue, name) {
-  this.setState({rating: nextValue});
+    this.setState({rating: nextValue});
 }
 
 
@@ -116,6 +115,21 @@ handleTutorEditSubmit = () => {
     });
 }
 
+renderSubjects(tutor) {
+  if (tutor.subjects) {
+    let subjects = [];
+
+    Object.keys(tutor.subjects).forEach((v,i) => {
+        if (tutor.subjects[v] === true)
+            subjects.push(v);
+    });
+    
+    return subjects.join(',');
+  }
+  
+  return 'N/A';
+}
+
 
 renderProfileInfo() {
   return this.state.isEditing ?
@@ -134,32 +148,32 @@ renderProfileInfo() {
           </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="chemistry" checked={this.state.chemistry} onClick={() =>  this.setState({ biology: !this.state.chemistry })}/>
+          <input type="checkbox" class="custom-control-input" id="chemistry" checked={this.state.chemistry} onClick={() =>  this.setState({ chemistry: !this.state.chemistry })}/>
           <label class="custom-control-label"    for="chemistry">Chemistry</label>
               </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="english"  checked={this.state.english} onClick={() =>  this.setState({ biology: !this.state.english})}/>
+          <input type="checkbox" class="custom-control-input" id="english"  checked={this.state.english} onClick={() =>  this.setState({ english: !this.state.english})}/>
           <label class="custom-control-label"    for="english">English</label>
               </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="history"  checked={this.state.history} onClick={() =>  this.setState({ biology: !this.state.history})}/>
+          <input type="checkbox" class="custom-control-input" id="history"  checked={this.state.history} onClick={() =>  this.setState({ history: !this.state.history})}/>
           <label class="custom-control-label"    for="history">History</label>
               </div>
               <br/>
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="music"  checked={this.state.music} onClick={() =>  this.setState({ biology: !this.state.music})}/>
+          <input type="checkbox" class="custom-control-input" id="music"  checked={this.state.music} onClick={() =>  this.setState({ music: !this.state.music})}/>
           <label class="custom-control-label"    for="music">Music</label>
               </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="math" checked={this.state.math} onClick={() =>  this.setState({ biology: !this.state.math})}/>
+          <input type="checkbox" class="custom-control-input" id="math" checked={this.state.math} onClick={() =>  this.setState({ math: !this.state.math})}/>
           <label class="custom-control-label"    for="math">Math</label>
               </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="physics"  checked={this.state.physics} onClick={() =>  this.setState({ biology: !this.state.physics})}/>
+          <input type="checkbox" class="custom-control-input" id="physics"  checked={this.state.physics} onClick={() =>  this.setState({ physics: !this.state.physics})}/>
           <label class="custom-control-label"   for="physics">Physics</label>
               </div>
 
@@ -182,7 +196,7 @@ renderProfileInfo() {
 
 
           <div class="custom-control custom-checkbox custom-control-inline">
-      <input type="checkbox" class="custom-control-input" id="monday"/>
+      <input type="checkbox" value={this.state.monNA} onChange={() => this.setState({ monNA: !this.state.monNA })} class="custom-control-input" id="monday"/>
       <label class="custom-control-label" for="monday">Unavailable</label>
       </div>
 
@@ -201,7 +215,7 @@ Tues: {this.state.tue.start} - {this.state.tue.end}
 
 
           <div class="custom-control custom-checkbox custom-control-inline">
-      <input type="checkbox" class="custom-control-input" id="tuesday"/>
+      <input type="checkbox" value={this.state.tueNA} onChange={() => this.setState({ tueNA: !this.state.tueNA })} class="custom-control-input" id="tuesday"/>
       <label class="custom-control-label" for="tuesday">Unavailable</label>
       </div>
 
@@ -219,9 +233,9 @@ Wed: {this.state.wed.start} - {this.state.wed.end}
               step={60}
               value={this.state.wed}/>
 
-          <div class="custom-control custom-checkbox custom-control-inline">
-      <input type="checkbox" class="custom-control-input" id="wed"/>
-      <label class="custom-control-label" for="wed">Unavailable</label>
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input type="checkbox" value={this.state.wedNA} onChange={() => this.setState({ wedNA: !this.state.wedNA })} class="custom-control-input" id="wed"/>
+        <label class="custom-control-label" for="wed">Unavailable</label>
       </div>
 <br/>
 <br/>
@@ -238,7 +252,7 @@ Thur: {this.state.thur.start} - {this.state.thur.end}
               value={this.state.thur}/>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-      <input type="checkbox" class="custom-control-input" id="thurs"/>
+      <input type="checkbox" value={this.state.thuNA} onChange={() => this.setState({ thuNA: !this.state.thuNA })} class="custom-control-input" id="thurs"/>
       <label class="custom-control-label" for="thurs">Unavailable</label>
       </div>
 
@@ -255,7 +269,7 @@ Fri: {this.state.fri.start} - {this.state.fri.end}
               step={60}
               value={this.state.fri}/>
           <div class="custom-control custom-checkbox custom-control-inline">
-      <input type="checkbox" class="custom-control-input" id="friday"/>
+      <input type="checkbox" value={this.state.friNA} onChange={() => this.setState({ friNA: !this.state.friNA })} class="custom-control-input" id="friday"/>
       <label class="custom-control-label" for="friday">Unavailable</label>
       </div>
 
@@ -273,7 +287,7 @@ Sat: {this.state.sat.start} - {this.state.sat.end}
               value={this.state.sat}/>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-      <input type="checkbox" class="custom-control-input" id="saturday"/>
+      <input type="checkbox" value={this.state.satNA} onChange={() => this.setState({ satNA: !this.state.satNA })} class="custom-control-input" id="saturday"/>
       <label class="custom-control-label" for="saturday">Unavailable</label>
       </div>
 
@@ -291,21 +305,16 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
               step={60}
               value={this.state.sun}/>
 
-
-
-
           <div class="custom-control custom-checkbox custom-control-inline">
-      <input type="checkbox" class="custom-control-input" id="sunday"/>
+      <input type="checkbox" value={this.state.sunNA} onChange={() => this.setState({ sunNA: !this.state.sunNA })} class="custom-control-input" id="sunday"/>
       <label class="custom-control-label" for="sunday">Unavailable</label>
       </div>
-<br/>
-<br/>
+  <br/>
+  <br/>
 
   </MDBRow>
           <button className="btn btn-deep-orange" onClick={this.handleTutorEditSubmit}>Submit Changes</button>
-
         </div>
-
       </MDBCol>:
 
     <MDBCol md="6">
@@ -313,15 +322,14 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
           Subjects:
         </h6>
         <p className="font-weight-normal">
-          Chemistry, Physics, Calculus
-
+          { this.renderSubjects(this.state.user.subjects) }
         </p>
 
       <h6 className="font-weight-bold my-3">
           About Me
         </h6>
         <p className="font-weight-normal">
-        {this.state.user.about_me}
+          {this.state.user.about_me}
 
         </p>
 
@@ -333,33 +341,30 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
 
           </p>
 
-
         <h6 className="font-weight-bold my-3">
             Availability:
           </h6>
-          <p className="font-weight-normal">
-          Mon: Unavailable
-          <br/>
-          Tues: 10:00 AM - 04:00 PM
-          <br/>
-          Wed: 5:00 PM - 08:00 PM
-          <br/>
-          Thurs: 10:00 AM - 04:00 PM
-          <br/>
-          Fri: 07:00 AM - 09:00 PM
-          <br/>
-          Sat: Unavailable
-          <br/>
-          Sun: Unavailable
-          <br/>
-          </p>
-
-
+          { this.state.user.schedule ? 
+            <p className="font-weight-normal">
+              Mon: { this.state.user.schedule.mon.start } - { this.state.user.schedule.mon.end }
+              <br/>
+              Tues: { this.state.user.schedule.tue.start } - { this.state.user.schedule.tue.end }
+              <br/>
+              Wed: { this.state.user.schedule.wed.start } - { this.state.user.schedule.wed.end }
+              <br/>
+              Thurs: { this.state.user.schedule.thu.start } - { this.state.user.schedule.thu.end }
+              <br/>
+              Fri: { this.state.user.schedule.fri.start } - { this.state.user.schedule.fri.end }
+              <br/>
+              Sat: { this.state.user.schedule.sat.start } - { this.state.user.schedule.sat.end }
+              <br/>
+              Sun: { this.state.user.schedule.sun.start } - { this.state.user.schedule.sun.end }
+              <br/>
+            </p> : 'Schedule Not Uploaded' }
         </MDBCol>
 
 }
   render(){
-    console.log(this.state.user);
     return (
     <MDBContainer>
         <MDBRow>
@@ -367,39 +372,23 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
           <h1 className="h1-responsive font-weight-bold text-center my-5">My Profile</h1>
           <MDBRow>
             <MDBCol md="4">
-                    <MDBView >
+                    <MDBView>
                       <h3 className="font-weight-bold mt-2" >{this.state.user.name}</h3>
-                      <img
-                        src={this.state.user.profile_pic}
-                        alt=""
-                        style={styles.imageStyles}
-                      />
-
+                        <img
+                          src={this.state.user.profile_pic}
+                          alt=""
+                          style={styles.imageStyles}
+                        />
                       <br/>
                       <br/>
-
                         {this.state.isEditing? <p></p>: <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> ${this.state.user.hourly_rate}</p>}
-
-                          {this.state.isEditing ? <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Cancel Edit</Button> : <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Edit</Button>}
-
-
+                        {this.state.isEditing ? <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Cancel Edit</Button> : <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Edit</Button>}
                     </MDBView>
-
-
             </MDBCol>
-
-
-
               {this.renderProfileInfo()}
-
-
           </MDBRow>
-
-
         </MDBCol>
         </MDBRow>
-
-
         <MDBRow>
         <MDBCol md="12">
             <h2 className="h1-responsive font-weight-bold text-center my-5">
@@ -482,4 +471,4 @@ const styles ={
     };
   }
 
-  export  default connect(mapStateToProps)(TutorsPage)
+export default connect(mapStateToProps)(TutorsPage);

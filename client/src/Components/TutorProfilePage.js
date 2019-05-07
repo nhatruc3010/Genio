@@ -24,7 +24,7 @@ export default class TutorProfilePage extends Component {
   componentDidMount() {
     axios.get(`http://localhost:3001/profile/${this.props.history.location.pathname.split('/')[2]}`)
       .then(res => {
-        this.setState({ profile: res.data });
+        this.setState({ profile: res.data.user });
       })
       .catch(err => {
         console.log(err);
