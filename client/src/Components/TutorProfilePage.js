@@ -50,7 +50,6 @@ export default class TutorProfilePage extends Component {
 
   render(){
     var { profile } = this.state;
-    console.log(profile);
     
     if (profile)
       return (
@@ -207,14 +206,9 @@ export default class TutorProfilePage extends Component {
                               onStarClick={this.onStarClick.bind(this)}
                             />
                       </div>
-
-
                       </MDBMedia>
                       Jessica is so great. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blah
                       <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p>
-
-
-
                   </MDBMedia>
               </MDBMedia>
 
