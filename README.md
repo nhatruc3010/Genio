@@ -38,4 +38,9 @@ Go to your localhost
 ```javascript
 http://localhost:3000
 ```
-## ScreenShots
+## Screenshots
+<img src= "https://github.com/nhatruc3010/Genio/blob/master/client/src/Components/img/homepage.png" width="600px"/>
+<br/>
+<img src= "https://github.com/nhatruc3010/Genio/blob/master/client/src/Components/img/searchpage.png" width="600px"/>
+<br/>
+<img src= "https://github.com/nhatruc3010/Genio/blob/master/client/src/Components/img/whygenio.png" width="600px"/>
