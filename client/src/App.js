@@ -17,7 +17,7 @@ import TutorProfilePage from './Components/TutorProfilePage';
 import TutorsPage from './Components/Tutors/TutorsPage';
 import TutorsSession from './Components/Tutors/TutorsSession';
 import StudentProfile from './Components/StudentProfile';
-import StudentSession from './Components/StudentSession';
+import Sessions from './Components/TuteeSessions';
 import about from './Components/AboutUs';
 // import logo from './logo.svg';
 // import './App.css';
@@ -44,9 +44,9 @@ class App extends Component {
                     <Route exact path='/searchresults' component ={SearchResults}/>
                     <Route exact path='/tutoredit' component ={TutorsPage}/>
                     <Route path='/tutorprofile' component ={TutorProfilePage}/>
-                    <Route exact path='/tutorsession' component ={TutorsSession}/>
+                    <Route exact path='/tutorsessions' component ={TutorsSession}/>
                     <Route exact path='/studentprofile' component ={StudentProfile}/>
-                    <Route exact path='/studentsession' component ={StudentSession}/>
+                    <Route exact path='/tuteesessions' component ={Sessions}/>
                     <Route exact path='/about-us' component ={about}/>
                   </React.Fragment>
                 </BrowserRouter>

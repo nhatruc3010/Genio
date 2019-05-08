@@ -11,6 +11,8 @@ import { render} from 'react-dom';
 import TimeRangeSlider from 'react-time-range-slider';
 import { Redirect } from 'react-router-dom';
 
+import { getUser } from '../redux/actions';
+
 class TutorsPage extends Component {
   constructor(props) {
     super(props);
@@ -103,7 +105,7 @@ handleTutorEditSubmit = () => {
     monNA, tueNA, wedNA, thuNA, friNA, satNA, sunNA
    } = this.state;
   axios.post(
-    'http://localhost:30001/profile/edit', { _id: user._id, data: {
+    'http://localhost:3001/profile/edit', { _id: user._id, data: {
       user : {
         profile_pic: this.state.file,
         address: this.state_address,
@@ -118,7 +120,8 @@ handleTutorEditSubmit = () => {
     }})
     .then(res => {
       if(res.data.success) { 
-        this.setState({ isEditing: false });
+        // this.setState({ isEditing: false });
+        this.props.getUser(this.state.user._id);
       }
     })
     .catch(err => {
@@ -478,4 +481,4 @@ const styles ={
     };
   }
 
-export default connect(mapStateToProps)(TutorsPage);
+export default connect(mapStateToProps, { getUser })(TutorsPage);

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { getSessions } from './redux/actions/sessions';
 
-class StudentSession extends Component{
+class TuteeSessions extends Component{
 
     constructor(props) {
         super(props);
@@ -143,4 +143,4 @@ const mapStateToProps = state => ({
     sessions: state.data.sessions
 });
 
-export default connect(mapStateToProps, { getSessions })(StudentSession);
+export default connect(mapStateToProps, { getSessions })(TuteeSessions);

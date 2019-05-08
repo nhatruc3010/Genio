@@ -50,11 +50,13 @@ class Booking extends Component {
   }
 
   submit = () => {
-    axios.post('/sessions/book', {
-      tutor_id: this.props.tutor_id,
-      tutee_id: this.state.user._id,
-      start_time: this.state.startTime.valueOf(),
-      end_time: this.state.endTime.valueOf()
+    let dateStr = this.state.date.format('MMMM DD, YYYY');
+    let startTimeStr
+    axios.post('http://localhost:3001/sessions/book', {
+      tutorID: this.props.tutor_id,
+      tuteeID: this.state.user._id,
+      startTime: this.state.startTime.unix(),
+      endTime: this.state.endTime.unix()
     })
       .then(res => {
         alert('Thanks for booking with Genio! Your tutor has been notified!');
@@ -68,6 +70,7 @@ class Booking extends Component {
 
   render() {
     if (this.state.redirect) return <Redirect to="/search" /> 
+    console.log(this.state)
     return (
     <div>
       <MDBBtn onClick={this.toggle}
@@ -99,11 +102,11 @@ class Booking extends Component {
               <br/>
 
               <TimeRange
-                  startTime={this.state.startTime}
-                  endTime={this.state.endTime}
-                  // startMoment={this.state.startTime}
-                  // endMoment={this.state.endTime}
-                  onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
+                  // startTime={this.state.startTime}
+                  // endTime={this.state.endTime}
+                  startMoment={this.state.startTime}
+                  endMoment={this.state.endTime}
+                  onChange={({startTime, endTime}) => this.setState({startTime: new moment(startTime), endTime: new moment(endTime)})}
               />
             </form>
           </MDBCol>
@@ -131,7 +134,6 @@ class Booking extends Component {
                 <MDBBtn onClick={this.submit}
                           outline rounded
                           color='cyan darken-2'
-                          href = './studentsession'
                           style={styles.button}>
                     Payment
                 </MDBBtn>

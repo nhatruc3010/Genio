@@ -40,13 +40,13 @@ static getDerivedStateFromProps(props, state) {
   }
   render(){
     if (!this.state.user) return <Redirect to="/" />
+    let { user } = this.state;
 
     return (
-
     <MDBContainer>
         <MDBRow>
           <MDBCol md="12">
-            <h1 className="h1-responsive font-weight-bold text-center my-5">Hi! Bruce Lin</h1>
+            <h1 className="h1-responsive font-weight-bold text-center my-5">Hi! { user.name }</h1>
           <MDBRow>
             <MDBCol md="6">
               <MDBView >
@@ -56,7 +56,7 @@ static getDerivedStateFromProps(props, state) {
                     style={styles.imageStyles}
                   />
                   <br/>
-              <Button href="/studentsession" color="btn btn-deep-orange" style={{marginLeft: "30%"}}> View Sessions </Button>
+              <Button href="/tuteesessions" color="btn btn-deep-orange" style={{marginLeft: "30%"}}> View Sessions </Button>
               <br/>
               <br/>
               <br/>
@@ -66,13 +66,8 @@ static getDerivedStateFromProps(props, state) {
 
             <MDBCol md="6">
               <h6 className="font-weight-bold my-3">Email:</h6>
-              <p className="font-weight-normal">bruce.lin@sjsu.edu</p>
-
-              <h6 className="font-weight-bold my-3">Phone:</h6>
-              <p className="font-weight-normal">408 999 8888</p>
-
-              <h6 className="font-weight-bold my-3">About Me:</h6>
-              <FormGroup style ={styles.select}>
+              <p className="font-weight-normal">{ user.email }</p>
+              {/* <FormGroup style ={styles.select}>
                 <p className="font-weight-normal">
                   I'm looking for tutor, who willing to teach me
                 </p>
@@ -94,7 +89,7 @@ static getDerivedStateFromProps(props, state) {
                 </Input>
                 <MDBBtn type="submit" style={styles.button}
                         outline rounded color='cyan darken-2' >Search</MDBBtn>
-              </FormGroup>
+              </FormGroup> */}
             </MDBCol>
         </MDBRow>
       </MDBCol>

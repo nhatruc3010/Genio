@@ -29,6 +29,7 @@ router.get('/sessions/all', (req, res) => {
 
 router.post('/sessions/book', async (req,res) => {
     let { tuteeID, tutorID, startTime, endTime } = req.body;
+    console.log(req.body);
 
     if (
             !validator.isEmpty(tuteeID) 
