@@ -7,8 +7,9 @@ import {MDBContainer,
 import Advertising from './Advertising';
 import Team from './Team';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-  export default class SearchPage extends Component {
+class SearchPage extends Component {
     constructor(props) {
       super(props);
       this.state={};
@@ -20,6 +21,15 @@ import { Redirect } from 'react-router-dom';
           behavior: 'smooth'
           });
       }
+
+      static getDerivedStateFromProps(props, state) {
+           if (state.user !== props.user){
+             return {
+               user: props.user
+             };
+           }
+           return null;
+         }
 
       render(){
         if (!this.state.user) return <Redirect to="/" />
@@ -83,3 +93,11 @@ import { Redirect } from 'react-router-dom';
 
       },
     }
+
+    const mapStateToProps = state => {
+      return {
+          user: state.auth.user
+      };
+    }
+
+    export  default connect(mapStateToProps)(SearchPage)
