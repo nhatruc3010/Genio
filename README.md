@@ -3,7 +3,11 @@
 ## What is Genio?
 Genio is a tutoring application made for all students from K-12. Many students struggle in school because they are disorganized and they lack study skills; however, tutors can help with that. Tutoring is very important because it gives each student individualized attention that they do not receive in a huge classroom. Tutoring can help students develop good study habits and skills for learning, which can strengthen their subject comprehension. That’s where Genio comes in, it is a great tutoring application where students can look for tutors by subject or class. 
 
-## Homepage
+## Team
+Jennifer Nguyen - Project Manager
+Nhat Trinh - Full- Stack Developer
+Bruce Lin - Machine Learning Developer
+Truc Vo - Front-end Developer
 
 ## Features
 These are some of the features we implemented in Genio:
@@ -17,8 +21,20 @@ These are some of the features we implemented in Genio:
 - [x] Editing/Updating tutor's profile
 
 ## Installing
+
+1. Clone the Repo
+```javascript
+git clone
+```
+2. Install the packages
 ```javascript
 npm install
-
+```
+3. Run
+```javascript
 npm start
+```
+Go to your localhost
+```javascript
+http://localhost:3000
 ```
