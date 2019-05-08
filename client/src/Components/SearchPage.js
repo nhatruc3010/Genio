@@ -3,7 +3,7 @@ import SearchForm from './SearchForm';
 import '../App.css';
 import {MDBContainer,
         MDBRow,
-        MDBCol } from "mdbreact";
+        MDBCol, MDBBtn } from "mdbreact";
 import Advertising from './Advertising';
 import Team from './Team';
 import { Redirect } from 'react-router-dom';
@@ -43,10 +43,15 @@ class SearchPage extends Component {
                         <SearchForm/>
                   </MDBCol>
                 </MDBRow>
+                <MDBRow>
+
+                <MDBBtn style={{marginLeft: "auto", marginRight: "auto", marginTop:"20px", backgroundImage: 'linear-gradient(#ff7043, #ff8c17)'}}> Get Book Recommendation </MDBBtn>
+                </MDBRow>
               </MDBContainer>
 
 
-
+              <br/>
+              <br/>
             </div>
 
 
@@ -80,7 +85,7 @@ class SearchPage extends Component {
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: '0px',
-        paddingTop: '25vh',
+        paddingTop: '15vh',
         overflowY: 'hidden'
       },
       hr:{
