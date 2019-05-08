@@ -95,8 +95,8 @@ static getDerivedStateFromProps(props, state){
                         </div>
                     </div>
                     <div className="col-md-3 price">
-                    <h3 className="hourly-rate">Hourly Rate: { v.hourly_rate }</h3>
-                        <Link to={`/tutorprofile/${v._id}`}><MDBBtn>Check Profile</MDBBtn></Link>
+                    <h3 className="hourly-rate">Hourly Rate: ${ v.hourly_rate }</h3>
+                        <Link to={`/tutorprofile/${v._id}`}><MDBBtn style={{backgroundImage: 'linear-gradient(#81e9ef, #3badd8)'}}>Check Profile</MDBBtn></Link>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@ static getDerivedStateFromProps(props, state){
 
         return(
 
-            <div style={{ padding: '0px 50px 0px 50px' }}>
+            <div style={{ padding: '0px 50px 0px 50px', backgroundImage: 'linear-gradient(white 50%, #b9e4ea)'}}>
                 <div className = 'search-img' style={styles.homeStyle}></div>
                     <div>
 
@@ -130,7 +130,7 @@ static getDerivedStateFromProps(props, state){
                                         </FormGroup>
                                     </MDBCol>
                                     <MDBCol style={styles.updateButton} size="1" md="1">
-                                        <MDBBtn onClick={this.handleSubmit}> <i class="fa fa-search" aria-hidden="true"></i> </MDBBtn>
+                                        <MDBBtn onClick={this.handleSubmit} style={{backgroundImage: 'linear-gradient(#81e9ef, #3badd8)'}}> <i class="fa fa-search" aria-hidden="true"></i> </MDBBtn>
                                     </MDBCol>
                                 </MDBRow>
                             </Form>
@@ -147,7 +147,7 @@ static getDerivedStateFromProps(props, state){
             {/*Sorting Button Here*/}
             <div style={{display: 'flex'}}>
                 <MDBDropdown className = 'sortbutton' isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
-                <MDBDropdownToggle caret color='default'>
+                <MDBDropdownToggle caret style={{backgroundImage: 'linear-gradient(#81e9ef, #3badd8)'}}>
                     Sort By:
                 </MDBDropdownToggle>
 
@@ -188,6 +188,7 @@ const styles = {
       height: '40px',
       alignItems: 'center',
       display: 'block'
+
     },
     card: {
       marginTop: '20px',
