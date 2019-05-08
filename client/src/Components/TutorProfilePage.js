@@ -48,7 +48,6 @@ export default class TutorProfilePage extends Component {
 
   render(){
     var { profile } = this.state;
-    if (!profile) return <Redirect to="/" />
 
     if (profile)
       return (
@@ -107,17 +106,11 @@ export default class TutorProfilePage extends Component {
                     Sunday: Unavailable
                     <br/>
                     </p>
-
-
                   <MDBRow>
-
-
-
-                  <Booking/>
-
+                  <Booking
+                    tutor_id={ profile._id }
+                  />
                   </MDBRow>
-
-
                   </MDBCol>
             </MDBRow>
           </MDBCol>
