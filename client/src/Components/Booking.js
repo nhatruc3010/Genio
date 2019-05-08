@@ -11,32 +11,63 @@ import moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import TimeRange from 'react-time-range';
+import { connect } from "react-redux";
+import axios from "axios";
+import { Redirect } from 'react-router-dom';
+
 import Payment from './Payment';
 
-export default class Booking extends Component {
+class Booking extends Component {
   state = {
     modal: false,
     payModal: false,
     date: new moment(),
     startTime: new moment(),
-    endTime: new moment()
+    endTime: new moment(),
+    redirect: false
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.user !== state.user) {
+      return {
+        user: props.user
+      };
+    }
+
+    return null;
   }
 
   toggle = () => {
     this.setState({
-      modal: !this.state.modal,
-      
+      modal: !this.state.modal
     });
   }
 
   newtoggle = () => {
     this.setState({
-      modal: this.state.modal,
       payModal: !this.state.payModal,
     });
   }
 
+  submit = () => {
+    axios.post('/sessions/book', {
+      tutor_id: this.props.tutor_id,
+      tutee_id: this.state.user._id,
+      start_time: this.state.startTime.valueOf(),
+      end_time: this.state.endTime.valueOf()
+    })
+      .then(res => {
+        alert('Thanks for booking with Genio! Your tutor has been notified!');
+        
+        this.setState({ redirect: true });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
+    if (this.state.redirect) return <Redirect to="/search" /> 
     return (
     <div>
       <MDBBtn onClick={this.toggle}
@@ -56,12 +87,12 @@ export default class Booking extends Component {
               Pick a Date: &nbsp; &nbsp;
 
               <SingleDatePicker
-              date={this.state.date} // momentPropTypes.momentObj or null
-              onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
-              focused={this.state.focused} // PropTypes.bool
-              onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-              id="date1"
-              required={true}
+                date={this.state.date} // momentPropTypes.momentObj or null
+                onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
+                focused={this.state.focused} // PropTypes.bool
+                onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+                id="date1"
+                required={true}
               />
 
               <br/>
@@ -70,8 +101,8 @@ export default class Booking extends Component {
               <TimeRange
                   startTime={this.state.startTime}
                   endTime={this.state.endTime}
-                  startMoment={this.state.startTime}
-                  endMoment={this.state.endTime}
+                  // startMoment={this.state.startTime}
+                  // endMoment={this.state.endTime}
                   onChange={({startTime, endTime}) => this.setState({startTime, endTime})}
               />
             </form>
@@ -127,3 +158,11 @@ const styles = {
     color: 'black'
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user
+  };
+};
+
+export default connect(mapStateToProps, null)(Booking);
