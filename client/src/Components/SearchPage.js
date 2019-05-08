@@ -80,7 +80,7 @@ class SearchPage extends Component {
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: '0px',
-        paddingTop: '30vh',
+        paddingTop: '25vh',
         overflowY: 'hidden'
       },
       hr:{

@@ -71,6 +71,7 @@ render() {
               <br/>
               <h2 className="titlesearch"> Better Teaching Better {this.state.changingText}</h2>
               <br/>
+              <br/>
               <Form className="form-wrapper" onSubmit={this.onSubmit}>
                   <MDBRow>
                       <MDBCol sm="12">
