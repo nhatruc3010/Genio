@@ -104,6 +104,16 @@ static getDerivedStateFromProps(props, state){
     }
 
     render(){
+      if (this.state.sortOption === "low") {
+              this.state.tutors.sort((a,b) => ((a.hourly_rate) - (b.hourly_rate)));
+          }
+          else if (this.state.sortOption === "high"){
+              this.state.tutors.sort((a,b) => ((b.hourly_rate) - (a.hourly_rate)));
+          }
+
+
+
+
         return(
 
             <div style={{ padding: '0px 50px 0px 50px' }}>
@@ -128,22 +138,7 @@ static getDerivedStateFromProps(props, state){
                     </div>
 
       <MDBContainer>
-                    <div style={{marginLeft: "5.5%"}}>
-                    <Button style={this.state.biology?  styles.activeStyle: styles.inactiveStyle}
-                            onClick={() => this.setState({biology: !this.state.biology})}>Biology</Button>
-                    <Button style={this.state.chemistry?  styles.activeStyle: styles.inactiveStyle}
-                            onClick={() => this.setState({chemistry: !this.state.chemistry})}>Chemistry</Button>
-                    <Button style={this.state.english?  styles.activeStyle: styles.inactiveStyle}
-                            onClick={() => this.setState({english: !this.state.english})}>English</Button>
-                    <Button style={this.state.history?  styles.activeStyle: styles.inactiveStyle}
-                            onClick={() => this.setState({history: !this.state.history})}>History</Button>
-                    <Button style={this.state.music?  styles.activeStyle: styles.inactiveStyle}
-                            onClick={() => this.setState({music: !this.state.music})}>Music</Button>
-                    <Button style={this.state.math?  styles.activeStyle: styles.inactiveStyle}
-                            onClick={() => this.setState({math: !this.state.math})}>Math</Button>
-                    <Button style={this.state.physic?  styles.activeStyle: styles.inactiveStyle}
-                            onClick={() => this.setState({physic: !this.state.physic})}>Physics</Button>
-                    </div>
+
 
 
 
@@ -193,20 +188,6 @@ const styles = {
       height: '40px',
       alignItems: 'center',
       display: 'block'
-    },
-    activeStyle:{
-      color: 'white',
-      background: ' linear-gradient(to right, #d3a13b 30%, #F7BB97 100%)',
-      borderColor: 'white',
-      margin: '10px',
-      font: ' bold 20px Economica'
-    },
-    inactiveStyle:{
-      color: 'white',
-      background: ' linear-gradient(to right, #b4dfe5ff 0%, #33cccc 100%)',
-      borderColor: 'white',
-      margin: '10px',
-      font: ' bold 20px Economica'
     },
     card: {
       marginTop: '20px',
