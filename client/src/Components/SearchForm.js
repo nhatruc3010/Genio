@@ -77,8 +77,8 @@ render() {
                       <MDBCol sm="12">
                           <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                               <Input style={{color: 'black'}}value={this.state.subject} onChange={this.handleChange} name="subject" className="search-subject" bsSize="lg" placeholder="Enter Subject" />
-                              <MDBBtn type="submit" className="search-button" style={styles.button}
-                             color="btn btn-deep-orange login">Search</MDBBtn>
+                              <br/>
+                              <MDBBtn type="submit" className="search-button" style={styles.button}>Search</MDBBtn>
                           </FormGroup>
                       </MDBCol>
                   </MDBRow>
@@ -93,6 +93,7 @@ render() {
     button:{
       font: ' bold 16px Economica',
       color: 'white',
+      backgroundImage: 'linear-gradient(#ff7043, #ff8c17)'
 
     }
   }
