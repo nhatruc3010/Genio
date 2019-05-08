@@ -31,33 +31,33 @@ class TutorsPage extends Component {
       physics: false,
       history: false,
       mon: {
-               start: "00:00",
-               end: "23:00"
-           },
+          start: "00:00",
+          end: "23:00"
+      },
      tue: {
-               start: "00:00",
-               end: "23:00"
-           },
+          start: "00:00",
+          end: "23:00"
+      },
       wed: {
-               start: "00:00",
-                end: "23:00"
-           },
+          start: "00:00",
+          end: "23:00"
+      },
       thur: {
-                start: "00:00",
-                end: "23:00"
-            },
+          start: "00:00",
+          end: "23:00"
+      },
       fri: {
-                start: "00:00",
-                end: "23:00"
-           },
+          start: "00:00",
+          end: "23:00"
+      },
       sat: {
-                start: "00:00",
-                end: "23:00"
-           },
+          start: "00:00",
+          end: "23:00"
+      },
        sun: {
-                start: "00:00",
-                end: "23:00"
-            },
+          start: "00:00",
+          end: "23:00"
+        },
         monNA: false, tueNA: false, wedNA: false, thuNA: false, friNA: false, satNA: false, sunNA: false,
     };
   }
@@ -69,10 +69,7 @@ class TutorsPage extends Component {
           return {
             ...state,
             user: props.user,
-            about_me: '',
-            hourly_rate: '',
-            address: '',
-            profile_pic: ''
+            ...props.user
           };
         } else {
           return {
@@ -99,15 +96,28 @@ handleChange = event => {
 
 
 handleTutorEditSubmit = () => {
+  let { 
+    chemistry, physics, english, math, history, music, biology,
+    mon, tues, wed, thu, fri, sat, sun, user,
+    monNA, tueNA, wedNA, thuNA, friNA, satNA, sunNA
+   } = this.state;
   axios.post(
-    '/profile/edit', {
-        file: this.state.file
-    })
-    .then(res=>{
-      if(res.data.success){
-
-
-
+    'http://localhost:30001/profile/edit', { _id: user._id, data: {
+      user : {
+        profile_pic: this.state.file,
+        address: this.state_address,
+        about_me: this.state.about_me,
+        hourly_rate: this.state.hourly_rate,
+        subjects : {
+          chemistry, physics, english, math, history, music, biology 
+        },
+        ...this.state.user
+      },
+      mon : monNA ? 'N/A' : mon, tues: tueNA ? 'N/A' : tueNA, wed: wedNA ? 'N/A' : wed, thu: thuNA ? 'N/A' : thu, fri: friNA ? 'N/A' : fri, sat: satNA ? 'N/A' : sat, sun: sunNA ? 'N/A' : sun,
+    }})
+    .then(res => {
+      if(res.data.success) { 
+        this.setState({ isEditing: false });
       }
     })
     .catch(err => {
@@ -137,25 +147,25 @@ renderProfileInfo() {
     <MDBCol md="6">
         <div ><br/>
           <b>Upload New Image</b><br/><FileBase64 onDone={file => this.setState({ file: file.base64 })}/><br/><br/>
-          <b>Hourly Rate</b><br/><input className="form-control" onChange={this.handleChange} name="hourlyRate" type="text" value={this.state.user.hourly_rate}/>
-          <b>About Me</b><br/><textarea className="form-control" rows="10" onChange={this.handleChange} name="aboutMe" type="text" value={this.state.user.about_me}/><br/>
+          <b>Hourly Rate</b><br/><input className="form-control" onChange={this.handleChange} name="hourly_rate" type="text" value={this.state.hourly_rate}/>
+          <b>About Me</b><br/><textarea className="form-control" rows="10" onChange={this.handleChange} name="about_me" type="text" value={this.state.about_me}/><br/>
           <b>Address</b><br/><input className="form-control" onChange={this.handleChange} name="address" type="text" value={this.state.address}/><br/>
 
           <b>Subjects</b><br/>
-          <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="biology"  checked={this.state.biology} onClick={() =>  this.setState({ biology: !this.state.biology })}/>
-          <label class="custom-control-label"  for="biology">Biology</label>
+            <div class="custom-control custom-checkbox custom-control-inline">
+            <input type="checkbox" class="custom-control-input" id="biology"  checked={this.state.biology} onClick={() =>  this.setState({ biology: !this.state.biology })}/>
+            <label class="custom-control-label" for="biology">Biology</label>
           </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="chemistry" checked={this.state.chemistry} onClick={() =>  this.setState({ chemistry: !this.state.chemistry })}/>
-          <label class="custom-control-label"    for="chemistry">Chemistry</label>
-              </div>
+            <input type="checkbox" class="custom-control-input" id="chemistry" checked={this.state.chemistry} onClick={() =>  this.setState({ chemistry: !this.state.chemistry })}/>
+            <label class="custom-control-label" for="chemistry">Chemistry</label>
+           </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
-          <input type="checkbox" class="custom-control-input" id="english"  checked={this.state.english} onClick={() =>  this.setState({ english: !this.state.english})}/>
-          <label class="custom-control-label"    for="english">English</label>
-              </div>
+            <input type="checkbox" class="custom-control-input" id="english"  checked={this.state.english} onClick={() =>  this.setState({ english: !this.state.english})}/>
+            <label class="custom-control-label"    for="english">English</label>
+          </div>
 
           <div class="custom-control custom-checkbox custom-control-inline">
           <input type="checkbox" class="custom-control-input" id="history"  checked={this.state.history} onClick={() =>  this.setState({ history: !this.state.history})}/>
@@ -282,7 +292,7 @@ Sat: {this.state.sat.start} - {this.state.sat.end}
               maxValue={"23:00"}
               minValue={"00:00"}
               name={"sat"}
-              onChange={(sat) => this.setState({ sat})}
+              onChange={(sat) => this.setState({ sat })}
               step={60}
               value={this.state.sat}/>
 
@@ -290,7 +300,6 @@ Sat: {this.state.sat.start} - {this.state.sat.end}
       <input type="checkbox" value={this.state.satNA} onChange={() => this.setState({ satNA: !this.state.satNA })} class="custom-control-input" id="saturday"/>
       <label class="custom-control-label" for="saturday">Unavailable</label>
       </div>
-
 <br/>
 <br/>
 
@@ -301,7 +310,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
               maxValue={"23:00"}
               minValue={"00:00"}
               name={"sun"}
-              onChange={(sun) => this.setState({ sun})}
+              onChange={(sun) => this.setState({ sun })}
               step={60}
               value={this.state.sun}/>
 
@@ -316,7 +325,6 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
           <button className="btn btn-deep-orange" onClick={this.handleTutorEditSubmit}>Submit Changes</button>
         </div>
       </MDBCol>:
-
     <MDBCol md="6">
     <h6 className="font-weight-bold my-3">
           Subjects:
@@ -396,7 +404,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
             Feedback
             </h2>
 
-            <MDBMedia style={{border:" 2px groove", padding: "25px", marginBottom: "20px"}}>
+            <MDBMedia style={{ border:" 2px groove", padding: "25px", marginBottom: "20px" }}>
                 <MDBMedia left href="#" className="mr-3">
                 <MDBMedia object src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600108/29213218-stock-vector-female-avatar-silhouette-profile-pictures.jpg?ver=6" alt="Generic placeholder image" style={{width:"90px", height:"90px"}} />
                 </MDBMedia>
@@ -422,8 +430,6 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                 </MDBMedia>
             </MDBMedia>
 
-
-
             {/* <MDBMedia style={{border:"2px groove", padding: "25px", marginBottom: "20px"}}>
                 <MDBMedia left href="#" className="mr-3">
                 <MDBMedia object src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600108/29213218-stock-vector-female-avatar-silhouette-profile-pictures.jpg?ver=6" alt="Generic placeholder image" style={{width:"90px", height:"90px"}} />
@@ -442,11 +448,8 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                              onStarClick={this.onStarClick.bind(this)}
                            />
                      </div>
-
-
                 </MDBMedia>
             </MDBMedia> */}
-
 
           </MDBCol>
         </MDBRow>
