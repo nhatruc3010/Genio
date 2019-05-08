@@ -41,8 +41,8 @@ class NavBar extends Component {
       if(!this.state.user){
       return (
         <div>
-          <Navbar style ={styles.navBackground} expand="md" className="center">
-            <NavbarToggler onClick={this.toggle} />
+          <Navbar style ={styles.navBackground} expand="md" className="navigation__navbar" light>
+            <NavbarToggler onClick={this.toggle} className="mr-2"/>
             <Collapse isOpen={this.state.isOpen} navbar>
               <NavbarBrand>
                   <NavLink style={styles.logo} href="/">Genio</NavLink>
