@@ -99,7 +99,7 @@ handleChange = event => {
 
 
 handleTutorEditSubmit = () => {
-  let { 
+  let {
     chemistry, physics, english, math, history, music, biology,
     mon, tues, wed, thu, fri, sat, sun, user,
     monNA, tueNA, wedNA, thuNA, friNA, satNA, sunNA
@@ -112,7 +112,7 @@ handleTutorEditSubmit = () => {
         about_me: this.state.about_me,
         hourly_rate: this.state.hourly_rate,
         subjects : {
-          chemistry, physics, english, math, history, music, biology 
+          chemistry, physics, english, math, history, music, biology
         },
         ...this.state.user
       },
@@ -137,10 +137,10 @@ renderSubjects(tutor) {
         if (tutor.subjects[v] === true)
             subjects.push(v);
     });
-    
+
     return subjects.join(',');
   }
-  
+
   return 'N/A';
 }
 
@@ -356,7 +356,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
         <h6 className="font-weight-bold my-3">
             Availability:
           </h6>
-          { this.state.user.schedule ? 
+          { this.state.user.schedule ?
             <p className="font-weight-normal">
               Mon: { this.state.user.schedule.mon.start } - { this.state.user.schedule.mon.end }
               <br/>
@@ -381,6 +381,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
 
     console.log(this.state.user);
     return (
+      <div style={{backgroundImage: 'linear-gradient(white 50%, #b9e4ea)'}}>
     <MDBContainer>
         <MDBRow>
         <MDBCol md="12">
@@ -397,7 +398,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                       <br/>
                       <br/>
                         {this.state.isEditing? <p></p>: <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> ${this.state.user.hourly_rate}</p>}
-                        {this.state.isEditing ? <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Cancel Edit</Button> : <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Edit</Button>}
+                        {this.state.isEditing ? <Button style={{backgroundImage: 'linear-gradient(#ff7043, #ff8c17)'}} onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Cancel Edit</Button> : <Button style={{backgroundImage: 'linear-gradient(#ff7043, #ff8c17)'}} onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Edit</Button>}
                     </MDBView>
             </MDBCol>
               {this.renderProfileInfo()}
@@ -461,6 +462,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
           </MDBCol>
         </MDBRow>
     </MDBContainer>
+    </div>
 );
 }
 }
