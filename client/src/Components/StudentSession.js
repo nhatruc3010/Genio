@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Fa} from 'mdbreact';
 import { Table, Button, Container, Row, Col, } from 'reactstrap';
- 
-import { connect } from 'react-redux';
 
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { getSessions } from './redux/actions/sessions';
 
 class StudentSession extends Component{
@@ -49,7 +49,7 @@ class StudentSession extends Component{
         this.props.getSessions(this.state.user._id, this.state.user.type);
     }
 
-    renderAllSessions = () => 
+    renderAllSessions = () =>
         this.state.sessions ?
         <Table>
               <thead>
@@ -66,7 +66,7 @@ class StudentSession extends Component{
               </tr>
               </thead>
               <tbody>{
-                    this.state.sessions.map((session) => 
+                    this.state.sessions.map((session) =>
                       <tr>
                           <td style={{ paddingTop: 25 }}>{session._id}</td>
                           <td style={{ paddingTop: 25 }}>{session.tutorID}</td>
@@ -91,7 +91,7 @@ class StudentSession extends Component{
                       </tr>
                     )}
               </tbody>
-          </Table> : 
+          </Table> :
 
                 <div style={{ margin: '10% 0 10% 0'}}>
                     <h5>No Booking Tutor Yet!</h5>
@@ -101,6 +101,8 @@ class StudentSession extends Component{
                 </div>;
 
     render() {
+      if (!this.state.user) return <Redirect to="/" />
+
         return(
           <div>
             <h1 className="h1-responsive font-weight-bold text-center my-5">Sessions</h1>

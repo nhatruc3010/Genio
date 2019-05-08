@@ -3,7 +3,7 @@ import { MDBRow, MDBCol, MDBMedia, MDBView, MDBBtn } from "mdbreact";
 import { MDBContainer } from "mdbreact";
 import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
-
+import { Redirect } from 'react-router-dom';
 import Booking from './Booking';
 import 'react-dates/lib/css/_datepicker.css';
 
@@ -39,16 +39,17 @@ export default class TutorProfilePage extends Component {
           if (tutor.subjects[v] === true)
               subjects.push(v);
       });
-      
+
       return subjects.join(',');
     }
-    
+
     return 'N/A';
   }
 
   render(){
     var { profile } = this.state;
-    
+    if (!profile) return <Redirect to="/" />
+
     if (profile)
       return (
       <MDBContainer>

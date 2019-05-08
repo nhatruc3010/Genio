@@ -6,6 +6,7 @@ import {MDBContainer,
         MDBCol } from "mdbreact";
 import Advertising from './Advertising';
 import Team from './Team';
+import { Redirect } from 'react-router-dom';
 
   export default class SearchPage extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ import Team from './Team';
       }
 
       render(){
+        if (!this.state.user) return <Redirect to="/" />
         return(
           <div>
             <div className="background-image" style={ styles.homeStyle }>
