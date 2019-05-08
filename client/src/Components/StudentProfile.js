@@ -4,6 +4,7 @@ import {Button, FormGroup, Label, Input } from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import Booking from './Booking';
 import Recommendation from './Recommender'
+import { Redirect } from 'react-router-dom';
 
 export default class StudentProfile extends Component {
   constructor(props){
@@ -26,6 +27,8 @@ export default class StudentProfile extends Component {
   this.setState({rating: nextValue});
   }
   render(){
+    if (!this.state.user) return <Redirect to="/" />
+
     return (
 
     <MDBContainer>
@@ -83,7 +86,7 @@ export default class StudentProfile extends Component {
             </MDBCol>
         </MDBRow>
       </MDBCol>
-      
+
       <div>
         <Recommendation/>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 import { Container, Row, Col, } from 'reactstrap';
+import { Redirect } from 'react-router-dom';
 
 export default class TutorsSession extends Component{
 
@@ -41,6 +42,7 @@ renderAllSessions(){
 
 
     render() {
+      if (!this.state.user) return <Redirect to="/" />
         return(
           <div>
             <h1 className="h1-responsive font-weight-bold text-center my-5">Sessions</h1>

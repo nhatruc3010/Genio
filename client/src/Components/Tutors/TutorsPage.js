@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { render} from 'react-dom';
 import TimeRangeSlider from 'react-time-range-slider';
+import { Redirect } from 'react-router-dom';
 
 class TutorsPage extends Component {
   constructor(props) {
@@ -359,6 +360,8 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
 
 }
   render(){
+    if (!this.state.user) return <Redirect to="/" />
+
     console.log(this.state.user);
     return (
     <MDBContainer>

@@ -9,6 +9,8 @@ import { MDBContainer,
          MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from 'mdbreact';
 import { connect } from 'react-redux';
 import { getAllTutors } from './redux/actions/auth';
+import { Redirect } from 'react-router-dom';
+
 
 
 class SearchResults extends Component{
@@ -111,6 +113,7 @@ static getDerivedStateFromProps(props, state){
               this.state.tutors.sort((a,b) => ((b.hourly_rate) - (a.hourly_rate)));
           }
 
+  if (!this.state.user) return <Redirect to="/" />
 
 
 
