@@ -379,7 +379,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
     console.log(this.state.user);
     return (
       <div style={{backgroundImage: 'linear-gradient(white 50%, #b9e4ea)'}}>
-    <MDBContainer >
+    <MDBContainer>
         <MDBRow>
         <MDBCol md="12">
           <h1 className="h1-responsive font-weight-bold text-center my-5">My Profile</h1>
@@ -395,7 +395,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                       <br/>
                       <br/>
                         {this.state.isEditing? <p></p>: <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> ${this.state.user.hourly_rate}</p>}
-                        {this.state.isEditing ? <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Cancel Edit</Button> : <Button color="btn btn-deep-orange login" onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Edit</Button>}
+                        {this.state.isEditing ? <Button style={{backgroundImage: 'linear-gradient(#ff7043, #ff8c17)'}} onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Cancel Edit</Button> : <Button style={{backgroundImage: 'linear-gradient(#ff7043, #ff8c17)'}} onClick={() => this.setState({ isEditing: !this.state.isEditing })}>Edit</Button>}
                     </MDBView>
             </MDBCol>
               {this.renderProfileInfo()}

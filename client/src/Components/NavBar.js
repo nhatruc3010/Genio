@@ -68,7 +68,7 @@ class NavBar extends Component {
     else{
       return(
         <div>
-          <Navbar style ={styles.navBackground} expand="md" className="center">
+          <Navbar style ={styles.navBackground} expand="md" className="navigation__navbar" light>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <NavbarBrand>

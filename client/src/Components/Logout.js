@@ -75,7 +75,8 @@ class Logout extends Component {
 const styles = {
   button:{
     font: ' bold 20px Economica',
-    color: 'black'
+    color: 'black',
+    zIndex: "100"
   }
 }
 

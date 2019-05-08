@@ -56,7 +56,7 @@ static getDerivedStateFromProps(props, state) {
                     style={styles.imageStyles}
                   />
                   <br/>
-              <Button href="/studentsession" color="btn btn-deep-orange" style={{marginLeft: "30%"}}> View Sessions </Button>
+              <Button href="/studentsession" style={{marginLeft: "30%", backgroundImage: 'linear-gradient(#ff7043, #ff8c17)'}}> View Sessions </Button>
               <br/>
               <br/>
               <br/>
