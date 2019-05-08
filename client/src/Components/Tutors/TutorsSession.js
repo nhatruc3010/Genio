@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 import { Container, Row, Col, } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
-
-export default class TutorsSession extends Component{
+import { connect } from 'react-redux';
+class TutorsSession extends Component{
 
     constructor(props) {
         super(props);
@@ -41,6 +41,16 @@ renderAllSessions(){
 }
 
 
+static getDerivedStateFromProps(props, state) {
+     if (state.user !== props.user){
+       return {
+         user: props.user
+       };
+     }
+     return null;
+   }
+
+
     render() {
       if (!this.state.user) return <Redirect to="/" />
         return(
@@ -74,6 +84,12 @@ const styles = {
         color: 'white',
         minHeight: '50vh'
     },
-
-
 }
+
+const mapStateToProps = state => {
+  return {
+      user: state.auth.user
+  };
+}
+
+export  default connect(mapStateToProps)(TutorsSession)

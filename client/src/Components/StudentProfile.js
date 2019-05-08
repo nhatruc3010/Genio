@@ -5,8 +5,9 @@ import StarRatingComponent from 'react-star-rating-component';
 import Booking from './Booking';
 import Recommendation from './Recommender'
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default class StudentProfile extends Component {
+class StudentProfile extends Component {
   constructor(props){
     super(props);
 
@@ -22,6 +23,17 @@ export default class StudentProfile extends Component {
     };
 
   }
+
+
+static getDerivedStateFromProps(props, state) {
+             if (state.user !== props.user){
+               return {
+                 user: props.user
+               };
+             }
+             return null;
+}
+
 
   onStarClick(nextValue, prevValue, name) {
   this.setState({rating: nextValue});
@@ -241,3 +253,10 @@ const styles ={
     color: 'black'
   }
 }
+const mapStateToProps = state => {
+  return {
+      user: state.auth.user
+  };
+}
+
+export  default connect(mapStateToProps)(StudentProfile)

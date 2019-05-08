@@ -113,9 +113,6 @@ static getDerivedStateFromProps(props, state){
               this.state.tutors.sort((a,b) => ((b.hourly_rate) - (a.hourly_rate)));
           }
 
-  if (!this.state.user) return <Redirect to="/" />
-
-
 
         return(
 
