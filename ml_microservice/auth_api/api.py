@@ -134,8 +134,9 @@ def train(id):
 
         errors.append(sess.run(err_sum, feed_dict={v0: train, W: cur_w, vb: cur_vb, hb: cur_hb}))
 
-        # if i % 10 == 0:
-        #     print("Error in epoch {0} is: {1}".format(i, errors[i]))
+        if i % 10 == 0:
+            print("Error in epoch {0} is: {1}".format(i, errors[i]))
+    
     inputUser = [train[id]]
     
     # Feeding in the User and Reconstructing the input
@@ -191,7 +192,8 @@ def train(id):
     # creating a data frame for unread books with their names, authors and recommendation scores
     unread_books_with_scores = pd.DataFrame({
         'book_name': unread_books_names,
-        'book_authors': unread_books_authors
+        'book_authors': unread_books_authors,
+        'score': unread_books_scores
     })
 
     # creating a data frame for read books with the names and authors
