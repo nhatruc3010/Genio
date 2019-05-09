@@ -68,7 +68,6 @@ static getDerivedStateFromProps(props, state){
     }
 
     renderSubjects(tutor) {
-        console.log(tutor)
         let subjects = [];
 
         Object.keys(tutor.subjects).forEach((v,i) => {
@@ -76,7 +75,7 @@ static getDerivedStateFromProps(props, state){
                 subjects.push(v);
         });
 
-        return subjects.join(',');
+        return subjects.join(', ');
     }
 
     renderTutors() {

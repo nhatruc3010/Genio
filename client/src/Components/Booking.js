@@ -51,8 +51,8 @@ class Booking extends Component {
 
   submit = () => {
     let dateStr = this.state.date.format('MMMM DD, YYYY ');
-    let startingStr = this.state.startingTime.format('HH:MM');
-    let endingStr = this.state.endingTime.format('HH:MM');
+    let startingStr = this.state.startTime.format('HH:MM');
+    let endingStr = this.state.endTime.format('HH:MM');
 
     axios.post('http://localhost:3001/sessions/book', {
       tutorID: this.props.tutor_id,
@@ -72,7 +72,7 @@ class Booking extends Component {
 
   render() {
     if (this.state.redirect) return <Redirect to="/search" /> 
-    console.log(this.state)
+    
     return (
     <div>
       <MDBBtn onClick={this.toggle}
@@ -87,7 +87,7 @@ class Booking extends Component {
         <MDBModalHeader toggle={this.toggle}>Book an appointment</MDBModalHeader>
         <MDBModalBody>
         <MDBRow>
-          <MDBCol >
+          <MDBCol>
             <form>
               Pick a Date: &nbsp; &nbsp;
 
@@ -108,7 +108,7 @@ class Booking extends Component {
                   // endTime={this.state.endTime}
                   startMoment={this.state.startTime}
                   endMoment={this.state.endTime}
-                  onChange={({startTime, endTime}) => this.setState({startTime: new moment(startTime), endTime: new moment(endTime)})}
+                  onChange={({startTime, endTime}) => this.setState({ startTime: new moment(startTime), endTime: new moment(endTime) })}
               />
             </form>
           </MDBCol>

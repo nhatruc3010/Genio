@@ -58,26 +58,27 @@ class TuteeSessions extends Component{
                   <th>Tutor</th>
                   <th>Dates</th>
                   <th>Time</th>
-                  <th>Place of Session</th>
                   <th>Price</th>
                   <th>Status</th>
-                  <th>View Details</th>
 
               </tr>
               </thead>
               <tbody>{
-                    this.state.sessions.map((session) =>
+                    this.state.sessions.map((session) => {
+                        let startDate = new Date(session.start_time);
+                        let endDate = new Date(session.end_time);
+
+                        return (
                       <tr>
                           <td style={{ paddingTop: 25 }}>{session._id}</td>
-                          <td style={{ paddingTop: 25 }}>{session.tutorID}</td>
-                          <td style={{ paddingTop: 25 }}>{new Date(session.time_created).toUTCString()}</td>
-                          <td style={{ paddingTop: 25 }}>{session.start_time}</td>
-                          <td style={{ paddingTop: 25 }}>{session.address}</td>
-                          <td style={{ paddingTop: 25 }}>{session.total}</td>
+                          <td style={{ paddingTop: 25 }}>{session.tutor_id}</td>
+                          <td style={{ paddingTop: 25 }}>{new Date(session.time_created).toLocaleString().split(',')[0]}</td>
+                          <td style={{ paddingTop: 25 }}>{startDate.getHours()}:{startDate.getMinutes()} - {endDate.getHours()}:{endDate.getMinutes()}</td>
+                          <td style={{ paddingTop: 25 }}>${session.subtotal + session.tax}</td>
                           <td style={{ paddingTop: 25 }}>{session.cancelled ?  'Cancelled' : 'Active' }</td>
 
-                          <td>
-                          <Button
+                          {/* <td> */}
+                          {/* <Button
                           onClick={() => {
                             this.setState({ selectedBooking: session });
                             this.toggleModal();}}
@@ -85,10 +86,11 @@ class TuteeSessions extends Component{
                           className="text-center"
                           style={{ margin: 0 }}>
                           <Fa icon="eye"></Fa>
-                          </Button>
-                          </td>
+                          </Button> */}
+                          {/* </td> */}
 
                       </tr>
+                        )}
                     )}
               </tbody>
           </Table> :
@@ -107,18 +109,17 @@ class TuteeSessions extends Component{
           <div>
             <h1 className="h1-responsive font-weight-bold text-center my-5">Sessions</h1>
           <Container style={{ marginTop: '10em' }}>
-                                <Row style = {styles.textBlock}>
-                                    <Col sm={12}>
-                                        <div className="row" style={{borderBottomColor: "transparent",padding: '25px'}}>
+                <Row style = {styles.textBlock}>
+                    <Col sm={12}>
+                        <div className="row" style={{ borderBottomColor: "transparent",padding: '25px' }}>
 
-                                        {this.renderAllSessions()}
+                        {this.renderAllSessions()}
 
-                                        </div>
-
-                                    </Col>
-                                </Row>
-                            </Container>
-                            </div>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+            </div>
         );
     }
 }

@@ -7,6 +7,7 @@ export const getSessions = (_id, type) => {
     return dispatch => {
         axios.get(`${SERVER_ENDPOINT}/sessions/${type}/${_id}`)
             .then(res => {
+                console.log(res.data.sessions)
                 dispatch({
                     type: GET_SESSIONS,
                     payload: res.data.sessions
