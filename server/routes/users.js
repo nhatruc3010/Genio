@@ -25,14 +25,14 @@ router.get('/tutors/:subject', async (req,res) => {
         if (inferredSubject) {
             Tutor.find({
                 subjects: {
-                    [subject]: true 
+                    [inferredSubject]: { $eq: true }
                 }
             }, (err,t) => {
                 if (err) return res.status(400).json({ success: false, err });
 
                 return res.status(200).json({
                     success: true,
-                    tutors
+                    tutors: t
                 });
             });
         } else {
@@ -126,7 +126,7 @@ function inferSubject(subject, subjectDict) {
 
     subjectDict.forEach(v => {
         if (v.search(subject) !== -1)
-            ret = subject;
+            ret = v;
     });
 
     return ret;
