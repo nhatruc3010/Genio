@@ -82,7 +82,7 @@ class NavBar extends Component {
                   <NavLink style={styles.item} href="/contact/">CONTACT</NavLink>
                 </NavItem>
                 {this.state.user.type==="tutee"? <NavItem>
-                  <NavLink style={styles.item} href="/studentprofile/">PROFILE</NavLink>
+                  <NavLink style={styles.item} href="/studentsession/">SESSIONS</NavLink>
                 </NavItem>: <React.Fragment><NavItem>
                   <NavLink style={styles.item} href="/tutoredit/">PROFILE</NavLink>
                 </NavItem>
