@@ -92,8 +92,11 @@ router.post('/profile/edit', async (req,res) => {
         &&  data
     ) {
         try {
+            console.log(data);
             let tutor = await Tutor.findOneAndUpdate({ _id }, data).exec();
             let tutee, user;
+
+            console.log(tutor)
 
             if (!tutor) {
                 tutee = await Tutee.findOne({ _id }, data).exec();

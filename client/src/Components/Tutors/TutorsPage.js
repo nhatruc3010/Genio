@@ -108,7 +108,7 @@ handleTutorEditSubmit = () => {
     'http://localhost:3001/profile/edit', { _id: user._id, data: {
       user : {
         profile_pic: this.state.file,
-        address: this.state_address,
+        address: this.state.address,
         about_me: this.state.about_me,
         hourly_rate: this.state.hourly_rate,
         subjects : {
@@ -377,6 +377,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
 
 }
   render(){
+    console.log(this.state.hourly_rate)
     if (!this.state.user) return <Redirect to="/" />
 
     console.log(this.state.user);
