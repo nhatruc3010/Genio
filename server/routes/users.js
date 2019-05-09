@@ -93,7 +93,7 @@ router.post('/profile/edit', async (req,res) => {
     ) {
         try {
             console.log(data);
-            let tutor = await Tutor.findOneAndUpdate({ _id }, data).exec();
+            let tutor = await Tutor.findOneAndUpdate({ _id }, { ...data.user }).exec();
             let tutee, user;
 
             console.log(tutor)

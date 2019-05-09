@@ -50,13 +50,15 @@ class Booking extends Component {
   }
 
   submit = () => {
-    let dateStr = this.state.date.format('MMMM DD, YYYY');
-    let startTimeStr
+    let dateStr = this.state.date.format('MMMM DD, YYYY ');
+    let startingStr = this.state.startingTime.format('HH:MM');
+    let endingStr = this.state.endingTime.format('HH:MM');
+
     axios.post('http://localhost:3001/sessions/book', {
       tutorID: this.props.tutor_id,
       tuteeID: this.state.user._id,
-      startTime: this.state.startTime.unix(),
-      endTime: this.state.endTime.unix()
+      startTime: new Date(`${dateStr} ${startingStr}`).valueOf(),
+      endTime: new Date(`${dateStr} ${endingStr}`).valueOf()
     })
       .then(res => {
         alert('Thanks for booking with Genio! Your tutor has been notified!');

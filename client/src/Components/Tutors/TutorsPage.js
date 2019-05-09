@@ -45,7 +45,7 @@ class TutorsPage extends Component {
           start: "00:00",
           end: "23:00"
       },
-      thur: {
+      thu: {
           start: "00:00",
           end: "23:00"
       },
@@ -90,7 +90,6 @@ class TutorsPage extends Component {
 
 
 handleChange = event => {
-  console.log(event)
   this.setState({
     [event.target.name]: event.target.value,
   });
@@ -101,12 +100,14 @@ handleChange = event => {
 handleTutorEditSubmit = () => {
   let {
     chemistry, physics, english, math, history, music, biology,
-    mon, tues, wed, thu, fri, sat, sun, user,
+    mon, tue, wed, thu, fri, sat, sun, user,
     monNA, tueNA, wedNA, thuNA, friNA, satNA, sunNA
-   } = this.state;
+  } = this.state;
+
   axios.post(
     'http://localhost:3001/profile/edit', { _id: user._id, data: {
       user : {
+        ...this.state.user,
         profile_pic: this.state.file,
         address: this.state.address,
         about_me: this.state.about_me,
@@ -114,14 +115,17 @@ handleTutorEditSubmit = () => {
         subjects : {
           chemistry, physics, english, math, history, music, biology
         },
-        ...this.state.user
-      },
-      mon : monNA ? 'N/A' : mon, tues: tueNA ? 'N/A' : tueNA, wed: wedNA ? 'N/A' : wed, thu: thuNA ? 'N/A' : thu, fri: friNA ? 'N/A' : fri, sat: satNA ? 'N/A' : sat, sun: sunNA ? 'N/A' : sun,
+        schedule: {
+          mon, tue, wed, thu, fri, sat, sun,
+          monNA, tueNA, wedNA, thuNA, friNA, satNA, sunNA
+        }
+      }
     }})
     .then(res => {
       if(res.data.success) { 
         // this.setState({ isEditing: false });
         this.props.getUser(this.state.user._id);
+        this.setState({ isEditing: false });
       }
     })
     .catch(err => {
@@ -254,16 +258,16 @@ Wed: {this.state.wed.start} - {this.state.wed.end}
 <br/>
 <br/>
 
-Thur: {this.state.thur.start} - {this.state.thur.end}
+Thur: {this.state.thu.start} - {this.state.thu.end}
         <br/>  <TimeRangeSlider
               disabled={false}
               format={24}
               maxValue={"23:00"}
               minValue={"00:00"}
-              name={"thur"}
-              onChange={(thur) => this.setState({ thur })}
+              name={"thu"}
+              onChange={(thu) => this.setState({ thu })}
               step={60}
-              value={this.state.thur}/>
+              value={this.state.thu}/>
 
           <div class="custom-control custom-checkbox custom-control-inline">
       <input type="checkbox" value={this.state.thuNA} onChange={() => this.setState({ thuNA: !this.state.thuNA })} class="custom-control-input" id="thurs"/>
@@ -377,7 +381,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
 
 }
   render(){
-    console.log(this.state.hourly_rate)
+    console.log(this.state);
     if (!this.state.user) return <Redirect to="/" />
 
     console.log(this.state.user);
