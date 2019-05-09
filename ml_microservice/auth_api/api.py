@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
 from auth_api.models import Tutee, Tutor
 from django.http import JsonResponse
+from pandas import DataFrame
 import os
 import json
 import random
@@ -206,10 +207,10 @@ def train(id):
     sorted_result = unread_books_with_scores.sort_values(by='score', ascending=False)
 
     # exporting the read and unread books with scores to csv files
-    read_books_with_names.to_csv('results/read_books_with_names.csv')
-    sorted_result.to_csv('results/unread_books_with_scores.csv')
+    #read_books_with_names.to_csv('results/read_books_with_names.csv')
+    #sorted_result.to_csv('results/unread_books_with_scores.csv')
 
-    return sorted_result
+    return sorted_result.to_json(orient='columns')
 
 def free_energy(v_sample, W, vb, hb):
     ''' Function to compute the free energy '''
