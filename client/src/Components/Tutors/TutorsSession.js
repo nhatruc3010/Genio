@@ -3,6 +3,9 @@ import { Table } from 'reactstrap';
 import { Container, Row, Col, } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import { getSessions } from '../redux/actions/sessions';
+
 class TutorsSession extends Component{
 
     constructor(props) {
@@ -13,42 +16,73 @@ class TutorsSession extends Component{
         };
     }
 
-renderAllSessions(){
-  return <Table>
+renderAllSessions = () =>
+        this.state.sessions ?
+        <Table>
               <thead>
               <tr>
                   <th>ID</th>
-                  <th>Tutee</th>
+                  <th>Tutor</th>
                   <th>Dates</th>
                   <th>Time</th>
-                  <th>Place of Session</th>
-                  <th>Earnings</th>
+                  <th>Price</th>
                   <th>Status</th>
+
               </tr>
               </thead>
-              <tbody>
+              <tbody>{
+                    this.state.sessions.map((session) => {
+                        let startDate = new Date(session.start_time);
+                        let endDate = new Date(session.end_time);
+                        
+                        return (
                       <tr>
-                          <td style={{ paddingTop: 25 }}>1</td>
-                          <td style={{ paddingTop: 25 }}>Truc Vo</td>
-                          <td style={{ paddingTop: 25 }}>05/23/2019</td>
-                          <td style={{ paddingTop: 25 }}>05:00-12:00</td>
-                          <td style={{ paddingTop: 25 }}>1 washington street, san jose, ca, 95126</td>
-                          <td style={{ paddingTop: 25 }}>$378</td>
-                          <td style={{ paddingTop: 25 }}>Active</td>
+                          <td style={{ paddingTop: 25 }}>{session._id}</td>
+                          <td style={{ paddingTop: 25 }}>{session.tutor_id}</td>
+                          <td style={{ paddingTop: 25 }}>{new Date(session.time_created).toLocaleString().split(',')[0]}</td>
+                          <td style={{ paddingTop: 25 }}>{startDate.getHours()}:{startDate.getMinutes()} - {endDate.getHours()}:{endDate.getMinutes()}</td>
+                          <td style={{ paddingTop: 25 }}>${session.subtotal + session.tax}</td>
+                          <td style={{ paddingTop: 25 }}>{session.cancelled ?  'Cancelled' : 'Active' }</td>
+
+                          {/* <td> */}
+                          {/* <Button
+                          onClick={() => {
+                            this.setState({ selectedBooking: session });
+                            this.toggleModal();}}
+                          color="btn btn-deep-orange login"
+                          className="text-center"
+                          style={{ margin: 0 }}>
+                          <Fa icon="eye"></Fa>
+                          </Button> */}
+                          {/* </td> */}
+
                       </tr>
+                        )}
+                    )}
               </tbody>
-          </Table>
-}
+          </Table> :
 
+                <div style={{ margin: '10% 0 10% 0'}}>
+                    <h5>No Booking Tutor Yet!</h5>
 
-static getDerivedStateFromProps(props, state) {
-     if (state.user !== props.user){
-       return {
-         user: props.user
-       };
-     }
-     return null;
-   }
+                    <p>Go book a tutor!</p>
+
+                </div>;
+
+    static getDerivedStateFromProps(props,state) {
+        if (props.sessions !== state.sessions || props.user !== state.user) {
+            return {
+                sessions: props.sessions,
+                user: props.user
+            };
+        }
+
+        return null;
+    }
+
+    componentDidMount() {
+        this.props.getSessions(this.state.user._id, this.state.user.type);
+    }
 
 
     render() {
@@ -88,8 +122,9 @@ const styles = {
 
 const mapStateToProps = state => {
   return {
-      user: state.auth.user
+      user: state.auth.user,
+      sessions: state.data.sessions
   };
 }
 
-export  default connect(mapStateToProps)(TutorsSession)
+export  default connect(mapStateToProps, { getSessions })(TutorsSession)

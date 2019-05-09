@@ -111,6 +111,7 @@ router.post('/sessions/confirm', async (req,res) => {
 
 router.get('/sessions/:userType/:_id', async (req,res) => {
     let { userType, _id } = req.params;
+    console.log(req.params)
     
     if (
             !validator.isEmpty(userType)
@@ -122,7 +123,7 @@ router.get('/sessions/:userType/:_id', async (req,res) => {
                     let tutee = await Tutee.findOne({ _id }).exec();
 
                     if (tutee) {
-                        Session.find({ tuteeID: _id },(err,sessions) => {
+                        Session.find({ tutee_id: _id }, async (err,sessions) => {
                             if (err) 
                                 return res.status(500).json({
                                     success: false,
@@ -147,7 +148,7 @@ router.get('/sessions/:userType/:_id', async (req,res) => {
                     let tutor = await Tutor.findOne({ _id }).exec();
 
                     if (tutor) {
-                        Session.find({ tutorID: _id },(err,sessions) => {
+                        Session.find({ tutor_id: _id }, async (err,sessions) => {
                             if (err) 
                                 return res.status(500).json({
                                     success: false,

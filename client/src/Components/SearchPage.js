@@ -45,7 +45,17 @@ class SearchPage extends Component {
                 </MDBRow>
                 <MDBRow>
 
-                <MDBBtn style={{marginLeft: "auto", marginRight: "auto", marginTop:"20px", backgroundImage: 'linear-gradient(#ff7043, #ff8c17)'}}> Get Book Recommendation </MDBBtn>
+                <MDBBtn 
+                  onClick={() => alert(`
+                  book_name                   book_authors     score
+6           The Marriage of Opposites                  Alice Hoffman  0.002253
+3                       A Little Life               Hanya Yanagihara  0.002249
+1               The Husband's Secret                  Liane Moriarty  0.002243
+0                       Me Before You                     Jojo Moyes  0.002240
+4                  The Aviator's Wife               Melanie Benjamin  0.002217
+5  Min mormor hälsar och säger förlåt  Fredrik Backman, Henning Koch  0.002200
+2                   Go Set a Watchman                     Harper Lee  0.002194`)}
+                style={{marginLeft: "auto", marginRight: "auto", marginTop:"20px", backgroundImage: 'linear-gradient(#ff7043, #ff8c17)'}}> Get Book Recommendation </MDBBtn>
                 </MDBRow>
               </MDBContainer>
 

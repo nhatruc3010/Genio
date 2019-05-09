@@ -64,11 +64,9 @@ static getDerivedStateFromProps(props, state){
          let { subject } = this.state;
 
          this.props.getAllTutors(subject);
-         this.setState({ submitted: true });
     }
 
     renderSubjects(tutor) {
-        console.log(tutor)
         let subjects = [];
 
         Object.keys(tutor.subjects).forEach((v,i) => {
@@ -76,36 +74,37 @@ static getDerivedStateFromProps(props, state){
                 subjects.push(v);
         });
 
-        return subjects.join(',');
+        return subjects.join(', ');
     }
 
     renderTutors() {
-        return this.state.tutors.map((v,i) =>
-
-            <div className='card' style={ styles.card}>
-                <div className="row " style={ styles.rowcard}>
-                    <div className="col-md-4">
-                    <h3 className="card-title">{ v.name }</h3>
-                        <div><img src="https://i.pinimg.com/236x/f3/61/e3/f361e30b86fee7661463bf331de5b1b1.jpg" alt=""/></div>
-                    </div>
-                    <div className="col-md-5 px-3">
-                        <div className="card-block px-3">
-                            <p><b>Subjects:</b> { this.renderSubjects(v) }</p>
-                            <p><b>About Me:</b>  { v.about_me }</p>
+        return this.state.tutors.map((v,i) => {
+            if (v['subjects'][this.state.subject] === true)
+                return (
+                    <div className='card' style={ styles.card}>
+                        <div className="row " style={ styles.rowcard}>
+                            <div className="col-md-4">
+                            <h3 className="card-title">{ v.name }</h3>
+                                <div><img src="https://i.pinimg.com/236x/f3/61/e3/f361e30b86fee7661463bf331de5b1b1.jpg" alt=""/></div>
+                            </div>
+                            <div className="col-md-5 px-3">
+                                <div className="card-block px-3">
+                                    <p><b>Subjects:</b> { this.renderSubjects(v) }</p>
+                                    <p><b>About Me:</b>  { v.about_me }</p>
+                                </div>
+                            </div>
+                            <div className="col-md-3 price">
+                            <h3 className="hourly-rate">Hourly Rate: ${ v.hourly_rate }</h3>
+                                <Link to={`/tutorprofile/${v._id}`}><MDBBtn style={{backgroundImage: 'linear-gradient(#81e9ef, #3badd8)'}}>Check Profile</MDBBtn></Link>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-md-3 price">
-                    <h3 className="hourly-rate">Hourly Rate: ${ v.hourly_rate }</h3>
-                        <Link to={`/tutorprofile/${v._id}`}><MDBBtn style={{backgroundImage: 'linear-gradient(#81e9ef, #3badd8)'}}>Check Profile</MDBBtn></Link>
-                    </div>
-                </div>
-            </div>
-
-
-        );
+                );
+        });
     }
 
     render(){
+        console.log(this.state);
       if (this.state.sortOption === "low") {
               this.state.tutors.sort((a,b) => ((a.hourly_rate) - (b.hourly_rate)));
           }
@@ -130,7 +129,7 @@ static getDerivedStateFromProps(props, state){
                                         </FormGroup>
                                     </MDBCol>
                                     <MDBCol style={styles.updateButton} size="1" md="1">
-                                        <MDBBtn onClick={this.handleSubmit} style={{backgroundImage: 'linear-gradient(#81e9ef, #3badd8)'}}> <i class="fa fa-search" aria-hidden="true"></i> </MDBBtn>
+                                        <MDBBtn onClick={this.onSubmit} style={{backgroundImage: 'linear-gradient(#81e9ef, #3badd8)'}}> <i class="fa fa-search" aria-hidden="true"></i> </MDBBtn>
                                     </MDBCol>
                                 </MDBRow>
                             </Form>

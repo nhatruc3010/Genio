@@ -15,6 +15,44 @@ router.get('/get/tutors/all', async (req,res) => {
     });
 });
 
+router.get('/tutors/:subject', async (req,res) => {
+    let { subject } = req.params;
+    let subjectDict = [ 'chemistry', 'physics', 'math', 'history', 'music', 'english', 'biology' ];
+
+    if (!validator.isEmpty(subject)) {
+        let inferredSubject = inferSubject(subject, subjectDict);
+
+        if (inferredSubject) {
+            Tutor.find({
+                subjects: {
+                    [inferredSubject]: { $eq: true }
+                }
+            }, (err,t) => {
+                if (err) return res.status(400).json({ success: false, err });
+
+                return res.status(200).json({
+                    success: true,
+                    tutors: t
+                });
+            });
+        } else {
+            return res.status(400).json({
+                success: false,
+                msg: 'Invalid subject entered, try again'
+            });
+        }
+    } else {
+        Tutor.find({}, (err,tutors) => {
+            if (err) return res.status(400).json({ success: false, err });
+    
+            return res.status(200).json({
+                success: true,
+                tutors
+            });
+        });
+    }
+});
+
 router.get('/profile/:_id', async (req,res) => {
     let { _id } = req.params;
 
@@ -54,8 +92,11 @@ router.post('/profile/edit', async (req,res) => {
         &&  data
     ) {
         try {
-            let tutor = await Tutor.findOneAndUpdate({ _id }, data).exec();
+            console.log(data);
+            let tutor = await Tutor.findOneAndUpdate({ _id }, { ...data.user }).exec();
             let tutee, user;
+
+            console.log(tutor)
 
             if (!tutor) {
                 tutee = await Tutee.findOne({ _id }, data).exec();
@@ -79,5 +120,16 @@ router.post('/profile/edit', async (req,res) => {
         }
     }
 });
+
+function inferSubject(subject, subjectDict) {
+    let ret = null;
+
+    subjectDict.forEach(v => {
+        if (v.search(subject) !== -1)
+            ret = v;
+    });
+
+    return ret;
+}
 
 module.exports = router;

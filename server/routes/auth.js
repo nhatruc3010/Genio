@@ -93,8 +93,6 @@ router.post('/login', async (req, res) => {
                     }}, 'genioappsecret', {
                         expiresIn: 604800 // 1 week
                     });
-
-                    user.password = '--hidden--';
     
                     return res.status(200).json({
                         token: 'Bearer ' + token,
