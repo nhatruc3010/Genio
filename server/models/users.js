@@ -61,6 +61,10 @@ const tutorSchema = new mongoose.Schema({
     about_me: {
         type: String,
         default: ''
+    },
+    profile_pic:{
+        type: String,
+        default: 'https://i.pinimg.com/236x/f3/61/e3/f361e30b86fee7661463bf331de5b1b1.jpg'
     }
 });
 
