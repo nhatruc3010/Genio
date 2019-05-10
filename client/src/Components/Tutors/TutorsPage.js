@@ -396,7 +396,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
                     <MDBView>
                       <h3 className="font-weight-bold mt-2" >{this.state.user.name}</h3>
                         <img
-                          src={this.state.user.profile_pic}
+                          src={this.state.file ? this.state.file : this.state.user.profile_pic}
                           alt=""
                           style={styles.imageStyles}
                         />
