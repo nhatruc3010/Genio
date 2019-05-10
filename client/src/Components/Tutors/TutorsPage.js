@@ -122,7 +122,7 @@ handleTutorEditSubmit = () => {
       }
     }})
     .then(res => {
-      if(res.data.success) { 
+      if(res.data.success) {
         // this.setState({ isEditing: false });
         this.props.getUser(this.state.user._id);
         this.setState({ isEditing: false });
@@ -142,7 +142,7 @@ renderSubjects(tutor) {
             subjects.push(v);
     });
 
-    return subjects.join(',');
+    return subjects.join(', ');
   }
 
   return 'N/A';
@@ -338,7 +338,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
           Subjects:
         </h6>
         <p className="font-weight-normal">
-          { this.renderSubjects(this.state.user.subjects) }
+          { this.renderSubjects(this.state.user) }
         </p>
 
       <h6 className="font-weight-bold my-3">

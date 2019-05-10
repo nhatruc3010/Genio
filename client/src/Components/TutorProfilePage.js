@@ -40,7 +40,7 @@ export default class TutorProfilePage extends Component {
               subjects.push(v);
       });
 
-      return subjects.join(',');
+      return subjects.join(', ');
     }
 
     return 'N/A';
