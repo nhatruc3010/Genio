@@ -91,22 +91,23 @@ export default class TutorProfilePage extends Component {
                   <h6 className="font-weight-bold my-3">
                       Availability:
                     </h6>
-                    <p className="font-weight-normal">
-                    Mon: Unavailable
-                    <br/>
-                    Tues: 10:00 AM - 04:00 PM
-                    <br/>
-                    Wed: 5:00 PM - 08:00 PM
-                    <br/>
-                    Thurs: 10:00 AM - 04:00 PM
-                    <br/>
-                    Fri: 07:00 AM - 09:00 PM
-                    <br/>
-                    Sat: Unavailable
-                    <br/>
-                    Sunday: Unavailable
-                    <br/>
-                    </p>
+                    { profile.schedule ?
+                      <p className="font-weight-normal">
+                        Mon: { profile.schedule.mon.start } - { profile.schedule.mon.end }
+                        <br/>
+                        Tues: { profile.schedule.tue.start } - { profile.schedule.tue.end }
+                        <br/>
+                        Wed: { profile.schedule.wed.start } - { profile.schedule.wed.end }
+                        <br/>
+                        Thurs: { profile.schedule.thu.start } - { profile.schedule.thu.end }
+                        <br/>
+                        Fri: { profile.schedule.fri.start } - { profile.schedule.fri.end }
+                        <br/>
+                        Sat: { profile.schedule.sat.start } - { profile.schedule.sat.end }
+                        <br/>
+                        Sun: { profile.schedule.sun.start } - { profile.schedule.sun.end }
+                        <br/>
+                      </p> : 'Schedule Not Uploaded' }
                   <MDBRow>
                   <Booking
                     tutor_id={ profile._id }
