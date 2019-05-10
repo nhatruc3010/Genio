@@ -51,7 +51,8 @@ export default class TutorProfilePage extends Component {
 
     if (profile)
       return (
-      <MDBContainer>
+      <div style={{backgroundImage: 'linear-gradient(white 50%, #b9e4ea)'}}>
+      <MDBContainer style={{paddingBottom: '30vh'}}>
           <MDBRow>
           <MDBCol md="12">
             <h1 className="h1-responsive font-weight-bold text-center my-5">Tutor Profile</h1>
@@ -116,98 +117,9 @@ export default class TutorProfilePage extends Component {
           </MDBCol>
           </MDBRow>
 
-          <MDBRow>
-          <MDBCol md="12">
-              <h2 className="h1-responsive font-weight-bold text-center my-5">
-              Feedback
-              </h2>
 
-
-
-              <div className="form-area">
-          <form role="form">
-          <br styles="clear:both" />
-
-          <div   style={{fontSize: "20px"}}>
-          <StarRatingComponent
-                    name="rate1"
-                    starCount={5}
-                    value={this.state.rating}
-                    renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
-                    onStarClick={this.onStarClick.bind(this)}
-                  />
-            </div>
-
-
-            <div className="form-group">
-            <textarea className="form-control" type="textarea" id="subject" placeholder="Insert feedback..." maxlength="200" rows="2"></textarea>
-            </div>
-            <MDBBtn color="primary" size="md" id="sumbit">
-            Post
-            </MDBBtn>
-          </form>
-      </div>
-      <br/>
-      <br/>
-
-              <MDBMedia style={{border:" 2px groove", padding: "25px", marginBottom: "20px"}}>
-                  <MDBMedia left href="#" className="mr-3">
-                  <MDBMedia object src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600108/29213218-stock-vector-female-avatar-silhouette-profile-pictures.jpg?ver=6" alt="Generic placeholder image" style={{width:"90px", height:"90px"}} />
-                  </MDBMedia>
-
-                  <MDBMedia body >
-                      <MDBMedia heading>
-
-                      <div   style={{fontSize: "20px"}}>
-                      <StarRatingComponent
-                              name="rate1"
-                              starCount={5}
-                              value={4}
-                              editing={false}
-                                renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
-                              onStarClick={this.onStarClick.bind(this)}
-                            />
-                      </div>
-
-                      </MDBMedia>
-                      I love Jessica! She is such a great tutor. I passed my class with flying colors!!!
-                      <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p>
-
-
-
-                  </MDBMedia>
-              </MDBMedia>
-
-
-
-              <MDBMedia style={{border:"2px groove", padding: "25px", marginBottom: "20px"}}>
-                  <MDBMedia left href="#" className="mr-3">
-                  <MDBMedia object src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600108/29213218-stock-vector-female-avatar-silhouette-profile-pictures.jpg?ver=6" alt="Generic placeholder image" style={{width:"90px", height:"90px"}} />
-                  </MDBMedia>
-
-                  <MDBMedia body >
-                      <MDBMedia heading>
-
-                      <div   style={{fontSize: "20px"}}>
-                      <StarRatingComponent
-                              name="rate1"
-                              starCount={5}
-                              value={5}
-                              editing={false}
-                                renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
-                              onStarClick={this.onStarClick.bind(this)}
-                            />
-                      </div>
-                      </MDBMedia>
-                      Jessica is so great. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blahblah blah blah blah blah
-                      <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p>
-                  </MDBMedia>
-              </MDBMedia>
-
-
-          </MDBCol>
-          </MDBRow>
       </MDBContainer>
+      </div>
       );
     // else return <Redirect to="/" />
     else return null;

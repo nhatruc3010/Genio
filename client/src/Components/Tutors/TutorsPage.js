@@ -387,7 +387,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
     console.log(this.state.user);
     return (
       <div style={{backgroundImage: 'linear-gradient(white 50%, #b9e4ea)'}}>
-    <MDBContainer>
+    <MDBContainer style={{paddingBottom: '30vh'}}>
         <MDBRow>
         <MDBCol md="12">
           <h1 className="h1-responsive font-weight-bold text-center my-5">My Profile</h1>
@@ -410,62 +410,7 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
           </MDBRow>
         </MDBCol>
         </MDBRow>
-        <MDBRow>
-        <MDBCol md="12">
-            <h2 className="h1-responsive font-weight-bold text-center my-5">
-            <br/>
-            Feedback
-            </h2>
 
-            <MDBMedia style={{ border:" 2px groove", padding: "25px", marginBottom: "20px" }}>
-                <MDBMedia left href="#" className="mr-3">
-                <MDBMedia object src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600108/29213218-stock-vector-female-avatar-silhouette-profile-pictures.jpg?ver=6" alt="Generic placeholder image" style={{width:"90px", height:"90px"}} />
-                </MDBMedia>
-
-                <MDBMedia body >
-                    {/* <MDBMedia heading>
-
-                    <div   style={{fontSize: "20px"}}>
-                    <StarRatingComponent
-                             name="rate1"
-                             starCount={5}
-                             value={4}
-                             editing={false}
-                              renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
-                             onStarClick={this.onStarClick.bind(this)}
-                           />
-                     </div> */}
-
-                    {/* </MDBMedia>
-                    I love Jessica! She is such a great tutor. I passed my class with flying colors!!!
-                    <p>by <a href="#!" className="font-weight-bold">Truc Vo</a>, 04/22/2019</p> */}
-
-                </MDBMedia>
-            </MDBMedia>
-
-            {/* <MDBMedia style={{border:"2px groove", padding: "25px", marginBottom: "20px"}}>
-                <MDBMedia left href="#" className="mr-3">
-                <MDBMedia object src="https://us.123rf.com/450wm/kritchanut/kritchanut1406/kritchanut140600108/29213218-stock-vector-female-avatar-silhouette-profile-pictures.jpg?ver=6" alt="Generic placeholder image" style={{width:"90px", height:"90px"}} />
-                </MDBMedia>
-
-                <MDBMedia body >
-                    <MDBMedia heading>
-
-                    <div style={{fontSize: "20px"}}>
-                    <StarRatingComponent
-                             name="rate1"
-                             starCount={5}
-                             value={5}
-                             editing={false}
-                              renderStarIcon={() => <span><i class="fas fa-star"></i></span>}
-                             onStarClick={this.onStarClick.bind(this)}
-                           />
-                     </div>
-                </MDBMedia>
-            </MDBMedia> */}
-
-          </MDBCol>
-        </MDBRow>
     </MDBContainer>
     </div>
 );
