@@ -60,12 +60,15 @@ export default class TutorProfilePage extends Component {
               <MDBCol md="4">
                       <MDBView >
                         <h3 className="font-weight-bold mt-2" >{ profile.name }</h3>
+                        <div style={{width: '300px', height: '300px', position:'relative', overflow: 'hidden', borderRadius: '50%'}}>
                         <img
                           src={profile.profile_pic}
                           alt=""
                           style={styles.imageStyles}
                         />
-
+                        </div>
+                        <br/>
+                        <br/>
                         <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> ${ profile.hourly_rate }</p>
                       </MDBView>
 
@@ -129,9 +132,8 @@ export default class TutorProfilePage extends Component {
 
 const styles ={
   imageStyles:{
-    borderRadius: '50%',
-    border: "#A9A9A9",
-    marginBottom: '10px',
-    width: '300px',
-    height:'300px'
+    display: 'inline',
+    margin: '0 auto',
+    height: '100%',
+    width: 'auto'
   }}

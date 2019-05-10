@@ -85,7 +85,7 @@ static getDerivedStateFromProps(props, state){
                         <div className="row " style={ styles.rowcard}>
                             <div className="col-md-4">
                             <h3 className="card-title">{ v.name }</h3>
-                                <div><img src={v.profile_pic} alt=""/></div>
+                                <div style={{width: '250px', height: '250px', position:'relative', overflow: 'hidden'}}><img src={v.profile_pic} style={styles.pics} alt=""/></div>
                             </div>
                             <div className="col-md-5 px-3">
                                 <div className="card-block px-3">
@@ -198,6 +198,12 @@ const styles = {
       marginBottom: '20px',
       marginLeft: '20px',
       marginRight: '20px'
+    },
+    pics: {
+      display: 'inline',
+      margin: '0 auto',
+      height: '100%',
+      width: 'auto'
     }
 };
 

@@ -395,11 +395,13 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
             <MDBCol md="4">
                     <MDBView>
                       <h3 className="font-weight-bold mt-2" >{this.state.user.name}</h3>
+                      <div style={{width: '300px', height: '300px', position:'relative', overflow: 'hidden', borderRadius: '50%'}}>
                         <img
                           src={this.state.file ? this.state.file : this.state.user.profile_pic}
-                          alt=""
+                          alt="avatar"
                           style={styles.imageStyles}
                         />
+                        </div>
                       <br/>
                       <br/>
                         {this.state.isEditing? <p></p>: <p style={{fontSize: "23px"}}><a className="font-weight-bold">Hourly Rate:</a> ${this.state.user.hourly_rate}</p>}
@@ -419,11 +421,10 @@ Sun: {this.state.sun.start} - {this.state.sun.end}
 
 const styles ={
   imageStyles:{
-    borderRadius: '50%',
-    border: "#A9A9A9",
-    marginBottom: '10px',
-    width: '250px',
-    height:'250px'
+    display: 'inline',
+    margin: '0 auto',
+    height: '100%',
+    width: 'auto'
   }}
 
 
