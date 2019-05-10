@@ -85,7 +85,7 @@ static getDerivedStateFromProps(props, state){
                         <div className="row " style={ styles.rowcard}>
                             <div className="col-md-4">
                             <h3 className="card-title">{ v.name }</h3>
-                                <div><img src="https://i.pinimg.com/236x/f3/61/e3/f361e30b86fee7661463bf331de5b1b1.jpg" alt=""/></div>
+                                <div><img src={v.profile_pic} alt=""/></div>
                             </div>
                             <div className="col-md-5 px-3">
                                 <div className="card-block px-3">

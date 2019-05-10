@@ -61,7 +61,7 @@ export default class TutorProfilePage extends Component {
                       <MDBView >
                         <h3 className="font-weight-bold mt-2" >{ profile.name }</h3>
                         <img
-                          src="https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024"
+                          src={profile.profile_pic}
                           alt=""
                           style={styles.imageStyles}
                         />
