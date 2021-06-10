@@ -1,4 +1,4 @@
-Django==2.1.5
+Django==2.2.24
 django_environ==0.4.5
 djangorestframework_jwt==1.11.0
 environ==1.0
